@@ -89,10 +89,6 @@ jobs:
       - name: Install requirements.test.txt
         run: |
           pip install -r requirements.test.txt
-      - name: Check python syntax lib
-        run: pycodestyle --max-line-length=130 --statistics workflow/scripts
-      - name: pytest
-        run: pytest workflow/scripts
       - name: Integration test - dry-run
         working-directory: .tests/integration
         run: |
