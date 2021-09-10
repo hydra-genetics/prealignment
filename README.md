@@ -2,7 +2,7 @@
 
 Snakemake module containing processing steps that should be performed before sequence alignment.
 
-![Snakefmt](PATH_TO_ACTION_BADGE)
+![Snakefmt](PATH_TO_ACTION_BADGE..)
 [![License: GPL-3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://opensource.org/licenses/gpl-3.0.html)
 
 ## :speech_balloon: Introduction
