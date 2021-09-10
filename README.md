@@ -2,13 +2,13 @@
 
 Snakemake module containing processing steps that should be performed before sequence alignment.
 
-![Lint](https://github.com/hydra-genetics/pre-alignment/actions/workflows/lint.yaml/badge.svg?branch=develop)
-![Snakefmt](https://github.com/hydra-genetics/pre-alignment/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
+![Lint](https://github.com/hydra-genetics/pre-alignment/actions/workflows/lint.yaml/badge.svg?branch=master)
+![Snakefmt](https://github.com/hydra-genetics/pre-alignment/actions/workflows/snakefmt.yaml/badge.svg?branch=master)
 
-![pycodestyle](https://github.com/hydra-genetics/pre-alignment/actions/workflows/pycodestyl.yaml/badge.svg?branch=develop)
-![pytest](https://github.com/hydra-genetics/pre-alignment/actions/workflows/pytest.yaml/badge.svg?branch=develop)
+![pycodestyle](https://github.com/hydra-genetics/pre-alignment/actions/workflows/pycodestyl.yaml/badge.svg?branch=master)
+![pytest](https://github.com/hydra-genetics/pre-alignment/actions/workflows/pytest.yaml/badge.svg?branch=master)
 
-![integration test](https://github.com/hydra-genetics/pre-alignment/actions/workflows/integration1.yaml/badge.svg?branch=develop)
+![integration test](https://github.com/hydra-genetics/pre-alignment/actions/workflows/integration1.yaml/badge.svg?branch=master)
 
 [![License: GPL-3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://opensource.org/licenses/gpl-3.0.html)
 
