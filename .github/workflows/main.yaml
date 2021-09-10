@@ -69,7 +69,7 @@ jobs:
         run: pycodestyle --max-line-length=130 --statistics workflow/scripts
       - name: pytest
         run: pytest workflow/scripts
-      - name: Integration test: dry-run
+      - name: Integration test - dry-run
         working-directory: .tests/integration
         run: |
           mamba install -c conda-forge -c bioconda snakemake singularity
