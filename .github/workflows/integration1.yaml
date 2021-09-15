@@ -33,8 +33,15 @@ jobs:
       - name: Install requirements.test.txt
         run: |
           pip install -r requirements.test.txt
-      - name: Integration test - small dataset
+      - name: Integration softwares
         working-directory: .tests/integration
         run: |
           mamba install -c conda-forge -c bioconda snakemake singularity
-          snakemake -s ../../workflow/Snakefile -j 1 --use-singularity
+      - name: Integration test merge config
+        working-directory: .tests/integration
+        run: |
+          snakemake -s ../../workflow/Snakefile -j 1 --use-singularity --configfile configs/fastp_merge_config.yaml && rm -r prealignment
+      - name: Integration test fastp_merge config
+        working-directory: .tests/integration
+        run: |
+          snakemake -s ../../workflow/Snakefile -j 1 --use-singularity --configfile configs/fastp_merge_config.yaml
