@@ -16,24 +16,24 @@ else:
     input = lambda wildcards: get_fastq_files(units, wildcards)
 
 
-rule zcat_fastq_files:
+rule decompress_and_merge_fastq_files:
     input:
         input,
     output:
         pipe("prealignment/merged/{sample}_{unit}_{read}.fastq"),
     log:
-        "prealignment/merged/{sample}_{unit}_{read}.fastq.zcat_fastq_files.logs",
+        "prealignment/merged/{sample}_{unit}_{read}.fastq.decompress_and_merge_fastq_files.logs",
     benchmark:
-        "prealignment/merged/{sample}_{unit}_{read}.fastq.zcat_fast_files.benchmark.tsv"
+        "prealignment/merged/{sample}_{unit}_{read}.fastq.decompress_and_merge_fastq_files.benchmark.tsv"
     conda:
         "../envs/merge_fastq.yaml"
     shell:
         """
-        zcat < {input} > {output} 2> {log}
+        pigz -dc -p {threads} {input} > {output} 2> {log}
         """
 
 
-rule compress_fastq_files:
+rule compress_fastq_file:
     input:
         "prealignment/merged/{sample}_{unit}_{read}.fastq",
     output:
@@ -46,5 +46,5 @@ rule compress_fastq_files:
         "../envs/merge_fastq.yaml"
     shell:
         """
-        pigz -f {input} > {output} 2> {log}
+        pigz -p {threads} -f {input} > {output} 2> {log}
         """
