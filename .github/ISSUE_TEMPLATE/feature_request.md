@@ -1,11 +1,11 @@
 ---
 name: Feature request
-about: Suggest an idea for the hydra_genetics/pre-alignment pipeline
+about: Suggest an idea for the hydra_genetics/prealignment pipeline
 labels: enhancement
 ---
 
 <!--
-# hydra_genetics/pre-alignment feature request
+# hydra_genetics/prealignment feature request
 
 Hi there!
 

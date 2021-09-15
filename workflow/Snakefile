@@ -6,21 +6,14 @@ __copyright__ = "Copyright 2021, Patrik Smeds"
 __email__ = "patrik.smeds@scilifelab.uu.se"
 __license__ = "GPL-3"
 
+
 include: "rules/common.smk"
+include: "rules/fastp.smk"
+include: "rules/merge_fastq.smk"
+
 
 report: "report/workflow.rst"
 
-rule dummy:
-    output:
-        "dummy.txt"
-    log:
-        "logs/pre-alignment/bash/dummy/test.log"
-    conda:
-        "envs/dummay.yaml"
-    shell:
-        """
-        touch dummy.txt
-        """
 
 rule all:
     input:
