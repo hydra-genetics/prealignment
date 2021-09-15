@@ -40,8 +40,8 @@ jobs:
       - name: Integration test merge config
         working-directory: .tests/integration
         run: |
-          snakemake -s ../../workflow/Snakefile -j 1 --use-singularity --configfile configs/fastp_merge_config.yaml && rm -r prealignment
+          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --use-singularity --configfile configs/fastp_merge_config.yaml && rm -r prealignment
       - name: Integration test fastp_merge config
         working-directory: .tests/integration
         run: |
-          snakemake -s ../../workflow/Snakefile -j 1 --use-singularity --configfile configs/fastp_merge_config.yaml
+          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --use-singularity --configfile configs/fastp_merge_config.yaml
