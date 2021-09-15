@@ -19,7 +19,7 @@ rule fastp_pe:
             "prealignment/fastp_pe/{sample}_{run}_{lane}_{unit}_fastq2.fastq.gz",
         ],
         html="prealignment/fastp_pe/{sample}_{run}_{lane}_{unit}.html",
-        json="prealignment/fastp_pes/{sample}_{run}_{lane}_{unit}.json",
+        json="prealignment/fastp_pe/{sample}_{run}_{lane}_{unit}.json",
     params:
         adapters=lambda wildcards: " --adapter_sequence {} --adapter_sequence_r2 {} ".format(
             *get_fastq_adapter(units, wildcards).split(",")
