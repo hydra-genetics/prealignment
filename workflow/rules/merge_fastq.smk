@@ -10,7 +10,7 @@ __license__ = "GPL-3"
 if config.get("trimmer_software", None) == "fastp":
     input = lambda wildcards: expand(
         "prealignment/fastp_pe/{{sample}}_{run_lane}_{{unit}}_{{read}}.fastq.gz",
-        run_lane=["{}_{}".format(unit.run,unit.lane) for unit in get_units(units, wildcards, wildcards.unit)],
+        run_lane=["{}_{}".format(unit.run, unit.lane) for unit in get_units(units, wildcards, wildcards.unit)],
     )
 else:
     input = lambda wildcards: get_fastq_files(units, wildcards)
