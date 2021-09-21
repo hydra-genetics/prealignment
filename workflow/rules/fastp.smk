@@ -15,11 +15,11 @@ rule fastp_pe:
         ],
     output:
         trimmed=[
-            "prealignment/fastp_pe/{sample}_{run}_{lane}_{unit}_fastq1.fastq.gz",
-            "prealignment/fastp_pe/{sample}_{run}_{lane}_{unit}_fastq2.fastq.gz",
+            "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}_fastq1.fastq.gz",
+            "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}_fastq2.fastq.gz",
         ],
-        html="prealignment/fastp_pe/{sample}_{run}_{lane}_{unit}.html",
-        json="prealignment/fastp_pe/{sample}_{run}_{lane}_{unit}.json",
+        html="prealignment/fastp_pe/{sample}_{run}_{lane}_{type}.html",
+        json="prealignment/fastp_pe/{sample}_{run}_{lane}_{type}.json",
     params:
         adapters=lambda wildcards: " --adapter_sequence {} --adapter_sequence_r2 {} ".format(
             *get_fastq_adapter(units, wildcards).split(",")
@@ -28,11 +28,11 @@ rule fastp_pe:
     conda:
         "../envs/fastp.yaml"
     log:
-        "prealignment/fastp/{sample}_{run}_{lane}_{unit}_fastp.fastp_trimming.log",
+        "prealignment/fastp/{sample}_{run}_{lane}_{type}_fastp.fastp_trimming.log",
     threads: 5
     benchmark:
         repeat(
-            "prealignment/fastp/{sample}_{run}_{lane}_{unit}.fastq.gz.fastp_trimming.benchmark.tsv",
+            "prealignment/fastp/{sample}_{run}_{lane}_{type}.fastq.gz.fastp_trimming.benchmark.tsv",
             config.get("benchmark", {}).get("repeats", 1),
         )
     container:
