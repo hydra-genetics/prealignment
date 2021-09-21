@@ -9,42 +9,25 @@ __license__ = "GPL-3"
 
 if config.get("trimmer_software", None) == "fastp":
     input = lambda wildcards: expand(
-        "prealignment/fastp_pe/{{sample}}_{run_lane}_{{unit}}_{{read}}.fastq.gz",
-        run_lane=["{}_{}".format(unit.run, unit.lane) for unit in get_units(units, wildcards, wildcards.unit)],
+        "prealignment/fastp_pe/{{sample}}_{run_lane}_{{type}}_{{read}}.fastq.gz",
+        run_lane=["{}_{}".format(unit.run, unit.lane) for unit in get_units(units, wildcards, wildcards.type)],
     )
 else:
     input = lambda wildcards: get_fastq_files(units, wildcards)
 
 
-rule decompress_and_merge_fastq_files:
+rule merge_fastq_gz_file:
     input:
-        input,
+        input
     output:
-        pipe("prealignment/merged/{sample}_{unit}_{read}.fastq"),
+        "prealignment/merged/{sample}_{type}_{read}.fastq.gz",
     log:
-        "prealignment/merged/{sample}_{unit}_{read}.fastq.decompress_and_merge_fastq_files.logs",
+        "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merge_fastq_gz_file.log",
     benchmark:
-        "prealignment/merged/{sample}_{unit}_{read}.fastq.decompress_and_merge_fastq_files.benchmark.tsv"
+        "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merge_fastq_gz_file.benchmark.tsv"
     conda:
         "../envs/merge_fastq.yaml"
     shell:
         """
-        pigz -dc -p {threads} {input} > {output} 2> {log}
-        """
-
-
-rule compress_fastq_file:
-    input:
-        "prealignment/merged/{sample}_{unit}_{read}.fastq",
-    output:
-        "prealignment/merged/{sample}_{unit}_{read}.fastq.gz",
-    log:
-        "prealignment/merged/{sample}_{unit}_{read}.fastq.gz.compress_fastq_files.log",
-    benchmark:
-        "prealignment/merged/{sample}_{unit}_{read}.fastq.gz.compress_fastq_files.benchmark.tsv"
-    conda:
-        "../envs/merge_fastq.yaml"
-    shell:
-        """
-        pigz -p {threads} -f {input} > {output} 2> {log}
+        cat {input} > {output} 2> {log}
         """
