@@ -9,11 +9,10 @@ __license__ = "GPL-3"
 
 rule merged:
     input:
-        merged_input
+        merged_input,
     output:
         "prealignment/merged/{sample}_{type}_{read}.fastq.gz",
-    threads:
-        config.get("{rule}",config["default"])["cpu"]
+    threads: config.get("{rule}", config["default"])["cpu"]
     log:
         "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merge_fastq_gz_file.log",
     benchmark:

@@ -22,6 +22,7 @@ min_version("6.8.0")
 
 configfile: "config.yaml"
 
+
 with open(config["resources"]) as yml:
     config.update(yaml.load(yml))
 
@@ -37,6 +38,7 @@ validate(samples, schema="../schemas/samples.schema.yaml")
 
 units = pandas.read_table(config["units"], dtype=str).set_index(["sample", "type", "run", "lane"], drop=False)
 validate(units, schema="../schemas/units.schema.yaml")
+
 
 ### Set wildcard constraints
 wildcard_constraints:
