@@ -8,6 +8,7 @@ __license__ = "GPL-3"
 
 
 import pandas as pandas
+import yaml
 from snakemake.utils import validate
 from snakemake.utils import min_version
 
@@ -21,6 +22,8 @@ min_version("6.8.0")
 
 configfile: "config.yaml"
 
+with open(config["resources"]) as yml:
+    config.update(yaml.load(yml))
 
 validate(config, schema="../schemas/config.schema.yaml")
 
@@ -36,12 +39,19 @@ units = pandas.read_table(config["units"], dtype=str).set_index(["sample", "type
 validate(units, schema="../schemas/units.schema.yaml")
 
 ### Set wildcard constraints
-
-
 wildcard_constraints:
-    sample="|".join(samples.index),
+    sample="|".join(get_samples(samples)),
     unit="N|T|R",
     read="fastq[1|2]",
+
+
+if config.get("trimmer_software", None) == "fastp":
+    merged_input = lambda wildcards: expand(
+        "prealignment/fastp_pe/{{sample}}_{run_lane}_{{type}}_{{read}}.fastq.gz",
+        run_lane=["{}_{}".format(unit.run, unit.lane) for unit in get_units(units, wildcards, wildcards.type)],
+    )
+else:
+    merged_input = lambda wildcards: get_fastq_files(units, wildcards)
 
 
 def compile_output_list(wildcards: snakemake.io.Wildcards):

@@ -24,18 +24,21 @@ rule fastp_pe:
         adapters=lambda wildcards: " --adapter_sequence {} --adapter_sequence_r2 {} ".format(
             *get_fastq_adapter(units, wildcards).split(",")
         ),
-        extra=config.get("fastp", {}).get("extra", ""),
-    conda:
-        "../envs/fastp.yaml"
+        extra=config.get("{rule}", {}).get("extra", ""),
     log:
-        "prealignment/fastp/{sample}_{run}_{lane}_{type}_fastp.fastp_trimming.log",
-    threads: 5
+        "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}_fastp.fastp_trimming.log",
+    threads:
+        config.get("fastp_pe",config['default'])["cpu"]
     benchmark:
         repeat(
-            "prealignment/fastp/{sample}_{run}_{lane}_{type}.fastq.gz.fastp_trimming.benchmark.tsv",
-            config.get("benchmark", {}).get("repeats", 1),
+            "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}.fastq.gz.fastp_trimming.benchmark.tsv",
+            config.get("{rule}", {}).get("benchmark_repeats", 1),
         )
+    conda:
+        "../envs/fastp_pe.yaml"
     container:
-        config.get("singularity", {}).get("fastp", config.get("singularity", {}).get("default", ""))
+        config.get("{rule}", {}).get("container", config["default_container"])
+    message:
+        "{rule}: trim fastq files {input} using fastp,\n\t\t With adapters: {params.adapters}"
     wrapper:
         "0.78.0/bio/fastp"

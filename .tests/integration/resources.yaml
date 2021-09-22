@@ -1,0 +1,9 @@
+---
+
+fastp_pe:
+  cpu: 2
+  time: "12:00:00"
+
+default:
+  cpu: 1
+  time: "12:00:00"
