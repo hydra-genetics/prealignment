@@ -7,7 +7,7 @@ __email__ = "patrik.smeds@scilifelab.uu.se"
 __license__ = "GPL-3"
 
 
-import pandas as pandas
+import pandas
 import yaml
 from snakemake.utils import validate
 from snakemake.utils import min_version
