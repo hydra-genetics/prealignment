@@ -58,7 +58,7 @@ else:
 
 def compile_output_list(wildcards: snakemake.io.Wildcards):
     return [
-        "prealignment/merged/" + sample + "_" + t + "_" + read + ".fastq.gz"
+        "prealignment/merged/{}_{}_{}.fastq.gz".format(sample, t, read)
         for sample in get_samples(samples)
         for read in ["fastq1", "fastq2"]
         for t in get_unit_types(units, sample)
