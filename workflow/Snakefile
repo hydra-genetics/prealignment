@@ -8,8 +8,8 @@ __license__ = "GPL-3"
 
 
 include: "rules/common.smk"
-include: "rules/fastp.smk"
-include: "rules/merge_fastq.smk"
+include: "rules/fastp_pe.smk"
+include: "rules/merged.smk"
 
 
 report: "report/workflow.rst"
