@@ -14,7 +14,7 @@ rule merged:
         "prealignment/merged/{sample}_{type}_{read}.fastq.gz",
     threads: config.get("{rule}", config["default"])["cpu"]
     log:
-        "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merge_fastq_gz_file.log",
+        "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merge_fastq_gz_file.logs",
     benchmark:
         repeat(
             "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merged.benchmark.tsv",
