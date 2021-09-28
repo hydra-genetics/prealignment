@@ -4,16 +4,41 @@ type: object
 properties:
   samples:
     type: string
+    description: Path to samples.tsv file
   units:
     type: string
-  containers:
+    description: Path to units.tsv file
+  resources:
+    type: string
+    description: Path to resources.yaml file
+  trimmer_software:
+    type: string
+  default_container:
+    type: string
+    description: name or path to a default docker/singularity container
+  fastp_pe:
     type: object
     properties:
-      common:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for fastp_pe
+      container:
         type: string
-    required:
-      - common
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to fastp
+  merged:
+    type: object
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated for fastp_pe
+      container:
+        type: string
+        description: name or path to docker/singularity container
   required:
     - samples
     - units
-    - containers
+    - resources
+    - default_container

@@ -5,7 +5,7 @@ labels: bug
 ---
 
 <!--
-# hydra_genetics/pre-alignment bug report
+# hydra_genetics/prealignment bug report
 
 Hi there!
 
