@@ -24,19 +24,19 @@ rule fastp_pe:
         adapters=lambda wildcards: " --adapter_sequence {} --adapter_sequence_r2 {} ".format(
             *get_fastq_adapter(units, wildcards).split(",")
         ),
-        extra=config.get("{rule}", {}).get("extra", ""),
+        extra=config.get("fastp_pe", {}).get("extra", ""),
     log:
         "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}_fastp.fastp_trimming.log",
-    threads: config.get("fastp_pe", config["default"])["cpu"]
+    threads: config.get("fastp_pe", config["default_resources"])["threads"]
     benchmark:
         repeat(
             "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}.fastq.gz.fastp_trimming.benchmark.tsv",
-            config.get("{rule}", {}).get("benchmark_repeats", 1),
+            config.get("fastp_pe", {}).get("benchmark_repeats", 1),
         )
     conda:
         "../envs/fastp_pe.yaml"
     container:
-        config.get("{rule}", {}).get("container", config["default_container"])
+        config.get("fastp_pe", {}).get("container", config["default_container"])
     message:
         "{rule}: trim fastq files {input} using fastp,\n\t\t With adapters: {params.adapters}"
     wrapper:

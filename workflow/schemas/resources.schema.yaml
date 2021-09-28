@@ -5,7 +5,7 @@ properties:
   fastp_pe:
     type: object
     properties:
-      cpu:
+      threads:
         type: integer
         description: number of threads that will be used by the 'fastp_pe' rule
       time:
@@ -14,20 +14,23 @@ properties:
   merged:
     type: object
     properties:
-      cpu:
+      threads:
         type: integer
         description: number of threads that will be used by the 'merged' rule
       time:
         type: string
         description: max execution time for the 'merged' rule
-  default:
+  default_resources:
     type: object
     properties:
-      cpu:
+      threads:
         type: integer
         description: default number of threads that will be used by a rule
       time:
         type: string
         description: default max execution time for a rule
+      required:
+        - cpu
+        - time
   required:
-    - default
+    - default_resources
