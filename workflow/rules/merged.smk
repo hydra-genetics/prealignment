@@ -12,7 +12,7 @@ rule merged:
         merged_input,
     output:
         "prealignment/merged/{sample}_{type}_{read}.fastq.gz",
-    threads: config.get("{rule}", config["default"])["cpu"]
+    threads: config.get("merged", config["default_resources"])["threads"]
     log:
         "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merge_fastq_gz_file.logs",
     benchmark:
