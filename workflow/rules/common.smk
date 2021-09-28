@@ -22,11 +22,10 @@ min_version("6.8.0")
 
 
 configfile: "config.yaml"
-
+    
+    
 validate(config, schema="../schemas/config.schema.yaml")
-
 config = load_resources(config, config["resources"])
-
 validate(config, schema="../schemas/resources.schema.yaml")
 
 
