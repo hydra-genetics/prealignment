@@ -1,7 +1,6 @@
 samples: "samples.tsv"
 units: "units.tsv"
 
-tools:
-  common: "docker://marrip/common:1.1.0"
+default_container: "docker://marrip/common:1.1.0"
 
 trimmer_software: "fastp"
