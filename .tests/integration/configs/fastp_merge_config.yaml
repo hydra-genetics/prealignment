@@ -6,4 +6,4 @@ default_container: "docker://marrip/common:1.1.0"
 trimmer_software: "fastp"
 
 fastp_pe:
-  container: "docker://biocontainers/fastp:v0.20.1_cv1"
+  container: "docker://gmsuppsala/somatic:master"
