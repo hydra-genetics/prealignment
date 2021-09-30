@@ -30,7 +30,7 @@ properties:
         type: string
         description: default max execution time for a rule
       required:
-        - cpu
+        - threads
         - time
   required:
     - default_resources
