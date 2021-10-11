@@ -29,8 +29,8 @@ properties:
       time:
         type: string
         description: default max execution time for a rule
-      required:
-        - cpu
-        - time
-  required:
-    - default_resources
+    required:
+      - threads
+      - time
+required:
+  - default_resources
