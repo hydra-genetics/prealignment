@@ -65,6 +65,7 @@ jobs:
       - name: Integration test merge config, singularity
         working-directory: .tests/integration
         run: |
+          mamba install -c conda-forge -c bioconda snakemake
           snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --use-singularity --singularity-args  " --cleanenv --bind /home/runner " --configfile configs/merge_config.yaml && rm -r prealignment
       - name: Integration test fastp_merge config, singularity
         working-directory: .tests/integration
