@@ -64,7 +64,7 @@ jobs:
           pip install -r requirements.test.txt
       - name: Install singularity
         run: |
-          mamba install -c conda-forge -c bioconda snakemake
+          mamba install -c conda-forge -c bioconda singularity
       - name: Integration test merge config, singularity
         working-directory: .tests/integration
         run: |
