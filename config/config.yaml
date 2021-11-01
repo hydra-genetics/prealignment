@@ -6,3 +6,5 @@
  default_container: "docker://marrip/common:1.1.0"
 
 # trimmer_software: "fastp"
+#fastp_pe:
+#  container: "docker://hydragenetics/fastp:0.20.1"
