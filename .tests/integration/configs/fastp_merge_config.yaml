@@ -1,9 +1,5 @@
 samples: "samples.tsv"
 units: "units.tsv"
 
-default_container: "docker://marrip/common:1.1.0"
-
 trimmer_software: "fastp"
 
-fastp_pe:
-  container: "docker://gmsuppsala/somatic:master"
