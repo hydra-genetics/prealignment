@@ -1,9 +1,9 @@
 samples: "samples.tsv"
 units: "units.tsv"
 
-default_container: "docker://marrip/common:1.1.0"
+default_container: "docker://hydragenetics/common:0.0.1"
 
 trimmer_software: "fastp"
 
 fastp_pe:
-  container: "docker://gmsuppsala/somatic:master"
+  container: "docker://hydragenetics/fastp:0.20.1"
