@@ -27,10 +27,10 @@ rule fastp_pe:
         extra=config.get("fastp_pe", {}).get("extra", ""),
     log:
         "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}_fastp.fastp_trimming.log",
-    threads: config.get("fastp_pe", config["default_resources"])["threads"]
+    threads: config.get("fastp_pe", {}).get('threads', config["default_resources"]["threads"])
     resources:
-        threads=config.get("fastp_pe", config["default_resources"])["threads"],
-        time=config.get("fastp_pe", config["default_resources"])["time"],
+        threads=config.get("fastp_pe", {}).get('threads', config["default_resources"]["threads"]),
+        time=config.get("fastp_pe", {}).get('time', config["default_resources"]["time"]),
     benchmark:
         repeat(
             "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}.fastq.gz.fastp_trimming.benchmark.tsv",
