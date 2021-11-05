@@ -22,6 +22,10 @@ rule merged:
         )
     conda:
         "../envs/merged.yaml"
+    threads: config.get("merged", {}).get('threads', config["default_resources"]["threads"])
+    resources:
+        threads=config.get("merged", {}).get('threads', config["default_resources"]["threads"]),
+        time=config.get("merged", {}).get('time', config["default_resources"]["time"]),
     container:
         config.get("merged", {}).get("container", config["default_container"])
     message:
