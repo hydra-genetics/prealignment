@@ -37,8 +37,13 @@ jobs:
       - name: Install requirements.test.txt
         run: |
           pip install -r requirements.test.txt
-      - name: snakemake dry run
+      - name: snakemake dry run, merge
         working-directory: .tests/integration
         run: |
           mamba install -c conda-forge -c bioconda snakemake singularity
           snakemake --cores 2 -n -s ../../workflow/Snakefile
+      - name: snakemake dry run, fastp + merge
+        working-directory: .tests/integration
+        run: |
+          mamba install -c conda-forge -c bioconda snakemake singularity
+          snakemake --cores 2 -n -s ../../workflow/Snakefile --configfile configs/fastp_merge_config.yaml
