@@ -53,5 +53,7 @@ snakemake -s /path/to/Snakefile --profile my-awesome-profile
 ```
 
 ## :judge: Rule Graph
-
-![rule_graph](https://raw.githubusercontent.com/path.../rulegraph.svg)
+### Merge workflow
+![rule_graph](images/prealignment_merge.svg)
+### Fastp + Merge workflow
+![rule_graph](images/prealignment_fastp_merge.svg)
