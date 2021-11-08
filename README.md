@@ -26,9 +26,9 @@ To run this workflow, the following tools need to be available:
 
 ### Sample data
 
-1. Add all sample ids to `samples.tsv` in the column `sample`.
-2. Add all sample data information to `units.tsv`. Each row represents a `fastq` file pair with
-corresponding forward and reverse reads. Also indicate the sample id, run id and lane number, adapter.
+1. Add all sample ids to [`samples.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/samples.tsv) in the column `sample`.
+2. Add all sample data information to [`units.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/units.tsv). Each row represents a `fastq` file pair with
+corresponding forward and reverse reads. Also indicate the sample id, platform, run id and lane number, adapter.
 
 ### Reference data
 
