@@ -31,6 +31,9 @@ rule fastp_pe:
     resources:
         threads=config.get("fastp_pe", {}).get('threads', config["default_resources"]["threads"]),
         time=config.get("fastp_pe", {}).get('time', config["default_resources"]["time"]),
+        mem_mb=config.get("fastp_pe", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
+        mem_per_cpu=config.get("fastp_pe", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
+        partition=config.get("fastp_pe", {}).get("partition", config["default_resources"]["partition"]),
     benchmark:
         repeat(
             "prealignment/fastp_pe/{sample}_{run}_{lane}_{type}.fastq.gz.fastp_trimming.benchmark.tsv",

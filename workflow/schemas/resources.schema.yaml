@@ -11,6 +11,15 @@ properties:
       time:
         type: string
         description: max execution time for the 'fastp_pe' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'fastp_pe'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'fastp_pe'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'fastp_pe'
   merged:
     type: object
     properties:
@@ -20,6 +29,15 @@ properties:
       time:
         type: string
         description: max execution time for the 'merged' rule
+      mem_mb:
+        type: integer
+        description: memory used for 'merged'
+      mem_per_cpu:
+        type: integer
+        description: memory used per cpu for 'merged'
+      partition:
+        type: string
+        description: partition to use on the cluster for 'merged'
   default_resources:
     type: object
     properties:
@@ -29,8 +47,20 @@ properties:
       time:
         type: string
         description: default max execution time for a rule
+      mem_mb:
+        type: integer
+        description: default memory used for a rule
+      mem_per_cpu:
+        type: integer
+        description: default memory used per cpu for a rule
+      partition:
+        type: string
+        description: default partition to use on the cluser for a rule
     required:
       - threads
       - time
+      - mem_mb
+      - mem_per_cpu
+      - partition
 required:
   - default_resources
