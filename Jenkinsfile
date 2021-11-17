@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('test-slurm') {
+        stage('test-github-slurm') {
             steps {
                 sshagent(['stanley']) {
                     sh """ pwd """
