@@ -7,8 +7,8 @@ pipeline {
                     sh """ virtualenv venv -p python3.8 
                            source venv/bin/activate
                            pip install -r requirements.txt
-                           cp .test/integration2/config_fastp.yaml config.yaml
-                           snakemake -s workflow/Snakefile --profile .test/integration2/profiles/slurm
+                           cp .tests/integration2/config_fastp.yaml config.yaml
+                           snakemake -s workflow/Snakefile --profile .tests/integration2/profiles/slurm
                        """
                 }
             }
