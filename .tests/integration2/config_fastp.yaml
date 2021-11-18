@@ -1,5 +1,6 @@
-samples: /beegfs-storage/data/test_data/gms560/samples.tsv
-units: /beegfs-storage/data/test_data/gms560/units.tsv
+samples: "/beegfs-storage/data/test_data/gms560/samples.tsv"
+units: "/beegfs-storage/data/test_data/gms560/units.tsv"
+resources: "/beegfs-storage/data/test_data/gms560/resources.yaml"
 
 default_container: "docker://hydragenetics/common:0.0.1"
 
