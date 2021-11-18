@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sshagent(['jenkins']) {
                     sh """ 
-                           . /etc/bashrc
+                           source /etc/bashrc
                            virtualenv venv -p python3.8 
                            source venv/bin/activate
                            pip install -r requirements.txt
