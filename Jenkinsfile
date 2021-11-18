@@ -6,7 +6,7 @@ pipeline {
                 sshagent(['jenkins']) {
                     sh """ pwd """
                     sh """ ls """
-                    sh """ssh -tt jenkins@marvin-clone.cgu.igp.uu.se 'sbatch  --wrap "sleep 30 "' """
+                    sh """ssh -tt jenkins@marvin-clone.cgu.igp.uu.se 'sbatch  --wrap "sleep 40 "' """
                 }
             }
         }
