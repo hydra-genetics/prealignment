@@ -8,6 +8,8 @@ pipeline {
                            source venv/bin/activate
                            pip install -r requirements.txt
                            cp .tests/integration2/config_fastp.yaml config.yaml
+                           module load singularity
+                           module load slurm-drmaa
                            snakemake -s workflow/Snakefile --profile .tests/integration2/profiles/slurm
                        """
                 }
