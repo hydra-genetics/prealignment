@@ -4,7 +4,9 @@ pipeline {
         stage('test-github-slurm') {
             steps {
                 sshagent(['jenkins']) {
-                    sh """ virtualenv venv -p python3.8 
+                    sh """ 
+                           . /etc/bashrc
+                           virtualenv venv -p python3.8 
                            source venv/bin/activate
                            pip install -r requirements.txt
                            cp .tests/integration2/config_fastp.yaml config.yaml
