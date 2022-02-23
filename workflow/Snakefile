@@ -8,7 +8,7 @@ __license__ = "GPL-3"
 
 
 include: "rules/common.smk"
-include: "rules/fastp_pe.smk"
+include: "rules/fastp.smk"
 include: "rules/merged.smk"
 
 
