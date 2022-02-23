@@ -47,7 +47,7 @@ wildcard_constraints:
     read="fastq[1|2]",
 
 
-if config.get("trimmer_software", None) == "fastp":
+if config.get("trimmer_software", None) == "fastp_pe":
     merged_input = lambda wildcards: expand(
         "prealignment/fastp_pe/{{sample}}_{run_lane}_{{type}}_{{read}}.fastq.gz",
         run_lane=["{}_{}".format(unit.run, unit.lane) for unit in get_units(units, wildcards, wildcards.type)],
