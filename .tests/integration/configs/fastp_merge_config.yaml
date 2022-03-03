@@ -3,7 +3,7 @@ units: "units.tsv"
 
 default_container: "docker://hydragenetics/common:0.0.1"
 
-trimmer_software: "fastp_pe"
-
 fastp_pe:
   container: "docker://hydragenetics/fastp:0.20.1"
+
+trimmer_software: "fastp_pe"
