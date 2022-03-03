@@ -1,6 +1,3 @@
-# vim: syntax=python tabstop=4 expandtab
-# coding: utf-8
-
 __author__ = "Patrik Smeds"
 __copyright__ = "Copyright 2021, Patrik Smeds"
 __email__ = "patrik.smeds@scilifelab.uu.se"
@@ -9,14 +6,14 @@ __license__ = "GPL-3"
 
 import pandas
 import yaml
-from snakemake.utils import validate
-from snakemake.utils import min_version
 
 from hydra_genetics.utils.resources import load_resources
 from hydra_genetics.utils.samples import *
 from hydra_genetics.utils.units import *
+from snakemake.utils import min_version
+from snakemake.utils import validate
 
-min_version("6.8.0")
+min_version("6.10")
 
 ### Set and validate config file
 
@@ -41,10 +38,14 @@ validate(units, schema="../schemas/units.schema.yaml")
 
 
 ### Set wildcard constraints
+
 wildcard_constraints:
     sample="|".join(get_samples(samples)),
     unit="N|T|R",
     read="fastq[1|2]",
+
+
+### Functions
 
 
 if config.get("trimmer_software", None) == "fastp_pe":

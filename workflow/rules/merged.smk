@@ -1,6 +1,3 @@
-# vim: syntax=python tabstop=4 expandtab
-# coding: utf-8
-
 __author__ = "Patrik Smeds"
 __copyright__ = "Copyright 2021, Patrik Smeds"
 __email__ = "patrik.smeds@scilifelab.uu.se"
@@ -9,31 +6,28 @@ __license__ = "GPL-3"
 
 rule merged:
     input:
-        merged_input,
+        fastq=merged_input,
     output:
-        "prealignment/merged/{sample}_{type}_{read}.fastq.gz",
-    threads: config.get("merged", config["default_resources"])["threads"]
+        fastq="prealignment/merged/{sample}_{type}_{read}.fastq.gz",
     log:
-        "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merge_fastq_gz_file.logs",
+        "prealignment/merged/{sample}_{type}_{read}.fastq.gz.log",
     benchmark:
         repeat(
-            "prealignment/merged/{sample}_{type}_{read}.fastq.gz.merged.benchmark.tsv",
+            "prealignment/merged/{sample}_{type}_{read}.fastq.gz.benchmark.tsv",
             config.get("merged", {}).get("benchmark_repeats", 1),
         )
-    conda:
-        "../envs/merged.yaml"
-    threads: config.get("merged", {}).get('threads', config["default_resources"]["threads"])
     resources:
-        threads=config.get("merged", {}).get('threads', config["default_resources"]["threads"]),
-        time=config.get("merged", {}).get('time', config["default_resources"]["time"]),
         mem_mb=config.get("merged", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
         mem_per_cpu=config.get("merged", {}).get("mem_per_cpu", config["default_resources"]["mem_per_cpu"]),
         partition=config.get("merged", {}).get("partition", config["default_resources"]["partition"]),
+        threads=config.get("merged", {}).get("threads", config["default_resources"]["threads"]),
+        time=config.get("merged", {}).get("time", config["default_resources"]["time"]),
+    threads: config.get("merged", {}).get("threads", config["default_resources"]["threads"])
+    conda:
+        "../envs/merged.yaml"
     container:
         config.get("merged", {}).get("container", config["default_container"])
     message:
         "{rule}: merge fastq files {input}"
     shell:
-        """
-        cat {input} > {output} 2> {log}
-        """
+        "cat {input.fastq} > {output.fastq} 2> {log}"
