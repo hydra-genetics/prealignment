@@ -11,7 +11,7 @@
 
 ## :speech_balloon: Introduction
 
-The module consists of alignment pre-processing steps, such as trimming and merging `.fastq`-files.
+The module consists of alignment pre-processing steps, such as trimming and merging of `.fastq`-files.
 We strongly recommend trimming `.fastq`-files prior to alignment. To enable trimming the
 `trimmer_software`-stanza in the `config.yaml` may be set to the name of the trimming rule, e.g.
 `fastp_pe`, or `None` if trimming should be omitted. Input data should be specified via `samples.tsv`
@@ -67,6 +67,13 @@ module prealignment:
 
 use rule * from prealignment as prealignment_*
 ```
+
+### Output files
+
+The following output files should be targeted:
+
+- `prealignment/merged/{sample}_{type}_fastq1.fastq.gz`: Merged and possibly trimmed foward reads
+- `prealignment/merged/{sample}_{type}_fastq2.fastq.gz`: Merged and possibly trimmed reverse reads
 
 ## :judge: Rule Graph
 
