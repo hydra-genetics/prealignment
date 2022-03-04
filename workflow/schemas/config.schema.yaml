@@ -42,8 +42,8 @@ properties:
     description: choice of trimmer software or none at all
     pattern: "^(fastp_pe|None)$"
 required:
+  - default_container
   - resources
   - samples
-  - units
-  - default_container
   - trimmer_software
+  - units
