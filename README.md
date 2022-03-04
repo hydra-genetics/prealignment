@@ -1,59 +1,80 @@
-# pre-alignment
+# :snake: hydra-genetics/prealignment
 
-Snakemake module containing processing steps that should be performed before sequence alignment.
+### Snakemake module containing processing steps that should be performed before sequence alignment
 
-![Lint](https://github.com/hydra-genetics/pre-alignment/actions/workflows/lint.yaml/badge.svg?branch=develop)
-![Snakefmt](https://github.com/hydra-genetics/pre-alignment/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
+![Lint](https://github.com/hydra-genetics/prealignment/actions/workflows/lint.yaml/badge.svg?branch=develop)
+![Snakefmt](https://github.com/hydra-genetics/prealignment/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
 
-![pycodestyle](https://github.com/hydra-genetics/pre-alignment/actions/workflows/pycodestyl.yaml/badge.svg?branch=develop)
-![pytest](https://github.com/hydra-genetics/pre-alignment/actions/workflows/pytest.yaml/badge.svg?branch=develop)
-
-![integration test](https://github.com/hydra-genetics/pre-alignment/actions/workflows/integration1.yaml/badge.svg?branch=develop)
+![snakemake dry run](https://github.com/hydra-genetics/prealignment/actions/workflows/snakemake-dry-run.yaml/badge.svg?branch=develop)
+![integration test](https://github.com/hydra-genetics/prealignment/actions/workflows/integration.yaml/badge.svg?branch=develop)
 
 [![License: GPL-3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://opensource.org/licenses/gpl-3.0.html)
 
 ## :speech_balloon: Introduction
 
+The module consists of alignment pre-processing steps, such as trimming and merging `.fastq`-files.
+We strongly recommend trimming `.fastq`-files prior to alignment. To enable trimming the
+`trimmer_software`-stanza in the `config.yaml` may be set to the name of the trimming rule, e.g.
+`fastp_pe`, or `None` if trimming should be omitted. Input data should be specified via `samples.tsv`
+and `units.tsv`.
+
 ## :heavy_exclamation_mark: Dependencies
 
-To run this workflow, the following tools need to be available:
+In order to use this module, the following dependencies are required:
 
-[![python](https://img.shields.io/badge/python-3.8-blue)
-[![snakemake](https://img.shields.io/badge/snakemake-6.8.0-blue)](https://snakemake.readthedocs.io/en/stable/)
-[![singularity](https://img.shields.io/badge/singularity-3.7-blue)](https://sylabs.io/docs/)
+[![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.5.0-blue)](https://github.com/hydra-genetics/)
+[![pandas](https://img.shields.io/badge/pandas-1.3.1-blue)](https://pandas.pydata.org/)
+[python](https://img.shields.io/badge/python-3.8-blue)
+[![snakemake](https://img.shields.io/badge/snakemake-6.10.0-blue)](https://snakemake.readthedocs.io/en/stable/)
+[![singularity](https://img.shields.io/badge/singularity-3.0.0-blue)](https://sylabs.io/docs/)
 
 ## :school_satchel: Preparations
 
 ### Sample data
 
-1. Add all sample ids to [`samples.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/samples.tsv) in the column `sample`.
-2. Add all sample data information to [`units.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/units.tsv). Each row represents a `fastq` file pair with
-corresponding forward and reverse reads. Also indicate the sample id, platform, run id and lane number, adapter.
-
-### Reference data
-
-1. You need a ...
+1. Add all sample ids to [`samples.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/samples.tsv)
+in the column `sample` and the tumor cell content to `TC`.
+2. Add all unit data information to [`units.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/units.tsv).
+Each row represents a `fastq` file pair with corresponding forward and reverse reads. Indicate
+the sample id, sample type (**T**umor, **N**ormal, **R**NA), platform, run id and lane number,
+barcode, path to forward and reverse reads and adapter sequence.
 
 ## :white_check_mark: Testing
 
 The workflow repository contains a small test dataset `.tests/integration` which can be run like so:
 
 ```bash
-cd .tests/integration
-snakemake -s ../../Snakefile -j1 --use-singularity
+$ cd .tests/integration
+$ snakemake -s ../../Snakefile -j1 --use-singularity
 ```
 
 ## :rocket: Usage
 
-The workflow is designed for WGS data meaning huge datasets which require a lot of compute power. For
-HPC clusters, it is recommended to use a cluster profile and run something like:
+To use this module in your workflow, follow the description in the
+[snakemake docs](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#modules).
+Add the module to your `Snakefile` like so:
 
 ```bash
-snakemake -s /path/to/Snakefile --profile my-awesome-profile
+module prealignment:
+    snakefile:
+        github(
+            "hydra-genetics/prealignment",
+            path="workflow/Snakefile",
+            tag="1.0.0",
+        )
+    config:
+        config
+
+
+use rule * from prealignment as prealignment_*
 ```
 
 ## :judge: Rule Graph
-### Merge workflow
-![rule_graph](images/prealignment_merge.svg)
-### Fastp + Merge workflow
+
+### Trim and merge fastq
+
 ![rule_graph](images/prealignment_fastp_merge.svg)
+
+### Only merge fastq
+
+![rule_graph](images/prealignment_merge.svg)
