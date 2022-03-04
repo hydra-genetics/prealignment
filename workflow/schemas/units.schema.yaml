@@ -10,13 +10,13 @@ properties:
     pattern: "^(N|T|R)$"
   platform:
     type: string
-    description: sequence platform that have been used to generate data, ex NextSeq
+    description: sequence platform that have been used to generate data, e.g. NextSeq
   machine:
     type: string
     description: machine id
-  run:
+  flowcell:
     type: string
-    description: sequencing run id (flowcell id)
+    description: flowcell id
   barcode:
     type: string
     description: flowcell barcode
@@ -35,7 +35,9 @@ properties:
 required:
   - sample
   - type
-  - run
+  - platform
+  - machine
+  - flowcell
   - lane
   - fastq1
   - fastq2
