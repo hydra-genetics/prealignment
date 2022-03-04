@@ -32,7 +32,7 @@ In order to use this module, the following dependencies are required:
 ### Sample data
 
 1. Add all sample ids to [`samples.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/samples.tsv)
-in the column `sample` and the tumor cell content to `TC`.
+in the column `sample` and the tumor cell content to `tumor_content`.
 2. Add all unit data information to [`units.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/units.tsv).
 Each row represents a `fastq` file pair with corresponding forward and reverse reads. Indicate
 the sample id, sample type (**T**umor, **N**ormal, **R**NA), platform, run id and lane number,
