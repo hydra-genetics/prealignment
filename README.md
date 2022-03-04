@@ -70,10 +70,12 @@ use rule * from prealignment as prealignment_*
 
 ### Output files
 
-The following output files should be targeted:
+The following output files should be targeted via another rule:
 
-- `prealignment/merged/{sample}_{type}_fastq1.fastq.gz`: Merged and possibly trimmed foward reads
-- `prealignment/merged/{sample}_{type}_fastq2.fastq.gz`: Merged and possibly trimmed reverse reads
+| File | Description |
+|---|---|
+| `prealignment/merged/{sample}_{type}_fastq1.fastq.gz` | Merged and possibly trimmed foward reads |
+| `prealignment/merged/{sample}_{type}_fastq2.fastq.gz` | Merged and possibly trimmed reverse reads |
 
 ## :judge: Rule Graph
 
