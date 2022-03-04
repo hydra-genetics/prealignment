@@ -32,7 +32,7 @@ jobs:
       - name: Integration test merge config, conda
         working-directory: .tests/integration
         run: |
-          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --use-conda --configfile configs/merge_config.yaml && rm -r prealignment
+          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --use-conda && rm -r prealignment
       - name: Integration test fastp_merge config, conda
         working-directory: .tests/integration
         run: |
