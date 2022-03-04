@@ -1,12 +1,14 @@
 # :snake: hydra-genetics/prealignment
 
-### Snakemake module containing processing steps that should be performed before sequence alignment
+#### Snakemake module containing processing steps that should be performed before sequence alignment
+
+
 
 ![Lint](https://github.com/hydra-genetics/prealignment/actions/workflows/lint.yaml/badge.svg?branch=develop)
 ![Snakefmt](https://github.com/hydra-genetics/prealignment/actions/workflows/snakefmt.yaml/badge.svg?branch=develop)
 
-![snakemake dry run](https://github.com/hydra-genetics/prealignment/actions/workflows/snakemake-dry-run.yaml/badge.svg?branch=develop)
-![integration test](https://github.com/hydra-genetics/prealignment/actions/workflows/integration.yaml/badge.svg?branch=develop)
+![snakemake dry run](https://github.com/hydra-genetics/prealignment/actions/workflows/snakemake-dry-run.yaml/badge.svg?branch=develop&style=flat-square)
+![integration test](https://github.com/hydra-genetics/prealignment/actions/workflows/integration.yaml/badge.svg?branch=prep-for-first-release)
 
 [![License: GPL-3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://opensource.org/licenses/gpl-3.0.html)
 
@@ -24,7 +26,7 @@ In order to use this module, the following dependencies are required:
 
 [![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.5.0-blue)](https://github.com/hydra-genetics/)
 [![pandas](https://img.shields.io/badge/pandas-1.3.1-blue)](https://pandas.pydata.org/)
-[python](https://img.shields.io/badge/python-3.8-blue)
+[![python](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org/)
 [![snakemake](https://img.shields.io/badge/snakemake-6.10.0-blue)](https://snakemake.readthedocs.io/en/stable/)
 [![singularity](https://img.shields.io/badge/singularity-3.0.0-blue)](https://sylabs.io/docs/)
 
