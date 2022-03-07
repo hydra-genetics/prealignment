@@ -21,7 +21,7 @@ and `units.tsv`.
 
 In order to use this module, the following dependencies are required:
 
-[![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.5.0-blue)](https://github.com/hydra-genetics/)
+[![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.7.0-blue)](https://github.com/hydra-genetics/)
 [![pandas](https://img.shields.io/badge/pandas-1.3.1-blue)](https://pandas.pydata.org/)
 [![python](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org/)
 [![snakemake](https://img.shields.io/badge/snakemake-6.10.0-blue)](https://snakemake.readthedocs.io/en/stable/)
@@ -35,8 +35,8 @@ In order to use this module, the following dependencies are required:
 in the column `sample` and the tumor cell content to `tumor_content`.
 2. Add all unit data information to [`units.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/units.tsv).
 Each row represents a `fastq` file pair with corresponding forward and reverse reads. Indicate
-the sample id, sample type (**T**umor, **N**ormal, **R**NA), platform, run id and lane number,
-barcode, path to forward and reverse reads and adapter sequence.
+the sample id, sample type (**T**umor, **N**ormal, **R**NA), platform, machine id, flowcell id
+and lane number, barcode/index, path to forward and reverse reads and adapter sequence.
 
 ## :white_check_mark: Testing
 
