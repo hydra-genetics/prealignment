@@ -1,5 +1,7 @@
+resources: "resources.yaml"
 samples: "samples.tsv"
 units: "units.tsv"
 
-tools:
-  common: "docker://marrip/common:1.1.0"
+default_container: "docker://hydragenetics/common:0.0.1"
+
+trimmer_software: "None"
