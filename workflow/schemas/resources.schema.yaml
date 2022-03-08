@@ -2,65 +2,68 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake configuration file
 type: object
 properties:
-  fastp_pe:
-    type: object
-    properties:
-      threads:
-        type: integer
-        description: number of threads that will be used by the 'fastp_pe' rule
-      time:
-        type: string
-        description: max execution time for the 'fastp_pe' rule
-      mem_mb:
-        type: integer
-        description: memory used for 'fastp_pe'
-      mem_per_cpu:
-        type: integer
-        description: memory used per cpu for 'fastp_pe'
-      partition:
-        type: string
-        description: partition to use on the cluster for 'fastp_pe'
-  merged:
-    type: object
-    properties:
-      threads:
-        type: integer
-        description: number of threads that will be used by the 'merged' rule
-      time:
-        type: string
-        description: max execution time for the 'merged' rule
-      mem_mb:
-        type: integer
-        description: memory used for 'merged'
-      mem_per_cpu:
-        type: integer
-        description: memory used per cpu for 'merged'
-      partition:
-        type: string
-        description: partition to use on the cluster for 'merged'
   default_resources:
     type: object
+    description: default resource definitions
     properties:
-      threads:
-        type: integer
-        description: default number of threads that will be used by a rule
-      time:
-        type: string
-        description: default max execution time for a rule
       mem_mb:
         type: integer
-        description: default memory used for a rule
+        description: max memory in MB to be available by default
       mem_per_cpu:
         type: integer
-        description: default memory used per cpu for a rule
+        description: memory in MB used per cpu by default
       partition:
         type: string
-        description: default partition to use on the cluser for a rule
+        description: partition to use on cluster by default
+      threads:
+        type: integer
+        description: number of threads to be available by default
+      time:
+        type: string
+        description: max execution time by default
     required:
-      - threads
-      - time
       - mem_mb
       - mem_per_cpu
       - partition
+      - threads
+      - time
+  fastp_pe:
+    type: object
+    description: resource definitions for fastp_pe
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+  merged:
+    type: object
+    description: resource definitions for merged
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
 required:
   - default_resources

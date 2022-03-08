@@ -1,14 +1,10 @@
 name: small integration test
 
-# Controls when the action will run.
 on:
-   # Triggers the workflow on push or pull request events but only for the master and develop branch
   push:
     branches:
      - develop
      - master
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -16,9 +12,9 @@ jobs:
     name: integration small data set conda
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python 3.8
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: 3.8
       - name: Add conda to system path
@@ -36,7 +32,7 @@ jobs:
       - name: Integration test merge config, conda
         working-directory: .tests/integration
         run: |
-          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --use-conda --configfile configs/merge_config.yaml && rm -r prealignment
+          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --use-conda && rm -r prealignment
       - name: Integration test fastp_merge config, conda
         working-directory: .tests/integration
         run: |

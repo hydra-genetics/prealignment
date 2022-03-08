@@ -2,45 +2,48 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake configuration file
 type: object
 properties:
-  samples:
-    type: string
-    description: Path to samples.tsv file
-  units:
-    type: string
-    description: Path to units.tsv file
   resources:
     type: string
-    description: Path to resources.yaml file
-  trimmer_software:
+    description: path to resources.yaml file
+  samples:
     type: string
-    pattern: "^(fastp_pe|None)$"
+    description: path to samples.tsv file
+  units:
+    type: string
+    description: path to units.tsv file
   default_container:
     type: string
     description: name or path to a default docker/singularity container
   fastp_pe:
     type: object
+    description: parameters for fastp_pe
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for fastp_pe
+        description: set number of times benchmark should be repeated
       container:
         type: string
         description: name or path to docker/singularity container
       extra:
         type: string
-        description: parameters that should be forwarded to fastp
+        description: parameters that should be forwarded
   merged:
     type: object
+    description: parameters for merged
     properties:
       benchmark_repeats:
         type: integer
-        description: set number of times benchmark should be repeated for fastp_pe
+        description: set number of times benchmark should be repeated
       container:
         type: string
         description: name or path to docker/singularity container
+  trimmer_software:
+    type: string
+    description: choice of trimmer software or none at all
+    pattern: "^(fastp_pe|None)$"
 required:
-  - samples
-  - units
-  - resources
   - default_container
+  - resources
+  - samples
   - trimmer_software
+  - units
