@@ -12,7 +12,7 @@
 ## :speech_balloon: Introduction
 
 The module consists of alignment pre-processing steps, such as trimming and merging of `.fastq`-files.
-We strongly recommend trimming `.fastq`-files prior to alignment. To enable trimming the
+We **strongly** recommend trimming `.fastq`-files prior to alignment. To enable trimming the
 `trimmer_software`-stanza in the `config.yaml` may be set to the name of the trimming rule, e.g.
 `fastp_pe`, or `None` if trimming should be omitted. Input data should be specified via `samples.tsv`
 and `units.tsv`.
@@ -29,14 +29,27 @@ In order to use this module, the following dependencies are required:
 
 ## :school_satchel: Preparations
 
-### Sample data
+### Sample and unit data
 
-1. Add all sample ids to [`samples.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/samples.tsv)
-in the column `sample` and the tumor cell content to `tumor_content`.
-2. Add all unit data information to [`units.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/units.tsv).
-Each row represents a `fastq` file pair with corresponding forward and reverse reads. Indicate
-the sample id, sample type (**T**umor, **N**ormal, **R**NA), platform, machine id, flowcell id
-and lane number, barcode/index, path to forward and reverse reads and adapter sequence.
+Input data should be added to [`samples.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/samples.tsv)
+and [`units.tsv`](https://github.com/hydra-genetics/prealignment/blob/develop/config/units.tsv).
+The following information need to be added to these files:
+
+| Column Id | Description |
+| --- | --- |
+| **`samples.tsv`** |
+| sample | unique sample/patient id, one per row |
+| tumor_content | ratio of tumor cells to total cells |
+| **`units.tsv`** |
+| sample | same sample/patient id as in `samples.tsv` |
+| type | data type identifier (one letter), can be one of **T**umor, **N**ormal, **R**NA |
+| platform | type of sequencing platform, e.g. `NovaSeq` |
+| machine | specific machine id, e.g. NovaSeq instruments have `@Axxxxx` |
+| flowcell | identifer of flowcell used |
+| lane | flowcell lane number |
+| barcode | sequence library barcode/index, connect forward and reverse indices by `+`, e.g. `ATGC+ATGC` |
+| fastq1/2 | absolute path to forward and reverse reads |
+| adapter | adapter sequences to be trimmed, separated by comma |
 
 ## :white_check_mark: Testing
 
