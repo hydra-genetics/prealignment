@@ -42,3 +42,4 @@ required:
   - fastq1
   - fastq2
   - adapter
+  - barcode
