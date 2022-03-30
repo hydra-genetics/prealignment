@@ -12,21 +12,21 @@ rule fastp_pe:
         ],
     output:
         trimmed=[
-            "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{type}_fastq1.fastq.gz",
-            "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{type}_fastq2.fastq.gz",
+            "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}_fastq1.fastq.gz",
+            "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}_fastq2.fastq.gz",
         ],
-        html="prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{type}.html",
-        json="prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{type}.json",
+        html="prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}.html",
+        json="prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}.json",
     params:
         adapters=lambda wildcards: " --adapter_sequence {} --adapter_sequence_r2 {} ".format(
             *get_fastq_adapter(units, wildcards).split(",")
         ),
         extra=config.get("fastp_pe", {}).get("extra", ""),
     log:
-        "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{type}_fastq.fastq.gz.log",
+        "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}_fastq.fastq.gz.log",
     benchmark:
         repeat(
-            "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{type}_fastq.fastq.gz.benchmark.tsv",
+            "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}_fastq.fastq.gz.benchmark.tsv",
             config.get("fastp_pe", {}).get("benchmark_repeats", 1),
         )
     resources:
