@@ -1,5 +1,16 @@
 # Changelog
 
+### [0.1.1](https://www.github.com/hydra-genetics/prealignment/compare/v0.1.0...v0.1.1) (2022-04-07)
+
+
+### Bug Fixes
+
+* added barcode to fastq names to handle merging ([d9b998c](https://www.github.com/hydra-genetics/prealignment/commit/d9b998cc46e650e3ee15a789681349c82c073221))
+* lock singularity version to 3.8.6 ([862a430](https://www.github.com/hydra-genetics/prealignment/commit/862a430fdca0d64f65a55662537f8f80c0b99fd1))
+* requirement bump ([54f6e04](https://www.github.com/hydra-genetics/prealignment/commit/54f6e042d470849fac277d255f1dabd8b429eb99))
+* unit index ([53605c9](https://www.github.com/hydra-genetics/prealignment/commit/53605c9da32c7cdfaa31a6c9849b8bae74b210ec))
+* update to lasted tools image ([9d0eee7](https://www.github.com/hydra-genetics/prealignment/commit/9d0eee7a713b730288c0d0750c40eca2ab77c09b))
+
 ## 0.1.0 (2022-03-08)
 
 
