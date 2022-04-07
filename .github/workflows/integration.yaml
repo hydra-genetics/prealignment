@@ -41,9 +41,9 @@ jobs:
     name: integration small data set singularity
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python 3.8
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: 3.8
       - name: Add conda to system path
@@ -60,7 +60,7 @@ jobs:
           pip install -r requirements.test.txt
       - name: Install singularity
         run: |
-          mamba install -c conda-forge -c bioconda singularity
+          mamba install -c conda-forge -c bioconda singularity=3.8.6
       - name: Integration test merge config, singularity
         working-directory: .tests/integration
         run: |
