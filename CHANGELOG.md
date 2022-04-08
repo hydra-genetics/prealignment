@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.1.1...v0.2.0) (2022-04-08)
+
+
+### Features
+
+* add more wildcard constraints ([f076813](https://www.github.com/hydra-genetics/prealignment/commit/f0768133c45f12d5ca72703e670908ad3ffca93b))
+
+
+### Bug Fixes
+
+* add missing temp for output merged ([1cb28c0](https://www.github.com/hydra-genetics/prealignment/commit/1cb28c0aebf3a505d14c6d5b2f1597983d7ff466))
+
 ### [0.1.1](https://www.github.com/hydra-genetics/prealignment/compare/v0.1.0...v0.1.1) (2022-04-07)
 
 
