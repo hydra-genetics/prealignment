@@ -8,7 +8,7 @@ rule merged:
     input:
         fastq=merged_input,
     output:
-        fastq="prealignment/merged/{sample}_{type}_{read}.fastq.gz",
+        fastq=temp("prealignment/merged/{sample}_{type}_{read}.fastq.gz"),
     log:
         "prealignment/merged/{sample}_{type}_{read}.fastq.gz.log",
     benchmark:

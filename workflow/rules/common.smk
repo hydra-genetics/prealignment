@@ -45,6 +45,9 @@ validate(units, schema="../schemas/units.schema.yaml")
 
 
 wildcard_constraints:
+    barcode="[A-Z+]+",
+    flowcell="[A-Z0-9]+",
+    lane="L[0-9]+",
     sample="|".join(get_samples(samples)),
     unit="N|T|R",
     read="fastq[1|2]",
@@ -55,8 +58,8 @@ wildcard_constraints:
 
 if config.get("trimmer_software", None) == "fastp_pe":
     merged_input = lambda wildcards: expand(
-        "prealignment/fastp_pe/{{sample}}_{flowcell_lane}_{{type}}_{{read}}.fastq.gz",
-        flowcell_lane=[
+        "prealignment/fastp_pe/{{sample}}_{flowcell_lane_barcode}_{{type}}_{{read}}.fastq.gz",
+        flowcell_lane_barcode=[
             "{}_{}_{}".format(unit.flowcell, unit.lane, unit.barcode) for unit in get_units(units, wildcards, wildcards.type)
         ],
     )
