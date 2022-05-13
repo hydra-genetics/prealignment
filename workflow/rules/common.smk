@@ -67,10 +67,23 @@ else:
     merged_input = lambda wildcards: get_fastq_files(units, wildcards)
 
 
+def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
+    return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
+
+
 def compile_output_list(wildcards: snakemake.io.Wildcards):
-    return [
+    output_files = [
         "prealignment/merged/{}_{}_{}.fastq.gz".format(sample, t, read)
         for sample in get_samples(samples)
         for t in get_unit_types(units, sample)
         for read in ["fastq1", "fastq2"]
     ]
+    output_files.append(
+        [
+            "prealignment/sortmerna/{}_R.rrna.fq.gz".format(sample)
+            for sample in get_samples(samples)
+            for t in get_unit_types(units, sample)
+            if t == "R"
+        ]
+    )
+    return output_files
