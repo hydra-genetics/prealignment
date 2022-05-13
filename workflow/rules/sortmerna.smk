@@ -12,10 +12,10 @@ rule sortmerna:
         idx=config.get("sortmerna", {}).get("index", ""),
     output:
         align=temp("prealignment/sortmerna/{sample}_{type}.rrna.fq.gz"),
-        kvdb=temp("prealignment/sortmerna/{sample}_{type}/kvdb"),
+        kvdb=temp(directory("prealignment/sortmerna/{sample}_{type}/kvdb")),
         other=temp("prealignment/sortmerna/{sample}_{type}.fq.gz"),
         out=temp("prealignment/sortmerna/{sample}_{type}.rrna.log"),
-        readb=temp("prealignment/sortmerna/{sample}_{type}/readb"),
+        readb=temp(directory("prealignment/sortmerna/{sample}_{type}/readb")),
     params:
         extra=config.get("sortmerna", {}).get("extra", ""),
         ref=get_sortmerna_refs,
