@@ -1,0 +1,17 @@
+resources: "resources.yaml"
+samples: "samples.tsv"
+units: "units.tsv"
+
+default_container: "docker://hydragenetics/common:0.1.1"
+
+sortmerna:
+  container: "docker://hydragenetics/sortmerna:4.3.4"
+  extra: "-e 0.000001"
+  fasta:
+    - "reference/23s.fasta"
+  index: "reference/idx"
+
+fastp_pe:
+  container: "docker://hydragenetics/fastp:0.20.1"
+
+trimmer_software: "fastp_pe"
