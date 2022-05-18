@@ -1,0 +1,24 @@
+{
+  "prealignment": {
+    "fastp_pe": {
+      "files": {
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L001_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "bef200ac7f7ee872c5402731c95e4e56",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L001_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "98281c0dfc0cada7551fb200ce7949c5",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L001_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "f6d13c330dd973345e08bef745138deb",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L001_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "40f051e7b1772f748904444367487b52",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L001_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "3d1af1da3b29419e3ed0fc633415a4c0",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L001_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "a988759d312d3f1d6cf8c759c84fa7ce"
+      }
+    },
+    "merged": {
+      "files": {
+        "prealignment/merged/HD827_T_fastq1.fastq.gz": "bef200ac7f7ee872c5402731c95e4e56",
+        "prealignment/merged/HD827_T_fastq2.fastq.gz": "98281c0dfc0cada7551fb200ce7949c5",
+        "prealignment/merged/HD832_T_fastq1.fastq.gz": "f6d13c330dd973345e08bef745138deb",
+        "prealignment/merged/HD832_T_fastq2.fastq.gz": "40f051e7b1772f748904444367487b52",
+        "prealignment/merged/NA12878_T_fastq1.fastq.gz": "3d1af1da3b29419e3ed0fc633415a4c0",
+        "prealignment/merged/NA12878_T_fastq2.fastq.gz": "a988759d312d3f1d6cf8c759c84fa7ce"
+      }
+    }
+  }
+}
