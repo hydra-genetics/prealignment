@@ -26,7 +26,7 @@ pipeline {
                cp .tests/jenkins/units.tsv units.tsv
                cp .tests/jenkins/samples.develop.tsv samples.tsv
                cp .tests/jenkins/resources.yaml resources.yaml
-               cp .tests/jenkins/config.yaml config/config.yaml
+               cp .tests/jenkins/config.yaml config.yaml
                module load singularity
                module load slurm-drmaa
                snakemake -s workflow/Snakefile --use-singularity --profile .tests/jenkins/slurm --notemp
@@ -50,7 +50,7 @@ pipeline {
                cp .tests/jenkins/units.tsv units.tsv
                cp .tests/jenkins/samples.master.tsv samples.tsv
                cp .tests/jenkins/resources.yaml resources.yaml
-               cp .tests/jenkins/config.yaml config/config.yaml
+               cp .tests/jenkins/config.yaml config.yaml
                module load singularity
                module load slurm-drmaa
                snakemake -s workflow/Snakefile --use-singularity --profile .tests/jenkins/slurm --notemp
