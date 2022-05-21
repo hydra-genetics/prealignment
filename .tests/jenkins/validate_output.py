@@ -106,7 +106,8 @@ def validate_result(json_file, directory):
 
 
 def process_gz_file(f_path, directory):
-    command = ["zcat", os.path.join(directory, f_path), "|", "paste - - - -", "|", "sort", "-k1", "-S 5G", "|", "md5sum"]
+    #command = ["zcat", os.path.join(directory, f_path), "|", "paste - - - -", "|", "sort", "-k1", "-S 5G", "|", "md5sum"]
+    command = ["zcat", os.path.join(directory, f_path), "|", "md5sum"]
     return subprocess.run(" ".join(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
 
 
