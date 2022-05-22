@@ -38,7 +38,7 @@ pipeline {
     stage('Master') {
     when {
       anyOf {
-        expression { isPullRequest == true}
+        expression { isPullRequest == false  && env.BRANCH_NAME == 'master'}
         }
       }
       steps {
@@ -60,7 +60,7 @@ pipeline {
       }
     }
   }
-  /*post {
+  post {
     always {
       cleanWs()
 
@@ -74,5 +74,5 @@ pipeline {
         deleteDir()
       }
     }
-  }*/
+  }
 }
