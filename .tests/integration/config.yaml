@@ -4,4 +4,11 @@ units: "units.tsv"
 
 default_container: "docker://hydragenetics/common:0.1.1"
 
+sortmerna:
+  container: "docker://hydragenetics/sortmerna:4.3.4"
+  extra: "-e 0.000001"
+  fasta:
+    - "reference/23s.fasta"
+  index: "reference/idx"
+
 trimmer_software: "None"

@@ -1,0 +1,60 @@
+{
+  "prealignment": {
+    "fastp_pe": {
+      "files": {
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L001_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "1442b655fd6436655561252d9e1f95b1",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L001_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "057cb32d0f652fda446329b4dc0979ac",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L002_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "a4684ac5217fdcfc097fe769fcdcf4b3",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L002_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "3051568bb94c317c80444f892d9b69cb",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L003_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "56b66d561ef0ca234cf2c3a75e8ed9b2",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L003_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "df04f58e64f9a2b724b34052d0b602eb",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L004_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "5cab108d6c56051702567ed2fb5e0066",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L004_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "ade85bd1a12d22c7a04bbe5d39e1edaa",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L005_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "16173b044b6af95ef40a6741f2ee3d48",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L005_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "8d7e0a035c3cf0a9e6c1f73b4a7d263f",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L006_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "f34774a2baad9eae2ce14857c943c541",
+        "prealignment/fastp_pe/HD827_HKTG2BGXG_L006_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "a6b0a5c6ba02cd19089d4b9d0d0c313e",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L001_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "5e19c1b581f7370c7388ad5fb2278aa1",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L001_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "9a161756c899cf6f344c42b232744242",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L002_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "114e659715d82274c6a9cad9656452bc",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L002_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "86d4651afc72be7fd4f15d1d699505a0",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L003_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "78c25847feeda1656658f2e3812369af",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L003_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "d888d2b88c6d1d446bff06e031d1656f",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L004_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "90458c4626a8a1686477f85886abf225",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L004_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "0369ea9c571102544e2f1d6683eeb275",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L005_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "336ea8fd1a4f7416be6da3f2e36abe18",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L005_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "e435c964b786b20a76284c7acddff640",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L006_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "9c586859e804ff6d29d508cdf497d49f",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L006_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "e33c0d2da4d384fda8665f73dc05a003",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L007_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "3a72995d46292a46e085ddd764ab8377",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L007_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "3065bed3f8d5f03352cd28933a4e8a63",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L008_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "ac586b39757da67136efd9c4f531d2e0",
+        "prealignment/fastp_pe/HD832_H3YF3BGXK_L008_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "b4c887b26c5c7eb765a0cf423946dc8f",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L001_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "7e1e5f0928997dba05a481bb3a8728ab",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L001_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "9021606ea4008ba5556cec7ea9717288",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L002_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "880c03619bbdd454faa5149af70b0481",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L002_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "5cc79d3150604a6d2dd3e8dbba6d1443",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L003_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "8f08a9fc6998e8f1943bdeeb7b1ebec4",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L003_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "92ce24ba3022cbb99692cbf7af7b972d",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L004_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "1647c07a249f9faf8ebd6e1aeecf66cf",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L004_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "8b52f7955cf067fe6d622f6d61622f43",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L005_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "c035571417150a2431590aee3bc463e0",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L005_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "a018832e23e4b9c4ffa345edcb90a05d",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L006_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "a045c619ffc88e0122a221fb1649fa8c",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L006_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "a93ab5c15a47e0eea312a31644313d39",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L007_CTGATCGT+NCGCATAT_T_fastq1.fastq.gz": "7d853ed29e2b82bf11a3931788bac03a",
+        "prealignment/fastp_pe/NA12878_H523MBGXK_L007_CTGATCGT+NCGCATAT_T_fastq2.fastq.gz": "fd4e543cd5af8aa29fd61ed0b9865e8e"
+      }
+    },
+    "merged": {
+      "files": {
+        "prealignment/merged/HD827_T_fastq1.fastq.gz": "40aa04f877fe9260c4742a3c74687cd0",
+        "prealignment/merged/HD827_T_fastq2.fastq.gz": "1300eaf2225830b891cce4e5b6658ebf",
+        "prealignment/merged/HD832_T_fastq1.fastq.gz": "2f453e32e3dc8ffa97bceb5302e42b45",
+        "prealignment/merged/HD832_T_fastq2.fastq.gz": "819557b3fa5107969e0e57d3de1f304d",
+        "prealignment/merged/NA12878_T_fastq1.fastq.gz": "9d50a28eb1d5bd87b5cb60126064e7cc",
+        "prealignment/merged/NA12878_T_fastq2.fastq.gz": "6f9d1080814acf09ff9e4a08b6a20358"
+      }
+    }
+  }
+}

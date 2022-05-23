@@ -37,6 +37,27 @@ properties:
       container:
         type: string
         description: name or path to docker/singularity container
+  sortmerna:
+    type: object
+    description: parameters for sortmerna
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded
+      fasta:
+        type: array
+        description: list of fasta files containing ribosomal rna sequences
+        items:
+          type: string
+      index:
+        type: string
+        description: path to index directory
   trimmer_software:
     type: string
     description: choice of trimmer software or none at all
