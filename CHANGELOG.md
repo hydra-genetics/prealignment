@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.2.0...v0.3.0) (2022-05-23)
+
+
+### Features
+
+* Add SortMeRNA ([b68d771](https://www.github.com/hydra-genetics/prealignment/commit/b68d77124b31204c95a8be350d7bf7ab2c7d8140))
+
+
+### Bug Fixes
+
+* copy config.yaml to correct location for jenkins ([23502d7](https://www.github.com/hydra-genetics/prealignment/commit/23502d7b48ac5963b02ea5966006d3d92d050165))
+* flag output directories correctly ([f7df30e](https://www.github.com/hydra-genetics/prealignment/commit/f7df30e96519eb3561e715eb1de65541ef4b0bcc))
+* remote extra "," from json ([937929e](https://www.github.com/hydra-genetics/prealignment/commit/937929e3005e35ede067ff986979ebb3d78bcb16))
+* update hydra-genetics version ([7bab5f9](https://www.github.com/hydra-genetics/prealignment/commit/7bab5f95e5298265ce5c6b8f6746799fb18964a7))
+* update json files. ([4f0fea2](https://www.github.com/hydra-genetics/prealignment/commit/4f0fea29d077441d241dc3f8bb916d3382cbd514))
+* update subprocess command ([861e338](https://www.github.com/hydra-genetics/prealignment/commit/861e33879ca93dd594064c63cdef42f011d0f196))
+* update units config ([64eb968](https://www.github.com/hydra-genetics/prealignment/commit/64eb9681c438480d42a16658fa7dc036cf669a61))
+
+
+### Documentation
+
+* update rule graph plots ([eea3319](https://www.github.com/hydra-genetics/prealignment/commit/eea3319e0d5b5854040a9f55bc61d5ec6653bd78))
+
 ## [0.2.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.1.1...v0.2.0) (2022-04-08)
 
 
