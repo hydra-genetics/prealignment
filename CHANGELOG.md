@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.3.1](https://www.github.com/hydra-genetics/prealignment/compare/v0.3.0...v0.3.1) (2022-05-30)
+
+
+### Documentation
+
+* Add info about SortMeRNA ([87c5e89](https://www.github.com/hydra-genetics/prealignment/commit/87c5e8989fae5bfe2a47cef9b7b64f9ef0aafeb6))
+
 ## [0.3.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.2.0...v0.3.0) (2022-05-23)
 
 
