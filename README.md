@@ -11,17 +11,17 @@
 
 ## :speech_balloon: Introduction
 
-The module consists of alignment pre-processing steps, such as trimming and merging of `.fastq`-files.
-We **strongly** recommend trimming `.fastq`-files prior to alignment. To enable trimming the
-`trimmer_software`-stanza in the `config.yaml` may be set to the name of the trimming rule, e.g.
-`fastp_pe`, or `None` if trimming should be omitted. Input data should be specified via `samples.tsv`
-and `units.tsv`.
+The module consists of alignment pre-processing steps, such as trimming and merging of `.fastq`-files
+as well as filtering out rRNA sequences from RNA reads. We **strongly** recommend trimming `.fastq`-files
+prior to alignment. To enable trimming the `trimmer_software`-stanza in the `config.yaml` may be set to
+the name of the trimming rule, e.g. `fastp_pe`, or `None` if trimming should be omitted. For rRNA
+filtering, SortMeRNA can be used. Input data should be specified via `samples.tsv` and `units.tsv`. 
 
 ## :heavy_exclamation_mark: Dependencies
 
 In order to use this module, the following dependencies are required:
 
-[![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.7.0-blue)](https://github.com/hydra-genetics/)
+[![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.11.0-blue)](https://github.com/hydra-genetics/)
 [![pandas](https://img.shields.io/badge/pandas-1.3.1-blue)](https://pandas.pydata.org/)
 [![python](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org/)
 [![snakemake](https://img.shields.io/badge/snakemake-6.10.0-blue)](https://snakemake.readthedocs.io/en/stable/)
@@ -51,6 +51,12 @@ The following information need to be added to these files:
 | fastq1/2 | absolute path to forward and reverse reads |
 | adapter | adapter sequences to be trimmed, separated by comma |
 
+### Reference data
+
+An array of reference `.fasta`-files should be specified in `config.yaml` in the section `sortmerna` and
+`fasta`. These files are readily available as part of the github repo. In addition, these files should be
+indexed using SortMeRNA and the filepath set at `sortmerna` and `index`.
+
 ## :white_check_mark: Testing
 
 The workflow repository contains a small test dataset `.tests/integration` which can be run like so:
@@ -72,7 +78,7 @@ module prealignment:
         github(
             "hydra-genetics/prealignment",
             path="workflow/Snakefile",
-            tag="1.0.0",
+            tag="v0.2.0",
         )
     config:
         config
@@ -89,6 +95,8 @@ The following output files should be targeted via another rule:
 |---|---|
 | `prealignment/merged/{sample}_{type}_fastq1.fastq.gz` | Merged and possibly trimmed foward reads |
 | `prealignment/merged/{sample}_{type}_fastq2.fastq.gz` | Merged and possibly trimmed reverse reads |
+| `prealignment/sortmerna/{sample}_{type}.fq.gz` | combined forward and reverse reads without rRNA sequences|
+
 
 ## :judge: Rule Graph
 
