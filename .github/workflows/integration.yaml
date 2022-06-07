@@ -19,11 +19,11 @@ jobs:
           python-version: 3.8
       - name: Add conda to system path
         run: |
-          echo $CONDA/bin >> $GITHUB_PATH
-      - name: Install dependencies
-        run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
           conda config --set channel_priority strict
-          conda install -c conda-forge mamba
+          conda install -c conda-forge -q mamba
+          # ensure that mamba is happy to write into the cache
+          sudo chown -R runner:docker /usr/share/miniconda/pkgs/cache
       - name: Install requirements.txt
         run: |
           pip install -r requirements.txt
@@ -62,7 +62,12 @@ jobs:
           pip install -r requirements.test.txt
       - name: Install singularity
         run: |
-          mamba install -c conda-forge -c bioconda singularity=3.8.6
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          conda config --set channel_priority strict
+          conda install -c conda-forge -q mamba
+          # ensure that mamba is happy to write into the cache
+          sudo chown -R runner:docker /usr/share/miniconda/pkgs/cache
+          mamba install -c conda-forge -n singularity<=3.8.6"
       - name: Integration test merge config, singularity
         working-directory: .tests/integration
         run: |
