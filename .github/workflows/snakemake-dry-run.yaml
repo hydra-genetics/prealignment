@@ -37,4 +37,4 @@ jobs:
       - name: snakemake dry run, fastp + merge
         working-directory: .tests/integration
         run: |
-          snakemake --cores 2 -n -s ../../workflow/Snakefile --configfile configs/fastp_merge_config.yaml
+          snakemake --cores 2 -n -s ../../workflow/Snakefile --configfile config.yaml configs/fastp_merge_config.yaml
