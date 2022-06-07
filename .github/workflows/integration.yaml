@@ -69,7 +69,7 @@ jobs:
           conda install -c conda-forge -q mamba
           # ensure that mamba is happy to write into the cache
           sudo chown -R runner:docker /usr/share/miniconda/pkgs/cache
-          mamba install -c conda-forge -n singularity<=3.8.6"
+          mamba install -c conda-forge -n "singularity<=3.8.6"
       - name: Integration test merge config, singularity
         working-directory: .tests/integration
         run: |
