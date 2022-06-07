@@ -33,10 +33,12 @@ jobs:
       - name: Integration test merge config, conda
         working-directory: .tests/integration
         run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
           snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --configfile config.yaml --use-conda && rm -r prealignment
       - name: Integration test fastp_merge config, conda
         working-directory: .tests/integration
         run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
           snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --configfiles config.yaml configs/fastp_merge_config.yaml --use-conda && rm -r prealignment
   integration-small-singularity:
     name: integration small data set singularity
@@ -71,8 +73,10 @@ jobs:
       - name: Integration test merge config, singularity
         working-directory: .tests/integration
         run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
           snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --configfiles config.yaml --use-singularity --singularity-args  " --cleanenv --bind /home/runner " && rm -r prealignment
       - name: Integration test fastp_merge config, singularity
         working-directory: .tests/integration
         run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
           snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --configfiles config.yaml configs/fastp_merge_config.yaml --use-singularity --singularity-args  " --cleanenv --bind /home/runner " && rm -r prealignment
