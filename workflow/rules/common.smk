@@ -13,12 +13,12 @@ from hydra_genetics.utils.units import *
 from snakemake.utils import min_version
 from snakemake.utils import validate
 
-min_version("6.10")
+min_version("7.8.0")
 
 ### Set and validate config file
 
-
-configfile: "config.yaml"
+if not workflow.overwrite_configfiles:
+    sys.exit("At least one config file must be passed using --configfile/--configfiles, by command line or a profile!")
 
 
 validate(config, schema="../schemas/config.schema.yaml")
@@ -45,7 +45,7 @@ validate(units, schema="../schemas/units.schema.yaml")
 
 
 wildcard_constraints:
-    barcode="[A-Z+]+",
+    barcode="[A-Z+-]+",
     flowcell="[A-Z0-9]+",
     lane="L[0-9]+",
     sample="|".join(get_samples(samples)),
