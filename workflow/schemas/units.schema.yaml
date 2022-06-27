@@ -20,6 +20,7 @@ properties:
   barcode:
     type: string
     description: flowcell barcode
+    pattern: "^[A-Z+-]+$"
   lane:
     type: string
     description: lane number
