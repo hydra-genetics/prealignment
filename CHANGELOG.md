@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.4.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.3.1...v0.4.0) (2022-06-27)
+
+
+### Features
+
+* make config.yaml location more flexible ([3f13746](https://www.github.com/hydra-genetics/prealignment/commit/3f1374614f06a5499f81cd4743f67047423fb2a9))
+* make configfile/confgilefiles argument mandatory ([c434fc6](https://www.github.com/hydra-genetics/prealignment/commit/c434fc60b54f1e5e0c81b0fea51de16a61f11fc4))
+* set configfile argument for jenkins ([b700259](https://www.github.com/hydra-genetics/prealignment/commit/b70025940d7ca7a0b934e8fa1b1016fec3d72876))
+* update snakemake version ([6459187](https://www.github.com/hydra-genetics/prealignment/commit/6459187784a985a3f00871cc1ba049a995d97a24))
+
+
+### Bug Fixes
+
+* allow - in barcode string ([53228d3](https://www.github.com/hydra-genetics/prealignment/commit/53228d31618ce14ab314c329d45492abd5764399))
+* set strict mode fore conda ([67252b4](https://www.github.com/hydra-genetics/prealignment/commit/67252b479b3e25fad146ec60ee2cdde02365f660))
+
+
+### Documentation
+
+* update README ([080fd07](https://www.github.com/hydra-genetics/prealignment/commit/080fd07ae67d503930d8b33e960056aba7a5e600))
+
 ### [0.3.1](https://www.github.com/hydra-genetics/prealignment/compare/v0.3.0...v0.3.1) (2022-05-30)
 
 
