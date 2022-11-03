@@ -15,8 +15,8 @@ rule fastp_pe:
             "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}_fastq1.fastq.gz",
             "prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}_fastq2.fastq.gz",
         ],
-        html="prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}.html",
-        json="prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}.json",
+        html="prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}_fastp.html",
+        json="prealignment/fastp_pe/{sample}_{flowcell}_{lane}_{barcode}_{type}_fastp.json",
     params:
         adapters=lambda wildcards: " --adapter_sequence {} --adapter_sequence_r2 {} ".format(
             *get_fastq_adapter(units, wildcards).split(",")

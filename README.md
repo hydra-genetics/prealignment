@@ -1,4 +1,4 @@
-# :snake: hydra-genetics/prealignment
+# <img src="https://github.com/hydra-genetics/prealignment/blob/develop/images/hydragenetics.png" width=40 /> hydra-genetics/prealignment
 
 #### Snakemake module containing processing steps that should be performed before sequence alignment
 
@@ -26,6 +26,8 @@ In order to use this module, the following dependencies are required:
 [![python](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org/)
 [![snakemake](https://img.shields.io/badge/snakemake-6.10.0-blue)](https://snakemake.readthedocs.io/en/stable/)
 [![singularity](https://img.shields.io/badge/singularity-3.0.0-blue)](https://sylabs.io/docs/)
+
+**Note! Releases of prealignment <= v0.4.0 needs tabulate<0.9.0 added in requirements.txt**
 
 ## :school_satchel: Preparations
 
