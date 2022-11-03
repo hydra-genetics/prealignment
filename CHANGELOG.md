@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.5.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.4.0...v0.5.0) (2022-11-03)
+
+
+### Features
+
+* **common:** update flowcell constraint ([6c9ecaf](https://www.github.com/hydra-genetics/prealignment/commit/6c9ecafb8212b17fff1bf9857c2b0a9b30ca46c5))
+
+
+### Bug Fixes
+
+* Update requirements.txt ([33b2084](https://www.github.com/hydra-genetics/prealignment/commit/33b2084e026315abeea2f0604f1020d4a75550b5))
+
+
+### Documentation
+
+* add image logo ([f8f80c0](https://www.github.com/hydra-genetics/prealignment/commit/f8f80c0b1df72a155455ccd92589113b2537321c))
+* **README:** change header image ([f8f80c0](https://www.github.com/hydra-genetics/prealignment/commit/f8f80c0b1df72a155455ccd92589113b2537321c))
+* Update README.md ([a7a6b3b](https://www.github.com/hydra-genetics/prealignment/commit/a7a6b3b51100cd3930a23ff1e929d2a669faeb1f))
+
 ## [0.4.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.3.1...v0.4.0) (2022-06-27)
 
 
