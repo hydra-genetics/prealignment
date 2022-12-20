@@ -11,10 +11,12 @@ rule fastp_pe:
             get_fastq_file(units, wildcards, "fastq2"),
         ],
     output:
-        trimmed=[
-            "prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastq1.fastq.gz",
-            "prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastq2.fastq.gz",
-        ],
+        trimmed=temp(
+            [
+                "prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastq1.fastq.gz",
+                "prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastq2.fastq.gz",
+            ]
+        ),
         html="prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastp.html",
         json="prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastp.json",
     params:
