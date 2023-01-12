@@ -58,7 +58,7 @@ wildcard_constraints:
 
 if config.get("trimmer_software", None) == "fastp_pe":
     merged_input = lambda wildcards: expand(
-        "prealignment/fastp_pe/{{sample}}_{flowcell_lane_barcode}_{{type}}_{{read}}.fastq.gz",
+        "prealignment/fastp_pe/{{sample}}_{{type}}_{flowcell_lane_barcode}_{{read}}.fastq.gz",
         flowcell_lane_barcode=[
             "{}_{}_{}".format(unit.flowcell, unit.lane, unit.barcode) for unit in get_units(units, wildcards, wildcards.type)
         ],
