@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.5.1](https://www.github.com/hydra-genetics/prealignment/compare/v0.5.0...v0.5.1) (2023-01-12)
+
+
+### Bug Fixes
+
+* fixed wildcard order in merged_input in common ([aed119c](https://www.github.com/hydra-genetics/prealignment/commit/aed119cf120d8e3b8396fda733bcda54b9e7dbb2))
+* missing temp on fastp output ([9cef1c7](https://www.github.com/hydra-genetics/prealignment/commit/9cef1c7040aa29914adf915a181dffa2942013f6))
+
 ## [0.5.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.4.0...v0.5.0) (2022-11-03)
 
 
