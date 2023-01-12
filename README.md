@@ -80,7 +80,7 @@ module prealignment:
         github(
             "hydra-genetics/prealignment",
             path="workflow/Snakefile",
-            tag="v0.2.0",
+            tag="v1.0.0",
         )
     config:
         config
