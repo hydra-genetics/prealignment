@@ -1,0 +1,7 @@
+site_name: Prealignment
+nav:
+  - Introduction: index.md
+  - Softwares: softwares.md
+  - Rule graph: rule_graph.md
+
+theme: readthedocs
