@@ -5,3 +5,12 @@ nav:
   - Rule graph: rule_graph.md
 
 theme: readthedocs
+extra_css: [extra.css]
+markdown_extensions:
+  - abbr
+  - attr_list
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+      base_path: ["docs"]
+  - mdx_spanner
