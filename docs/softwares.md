@@ -36,8 +36,8 @@ Filter out ribosomal RNA (rRNA) from RNA data
 |-|-|-|-|
 | Input | fq1 | `prealignment/merged/{sample}_{type}_fastq1.fastq.gz` | Unfiltered merged `.fastq` files from the same sample |
 | | fq2 | `prealignment/merged/{sample}_{type}_fastq1.fastq.gz` |_ _|
-| | ref | `config.yaml`: sortmera: fasta:{file} | Fasta reference genome |
-|_ _| idx | `config.yaml`: sortmera: idx:{directory} | Sortmera index directory |
+| | ref | `config.yaml` | Fasta reference genome |
+|_ _| idx | `config.yaml` | Sortmera index directory |
 | Output | other | `prealignment/sortmerna/{sample}_{type}.fq.gz` | rRNA filtered merged `.fastq` file |
 | | align | `prealignment/sortmerna/{sample}_{type}.rrna.fq.gz` |  Fastq with reads that align to ribosomal rna |
 | | kvdb | `prealignment/sortmerna/{sample}_{type}/kvdb` |  workdir kvd with key-value datastore for alignment results |
@@ -46,9 +46,11 @@ Filter out ribosomal RNA (rRNA) from RNA data
 
 <br />
 
-| Software settings | Parameter | Value |
-|-|-|-|
-| Parameters | extra | Additional parameters to the program |
-| [Resources](https://hydra-genetics.readthedocs.io/en/read_the_docs/config/) | threads | Recommendation: Use multiple threads for decreased run time. <br /> **Note** If multiple threads is used it is also best to increase memory |
+| Software settings | Parameter1 | Parameter2 | Value |
+|-|-|-|-|
+| `config.yaml` | sortmera | extra | Additional parameters to the program |
+| | | fasta | Fasta reference genome |
+|_ _|_ _| idx | Sortmera index directory |
+| [`resources.yaml`](https://hydra-genetics.readthedocs.io/en/read_the_docs/config/) | sortmera | threads | Recommendation: Use multiple threads for decreased run time. <br /> **Note** If multiple threads is used it is also best to increase memory |
 
 <br />
