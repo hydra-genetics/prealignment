@@ -28,6 +28,9 @@ jobs:
         run: |
           conda config --set channel_priority strict
           mamba install -c conda-forge -c bioconda singularity=3.8.6
+      - name: Add conda to system path
+        run: |
+          echo $CONDA/bin >> $GITHUB_PATH
       - name: Install requirements.txt
         run: |
           pip install -r requirements.txt
