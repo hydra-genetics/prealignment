@@ -38,8 +38,6 @@ rule fastp_pe:
         threads=config.get("fastp_pe", {}).get("threads", config["default_resources"]["threads"]),
         time=config.get("fastp_pe", {}).get("time", config["default_resources"]["time"]),
     threads: config.get("fastp_pe", {}).get("threads", config["default_resources"]["threads"])
-    conda:
-        "../envs/fastp.yaml"
     container:
         config.get("fastp_pe", {}).get("container", config["default_container"])
     message:
