@@ -33,8 +33,6 @@ rule sortmerna:
         threads=config.get("sortmerna", {}).get("threads", config["default_resources"]["threads"]),
         time=config.get("sortmerna", {}).get("time", config["default_resources"]["time"]),
     threads: config.get("sortmerna", {}).get("threads", config["default_resources"]["threads"])
-    conda:
-        "../envs/sortmerna.yaml"
     container:
         config.get("sortmerna", {}).get("container", config["default_container"])
     message:
