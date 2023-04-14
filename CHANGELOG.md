@@ -5,7 +5,8 @@
 
 ### Features
 
-* remove marrip and support for conda ([fd1e638](https://www.github.com/hydra-genetics/prealignment/commit/fd1e638f8981bbdde8c7ea4e62442cc26fab1033))
+* removed support for conda ([fd1e638](https://www.github.com/hydra-genetics/prealignment/commit/fd1e638f8981bbdde8c7ea4e62442cc26fab1033))
+* removed marrip as codeowner ([fd1e638](https://www.github.com/hydra-genetics/prealignment/commit/fd1e638f8981bbdde8c7ea4e62442cc26fab1033))
 
 ## [1.0.0](https://www.github.com/hydra-genetics/prealignment/compare/v0.5.0...v1.0.0) (2023-01-12)
 
