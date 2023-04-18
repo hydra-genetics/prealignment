@@ -1,0 +1,86 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+description: snakemake rule input and output files description file
+type: object
+properties:
+
+  fastp_pe:
+    type: object
+    description: input and output parameters for fastp_pe
+    properties:
+      input:
+        type: object
+        description: list of inputs
+          sample:
+            type: string
+            description: |
+              Untrimmed `.fastq files` from the same sample
+              Fastq files specified in `units.tsv` obatined by get_fastq_file defined in the [hydra-genetics](https://github.com/hydra-genetics/hydra-genetics/blob/develop/hydra_genetics/utils/units.py) module
+      output:
+        type: object
+        description: list of outputs
+          trimmed:
+            type: string
+            description: Trimmed `.fastq files` (read1 and read2) from the same sample
+          html:
+            type: string
+            description: html QC report
+          json:
+            type: string
+            description: json QC report
+
+  merged:
+    type: object
+    description: input and output parameters for merged
+    properties:
+      input:
+        type: object
+        description: list of inputs
+          fastq:
+            type: string
+            description: |
+              Trimmed `.fastq files` (read1 or read2) from the same sample
+              Files obtained by merged_input in defined in [`common.smk`](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/common.smk)
+      output:
+        type: object
+        description: list of outputs
+          fastq:
+            type: string
+            description: Merged `.fastq files` (read1 or read2) from the same sample
+
+  sortmerna:
+    type: object
+    description: input and output parameters for sortmerna
+    properties:
+      input:
+        type: object
+        description: list of inputs
+          fq1:
+            type: string
+            description: Unfiltered merged `.fastq` files from read 1 of the same sample
+          fq2:
+            type: string
+            description: Unfiltered merged `.fastq` files from read 2 of the same sample
+          ref:
+            type: string
+            description: Fasta reference genome
+          idx:
+            type: string
+            description: Sortmera index directory
+      output:
+        type: object
+        description: list of outputs
+          align:
+            type: string
+            description: Fastq with reads that align to ribosomal rna
+          kvdb:
+            type: string
+            description: Workdir kvd with key-value datastore for alignment results
+          other:
+            type: string
+            description: rRNA filtered merged .fastq file
+          out:
+            type: string
+            description: Workdir readb with temporary read info
+          readb:
+            type: string
+            description: Sortmeras ribosomal log file

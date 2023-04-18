@@ -14,6 +14,7 @@ properties:
   default_container:
     type: string
     description: name or path to a default docker/singularity container
+
   fastp_pe:
     type: object
     description: parameters for fastp_pe
@@ -23,10 +24,19 @@ properties:
         description: set number of times benchmark should be repeated
       container:
         type: string
-        description: name or path to docker/singularity container
+        description: Fastp docker container
       extra:
         type: string
-        description: parameters that should be forwarded
+        description: |
+          parameters that should be forwarded
+          NOTE: Fastp has these options active as default:
+
+          * --trim_poly_g
+          * --qualified_quality_phred 15
+          * --unqualified_percent_limit 40
+          * --n_base_limit 5
+          * --length_required 15
+
   merged:
     type: object
     description: parameters for merged
@@ -36,7 +46,8 @@ properties:
         description: set number of times benchmark should be repeated
       container:
         type: string
-        description: name or path to docker/singularity container
+        description: general hydra-genetics docker container
+
   sortmerna:
     type: object
     description: parameters for sortmerna
@@ -46,7 +57,7 @@ properties:
         description: set number of times benchmark should be repeated
       container:
         type: string
-        description: name or path to docker/singularity container
+        description: sortmerna docker container
       extra:
         type: string
         description: parameters that should be forwarded
@@ -58,10 +69,12 @@ properties:
       index:
         type: string
         description: path to index directory
+
   trimmer_software:
     type: string
     description: choice of trimmer software or none at all
     pattern: "^(fastp_pe|None)$"
+
 required:
   - default_container
   - resources
