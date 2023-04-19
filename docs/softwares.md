@@ -12,12 +12,13 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 |_ _| json | `prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastp.html` | json QC report |
 | Container | container | [docker://hydragenetics/fastp:{version}](https://hub.docker.com/r/hydragenetics/fastp) | fastp docker container |
 
-<br />
+### Software settings
 
-| Software settings | Parameter | Value |
-|-|-|-|
-| Parameters | extra | Additional parameters to the program |
-| [Resources](https://hydra-genetics.readthedocs.io/en/read_the_docs/config/) | threads | Recommendation: Use multiple threads for decreased run time. <br /> **Note** If multiple threads is used it is also best to increase memory <br /> **Note** If multiple threads is used the read order of the fastq files will differ between runs |
+#CONFIGSCHEMA__fastp_pe#
+
+### Resources settings
+
+#RESOURCESSCHEMA__merged#
 
 
 ## Fastq merging (rule: [merged](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/merged.smk))
@@ -28,6 +29,15 @@ Merge `.fastq` files generated for example on different lanes by simply concaten
 | Input | fastq | [merged_input](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/common.smk) function | Several `.fastq` files from the same sample |
 | Output | fastq | `prealignment/merged/{sample}_{type}_{read}.fastq.gz` | Merged `.fastq` file |
 | Container | container | [docker://hydragenetics/common:{version}](https://hub.docker.com/r/hydragenetics/common) | General hydra-genetics docker container |
+
+### Software settings
+
+#CONFIGSCHEMA__merged#
+
+### Resources settings
+
+#RESOURCESSCHEMA__merged#
+
 
 ## [Sortmerna](https://github.com/biocore/sortmerna) (rule: [sortmerna](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/sortmerna.smk))
 Filter out ribosomal RNA (rRNA) from RNA data  
@@ -46,11 +56,10 @@ Filter out ribosomal RNA (rRNA) from RNA data
 
 <br />
 
-| Software settings | Parameter1 | Parameter2 | Value |
-|-|-|-|-|
-| `config.yaml` | sortmera | extra | Additional parameters to the program |
-| | | fasta | Fasta reference genome |
-|_ _|_ _| idx | Sortmera index directory |
-| [`resources.yaml`](https://hydra-genetics.readthedocs.io/en/read_the_docs/config/) | sortmera | threads | Recommendation: Use multiple threads for decreased run time. <br /> **Note** If multiple threads is used it is also best to increase memory |
+### Software settings
 
-<br />
+#CONFIGSCHEMA__sortmerna#
+
+### Resources settings
+
+#RESOURCESSCHEMA__sortmerna#
