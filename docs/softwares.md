@@ -1,5 +1,7 @@
 # Softwares used in the prealignment module
 
+#SNAKEMAKE_RULE_SOURCE__fastp__fastp_pe#
+
 ## [Fastp](https://github.com/OpenGene/fastp) (rule: [fastp_pe](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/fastp.smk))
 
 
