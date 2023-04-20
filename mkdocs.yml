@@ -9,11 +9,14 @@ extra_css: [extra.css]
 markdown_extensions:
   - abbr
   - attr_list
+  - pymdownx.details
   - pymdownx.snippets:
       auto_append:
         - includes/abbreviations.md
-      base_path: ["docs"]
+      base_path: ["docs/", "workflow/rules/"]
+      url_download: "True"
   - mdx_spanner
+  - admonition
 
 plugins:
   - yaml-schema:
