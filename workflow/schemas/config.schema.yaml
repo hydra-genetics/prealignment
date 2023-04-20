@@ -27,15 +27,14 @@ properties:
         description: name or path to docker/singularity container
       extra:
         type: string
-        description: |
+        description: |-
           parameters that should be forwarded
           NOTE: Fastp has these options active as default:
-
-          * --trim_poly_g
-          * --qualified_quality_phred 15
-          * --unqualified_percent_limit 40
-          * --n_base_limit 5
-          * --length_required 15
+          --trim_poly_g
+          --qualified_quality_phred 15
+          --unqualified_percent_limit 40
+          --n_base_limit 5
+          --length_required 15
 
   merged:
     type: object

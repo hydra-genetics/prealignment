@@ -1,20 +1,15 @@
 # Softwares used in the prealignment module
 
-## [Fastp](https://github.com/OpenGene/fastp) (rule: [fastp_pe](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/fastp.smk))
-
-
-```
---8<-- "fastp.smk:fastp_pe"
-```
-
+## [Fastp](https://github.com/OpenGene/fastp)
 Trim `.fastq` files by removing adapter sequences and other unwanted sequences. Adapter sequences are specified in `units.tsv` under the adapter column.
 
 ### Rule content
 
-#### Source
+### Rule
+
 #SNAKEMAKE_RULE_SOURCE__fastp__fastp_pe#
 
-#### Parameters
+### Rule settings
 
 #SNAKEMAKE_RULE_TABLE__fastp__fastp_pe#
 
@@ -24,7 +19,7 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 
 ### Resources settings
 
-#RESOURCESSCHEMA__merged#
+#RESOURCESSCHEMA__fastp_pe#
 
 
 ## Fastq merging (rule: [merged](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/merged.smk))

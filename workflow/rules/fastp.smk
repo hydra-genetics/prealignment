@@ -3,7 +3,7 @@ __copyright__ = "Copyright 2021, Patrik Smeds"
 __email__ = "patrik.smeds@scilifelab.uu.se"
 __license__ = "GPL3"
 
-# --8<-- [start:fastp_pe]
+
 rule fastp_pe:
     input:
         sample=lambda wildcards: [
@@ -46,4 +46,3 @@ rule fastp_pe:
         "{rule}: trim fastq files {input.sample} using fastp,\n\t\t with adapters: {params.adapters}"
     wrapper:
         "0.78.0/bio/fastp"
-# --8<-- [end:fastp_pe]
