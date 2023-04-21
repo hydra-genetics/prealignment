@@ -1,6 +1,12 @@
 # Softwares used in the prealignment module
 
 ## [Fastp](https://github.com/OpenGene/fastp) (rule: [fastp_pe](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/fastp.smk))
+
+
+```
+--8<-- "fastp.smk:fastp_pe"
+```
+
 Trim `.fastq` files by removing adapter sequences and other unwanted sequences. Adapter sequences are specified in `units.tsv` under the adapter column.
 
 ### Rule content
