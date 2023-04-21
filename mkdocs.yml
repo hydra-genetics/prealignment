@@ -25,3 +25,5 @@ plugins:
   - snakemake-rule:
       rule_folders:
         - 'workflow/rules'
+      schemas:
+        - 'workflow/schemas/rules.schema.yaml'

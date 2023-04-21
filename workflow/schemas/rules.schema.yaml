@@ -2,7 +2,6 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake rule input and output files description file
 type: object
 properties:
-
   fastp_pe:
     type: object
     description: input and output parameters for fastp_pe
@@ -10,14 +9,17 @@ properties:
       input:
         type: object
         description: list of inputs
+        properties:
           sample:
             type: string
+            value: Fastq files specified in `units.tsv` obatined by get_fastq_file
             description: |
               Untrimmed `.fastq files` from the same sample
               Fastq files specified in `units.tsv` obatined by get_fastq_file defined in the [hydra-genetics](https://github.com/hydra-genetics/hydra-genetics/blob/develop/hydra_genetics/utils/units.py) module
       output:
         type: object
         description: list of outputs
+        properties:
           trimmed:
             type: string
             description: Trimmed `.fastq files` (read1 and read2) from the same sample
@@ -35,6 +37,7 @@ properties:
       input:
         type: object
         description: list of inputs
+        properties:
           fastq:
             type: string
             description: |
@@ -43,6 +46,7 @@ properties:
       output:
         type: object
         description: list of outputs
+        properties:
           fastq:
             type: string
             description: Merged `.fastq files` (read1 or read2) from the same sample
@@ -54,6 +58,7 @@ properties:
       input:
         type: object
         description: list of inputs
+        properties:
           fq1:
             type: string
             description: Unfiltered merged `.fastq` files from read 1 of the same sample
@@ -69,6 +74,7 @@ properties:
       output:
         type: object
         description: list of outputs
+        properties:
           align:
             type: string
             description: Fastq with reads that align to ribosomal rna
