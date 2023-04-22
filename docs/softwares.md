@@ -1,7 +1,5 @@
 # Softwares used in the prealignment module
 
-#SNAKEMAKE_RULE_SOURCE__fastp__fastp_pe#
-
 ## [Fastp](https://github.com/OpenGene/fastp) (rule: [fastp_pe](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/fastp.smk))
 
 
@@ -11,14 +9,14 @@
 
 Trim `.fastq` files by removing adapter sequences and other unwanted sequences. Adapter sequences are specified in `units.tsv` under the adapter column.
 
-| Rule parameters | Key | Value | Description |
-|-|-|-|-|
-| Input | sample | Fastq files specified in `units.tsv` obatined by [get_fastq_file](https://github.com/hydra-genetics/hydra-genetics/blob/develop/hydra_genetics/utils/units.py) | Untrimmed `.fastq` files from the same sample |
-| Output | trimmed | `prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastq1.fastq.gz` | Trimmed `.fastq` files from the same sample |
-| |_ _| `prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastq2.fastq.gz` |_ _|
-| | html | `prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastp.html` | html QC report |
-|_ _| json | `prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastp.html` | json QC report |
-| Container | container | [docker://hydragenetics/fastp:{version}](https://hub.docker.com/r/hydragenetics/fastp) | fastp docker container |
+### Rule content
+
+#### Source
+#SNAKEMAKE_RULE_SOURCE__fastp__fastp_pe#
+
+#### Parameters
+
+#SNAKEMAKE_RULE_TABLE__fastp__fastp_pe#
 
 ### Software settings
 
