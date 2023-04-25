@@ -1,26 +1,30 @@
 # Softwares used in the prealignment module
 
+
 ## [Fastp](https://github.com/OpenGene/fastp)
 Trim `.fastq` files by removing adapter sequences and other unwanted sequences. Adapter sequences are specified in `units.tsv` under the adapter column.
 
-### Rule content
 
-### Rule
+### :snake: Rule
 
 #SNAKEMAKE_RULE_SOURCE__fastp__fastp_pe#
 
-### Rule settings
+#### :left_right_arrow: input / output files
 
 #SNAKEMAKE_RULE_TABLE__fastp__fastp_pe#
 
-### Software settings
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
 
 #CONFIGSCHEMA__fastp_pe#
 
-### Resources settings
+#### Resources settings (`resources.yaml`)
 
 #RESOURCESSCHEMA__fastp_pe#
 
+
+---
 
 ## Fastq merging (rule: [merged](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/merged.smk))
 Merge `.fastq` files generated for example on different lanes by simply concatenating them using cat  
@@ -38,6 +42,10 @@ Merge `.fastq` files generated for example on different lanes by simply concaten
 ### Resources settings
 
 #RESOURCESSCHEMA__merged#
+
+### Snakemake rule
+
+#SNAKEMAKE_RULE_SOURCE__merged__merged#
 
 
 ## [Sortmerna](https://github.com/biocore/sortmerna) (rule: [sortmerna](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/sortmerna.smk))
@@ -64,3 +72,7 @@ Filter out ribosomal RNA (rRNA) from RNA data
 ### Resources settings
 
 #RESOURCESSCHEMA__sortmerna#
+
+### Snakemake rule
+
+#SNAKEMAKE_RULE_SOURCE__sortmerna__sortmerna#

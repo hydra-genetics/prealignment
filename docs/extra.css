@@ -40,3 +40,13 @@ table td {
 table td:last-child {
   width: 100%;
 }
+
+hr {
+  margin-top: 50px;
+  border: 1px solid black;
+}
+
+.twemoji {
+  width: 20px;
+  color: black;
+}
