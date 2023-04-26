@@ -12,7 +12,7 @@ trimmer_software: "fastp_pe"
 ```
 Can be set to `None` for no trimming and only merging.
 
-## [Input](https://hydra-genetics.readthedocs.io/en/read_the_docs/create_sample_files/)
+## [Module input files](https://hydra-genetics.readthedocs.io/en/read_the_docs/create_sample_files/)
 Fastq files are the main input data of the prealignment module. These should be specified in `units.tsv` as well as sequencing meta data. See [input data](https://hydra-genetics.readthedocs.io/en/read_the_docs/create_sample_files/) for further information on how to generate these automatically from `.fastq` files.
 
 Example `samples.tsv` with all required columns:
@@ -30,5 +30,16 @@ Example `units.tsv` with all required columns:
 
 <br />
 
-## Output
+
+## Module output files
 Trimmed and merged fastq-files are the main output files of the prealignment module.
+
+* `prealignment/merged/{sample}_{type}_{read}.fastq.gz`
+
+## Module workflow graph
+
+### Trimming and merging
+![DAG1](https://github.com/hydra-genetics/prealignment/raw/develop/images/prealignment_fastp_merge.svg)
+
+### Only trimming
+![DAG2](https://github.com/hydra-genetics/prealignment/raw/develop/images/prealignment_merge.svg)

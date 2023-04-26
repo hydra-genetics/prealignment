@@ -2,7 +2,6 @@ site_name: Prealignment
 nav:
   - Introduction: intro.md
   - Softwares: softwares.md
-  - Rule graph: rule_graph.md
 
 theme: readthedocs
 extra_css: [extra.css]
