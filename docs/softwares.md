@@ -26,53 +26,48 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 
 ---
 
-## Fastq merging (rule: [merged](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/merged.smk))
+## Fastq merging
 Merge `.fastq` files generated for example on different lanes by simply concatenating them using cat  
 
-| Rule parameters | Key | Value | Description |
-|-|-|-|-|
-| Input | fastq | [merged_input](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/common.smk) function | Several `.fastq` files from the same sample |
-| Output | fastq | `prealignment/merged/{sample}_{type}_{read}.fastq.gz` | Merged `.fastq` file |
-| Container | container | [docker://hydragenetics/common:{version}](https://hub.docker.com/r/hydragenetics/common) | General hydra-genetics docker container |
-
-### Software settings
-
-#CONFIGSCHEMA__merged#
-
-### Resources settings
-
-#RESOURCESSCHEMA__merged#
-
-### Snakemake rule
+### :snake: Rule
 
 #SNAKEMAKE_RULE_SOURCE__merged__merged#
 
+#### :left_right_arrow: input / output files
 
-## [Sortmerna](https://github.com/biocore/sortmerna) (rule: [sortmerna](https://github.com/hydra-genetics/prealignment/blob/develop/workflow/rules/sortmerna.smk))
+#SNAKEMAKE_RULE_TABLE__merged__merged#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__merged#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__merged#
+
+---
+
+## [Sortmerna](https://github.com/biocore/sortmerna)
 Filter out ribosomal RNA (rRNA) from RNA data  
 
-| Rule parameters | Key | Value | Description |
-|-|-|-|-|
-| Input | fq1 | `prealignment/merged/{sample}_{type}_fastq1.fastq.gz` | Unfiltered merged `.fastq` files from the same sample |
-| | fq2 | `prealignment/merged/{sample}_{type}_fastq1.fastq.gz` |_ _|
-| | ref | `config.yaml` | Fasta reference genome |
-|_ _| idx | `config.yaml` | Sortmera index directory |
-| Output | other | `prealignment/sortmerna/{sample}_{type}.fq.gz` | rRNA filtered merged `.fastq` file |
-| | align | `prealignment/sortmerna/{sample}_{type}.rrna.fq.gz` |  Fastq with reads that align to ribosomal rna |
-| | kvdb | `prealignment/sortmerna/{sample}_{type}/kvdb` |  workdir kvd with key-value datastore for alignment results |
-| | out | `prealignment/sortmerna/{sample}_{type}.rrna.log` |  workdir readb with temporary read info |
-|_ _| readb | `prealignment/sortmerna/{sample}_{type}/readb` |  Sortmeras ribosomal log file |
+### :snake: Rule
 
-<br />
+#SNAKEMAKE_RULE_SOURCE__sortmerna__sortmerna#
 
-### Software settings
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__sortmerna__sortmerna#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
 
 #CONFIGSCHEMA__sortmerna#
 
-### Resources settings
+#### Resources settings (`resources.yaml`)
 
 #RESOURCESSCHEMA__sortmerna#
 
-### Snakemake rule
-
-#SNAKEMAKE_RULE_SOURCE__sortmerna__sortmerna#
+---
