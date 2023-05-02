@@ -14,7 +14,6 @@ properties:
             type: string
             value: Fastq files specified in `units.tsv` obtained by get_fastq_file defined in the [hydra-genetics](https://github.com/hydra-genetics/hydra-genetics/blob/develop/hydra_genetics/utils/units.py) module
             description: Untrimmed `.fastq files` from the same sample
-
       output:
         type: object
         description: list of outputs
