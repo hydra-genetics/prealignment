@@ -1,3 +1,7 @@
+<p align="center">
+<a href="https://hydra-genetics-prealignment.readthedocs.io">https://hydra-genetics-prealignment.readthedocs.io</a>
+</p>
+
 # <img src="https://github.com/hydra-genetics/prealignment/blob/develop/images/hydragenetics.png" width=40 /> hydra-genetics/prealignment
 
 #### Snakemake module containing processing steps that should be performed before sequence alignment
@@ -8,6 +12,8 @@
 ![integration test](https://github.com/hydra-genetics/prealignment/actions/workflows/integration.yaml/badge.svg?branch=develop)
 
 [![License: GPL-3](https://img.shields.io/badge/License-GPL3-yellow.svg)](https://opensource.org/licenses/gpl-3.0.html)
+
+<img src="images/readthedocs_icon.png" width=20 /> Visit  for more detailed information.
 
 ## :speech_balloon: Introduction
 
