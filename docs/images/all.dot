@@ -1,0 +1,22 @@
+digraph snakemake_dag {
+	rankdir=LR;
+    graph[bgcolor=white, margin=0];
+    node[shape=box, style=rounded, fontname=sans,                 fontsize=10, penwidth=2];
+    edge[penwidth=2, color=grey];
+	0[label = "fastq", color = "0.0 0.0 0.0", style="dotted"];
+	20[label = "fastq", color = "0.0 0.0 0.0", style="dotted"];
+	10[label = "fastq", color = "0.0 0.0 0.0", style="dotted"];
+	11[label = "fastq", color = "0.0 0.0 0.0", style="dotted"];
+	1[label = "merged", color = "0.50 0.6 0.85", style="rounded"];
+	21[label = "merged", color = "0.50 0.6 0.85", style="rounded"];
+	2[label = "fastp_pe", color = "0.00 0.6 0.85", style="rounded"];
+	3[label = "sortmerna", color = "0.17 0.6 0.85", style="rounded"];
+	0 -> 2
+	0 -> 1
+	2 -> 1
+	1 -> 10
+	20 -> 21
+	21 -> 3
+	3 -> 11
+}   
+

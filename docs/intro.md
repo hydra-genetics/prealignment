@@ -1,5 +1,9 @@
 # Hydra-genetics prealignment module
 
+![dag plot](images/all.png){: style="height:40%;width:40%"}
+
+<br />
+
 The prealignment module consists of alignment pre-processing steps, such as trimming and merging of `.fastq`-files
 as well as filtering out rRNA sequences from RNA reads. We **strongly** recommend trimming `.fastq`-files
 prior to alignment. For rRNA filtering, SortMeRNA can additionally be used.
