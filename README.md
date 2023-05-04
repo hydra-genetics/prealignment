@@ -1,7 +1,5 @@
 # <img src="https://github.com/hydra-genetics/prealignment/blob/develop/images/hydragenetics.png" width=40 /> hydra-genetics/prealignment
 
-![ReadTheDocs](images/readthedocs_icon.png) Visit https://hydra-genetics-prealignment.readthedocs.io for more information.
-
 #### Snakemake module containing processing steps that should be performed before sequence alignment
 
 ![Lint](https://github.com/hydra-genetics/prealignment/actions/workflows/lint.yaml/badge.svg?branch=develop)
