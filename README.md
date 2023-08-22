@@ -47,7 +47,6 @@ The following information need to be added to these files:
 | --- | --- |
 | **`samples.tsv`** |
 | sample | unique sample/patient id, one per row |
-| tumor_content | ratio of tumor cells to total cells |
 | **`units.tsv`** |
 | sample | same sample/patient id as in `samples.tsv` |
 | type | data type identifier (one letter), can be one of **T**umor, **N**ormal, **R**NA |
