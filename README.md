@@ -27,10 +27,10 @@ filtering, SortMeRNA can be used. Input data should be specified via `samples.ts
 
 In order to use this module, the following dependencies are required:
 
-[![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.11.0-blue)](https://github.com/hydra-genetics/)
+[![hydra-genetics](https://img.shields.io/badge/hydragenetics-v0.15.0-blue)](https://github.com/hydra-genetics/)
 [![pandas](https://img.shields.io/badge/pandas-1.3.1-blue)](https://pandas.pydata.org/)
 [![python](https://img.shields.io/badge/python-3.8-blue)](https://www.python.org/)
-[![snakemake](https://img.shields.io/badge/snakemake-6.10.0-blue)](https://snakemake.readthedocs.io/en/stable/)
+[![snakemake](https://img.shields.io/badge/snakemake-7.13.0-blue)](https://snakemake.readthedocs.io/en/stable/)
 [![singularity](https://img.shields.io/badge/singularity-3.0.0-blue)](https://sylabs.io/docs/)
 
 **Note! Releases of prealignment <= v0.4.0 needs tabulate<0.9.0 added in requirements.txt**
@@ -53,7 +53,7 @@ The following information need to be added to these files:
 | type | data type identifier (one letter), can be one of **T**umor, **N**ormal, **R**NA |
 | platform | type of sequencing platform, e.g. `NovaSeq` |
 | machine | specific machine id, e.g. NovaSeq instruments have `@Axxxxx` |
-| flowcell | identifer of flowcell used |
+| flowcell | identifier of flowcell used |
 | lane | flowcell lane number |
 | barcode | sequence library barcode/index, connect forward and reverse indices by `+`, e.g. `ATGC+ATGC` |
 | fastq1/2 | absolute path to forward and reverse reads |
@@ -101,7 +101,7 @@ The following output files should be targeted via another rule:
 
 | File | Description |
 |---|---|
-| `prealignment/merged/{sample}_{type}_fastq1.fastq.gz` | Merged and possibly trimmed foward reads |
+| `prealignment/merged/{sample}_{type}_fastq1.fastq.gz` | Merged and possibly trimmed forward reads |
 | `prealignment/merged/{sample}_{type}_fastq2.fastq.gz` | Merged and possibly trimmed reverse reads |
 | `prealignment/sortmerna/{sample}_{type}.fq.gz` | combined forward and reverse reads without rRNA sequences|
 
