@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/hydra-genetics/prealignment/compare/v1.1.0...v1.2.0) (2023-10-02)
+
+
+### Features
+
+* add mkdocs snakemake rule plugin ([fc1b22f](https://www.github.com/hydra-genetics/prealignment/commit/fc1b22f0eb4fd9ed18b0a3167e786bbeef066dde))
+* add rule parameter table via plugin ([8261eda](https://www.github.com/hydra-genetics/prealignment/commit/8261edaa6b058141a7c72aa3aa9e60a7665f0277))
+* added icons ([671c69d](https://www.github.com/hydra-genetics/prealignment/commit/671c69d3c3e2bb132f939b1e7602c8fbf243ca2d))
+* apply plugin used to convert schemas to tables ([9922831](https://www.github.com/hydra-genetics/prealignment/commit/99228310a1f5f11b16fff5c1896fc3c8233de17a))
+* update snakemake version, allow range up to version 8 ([7789297](https://www.github.com/hydra-genetics/prealignment/commit/778929741a042f36182b7eeebca1e4212879d433))
+
+
+### Bug Fixes
+
+* edit basepath in to work with pymdownx 10.0 ([e89f6a7](https://www.github.com/hydra-genetics/prealignment/commit/e89f6a712a0dec48a3a96e52d35597f6a49d9b14))
+* new schemas and input names ([8d0c655](https://www.github.com/hydra-genetics/prealignment/commit/8d0c6552c6be174d95250fc17134d7618bdee082))
+* remove tumor_content as requirment in samples.tsv ([534090e](https://www.github.com/hydra-genetics/prealignment/commit/534090e0afd258425be573e2ae1f710b5c8a7891))
+* update version of mkdocs-snakemake-rule-plugin ([89dc789](https://www.github.com/hydra-genetics/prealignment/commit/89dc78986ada8dec41fc54d91b5b4abab471464e))
+
+
+### Documentation
+
+* add dag graph ([3e54df8](https://www.github.com/hydra-genetics/prealignment/commit/3e54df803a895c52d76582332025c7e444e975ca))
+* added index and build files ([53074e6](https://www.github.com/hydra-genetics/prealignment/commit/53074e6ac8317a97a53bf80e03bf43de7188f10d))
+* added rule info ([49efa84](https://www.github.com/hydra-genetics/prealignment/commit/49efa849d5bad40233a74544b583ab129bdae806))
+* added value in fastp ([637d194](https://www.github.com/hydra-genetics/prealignment/commit/637d19423f8ae913a25578a456d6a8caa9d87a57))
+* fix rtd rule plugin bug ([e46180c](https://www.github.com/hydra-genetics/prealignment/commit/e46180ce657a00f77306c5e8258c0cbc56109fe0))
+* moved rule graph to intro ([3c76df6](https://www.github.com/hydra-genetics/prealignment/commit/3c76df668c9f3dc84870f7de1903b671d8542ea2))
+* remove dag part from intro ([0bf2019](https://www.github.com/hydra-genetics/prealignment/commit/0bf20197904aa6b32ae159bcbcb803eef77f1672))
+* schemas with improved descriptions ([920ca7f](https://www.github.com/hydra-genetics/prealignment/commit/920ca7ff041b11ab37d88e98ba154b7d168541cc))
+* some spelling and links ([69282f0](https://www.github.com/hydra-genetics/prealignment/commit/69282f0253f01202dc3ef3c9fe46f41898056378))
+* update module part in README with latest version of module ([c927944](https://www.github.com/hydra-genetics/prealignment/commit/c927944d937d8a7e1e458c57105eaac94d8b751c))
+* update project name in mkdocs.yaml ([7457a05](https://www.github.com/hydra-genetics/prealignment/commit/7457a05b065d5b3abaa094ebd6d5461154f212ec))
+* update readme with link to readthe docs ([348bb6e](https://www.github.com/hydra-genetics/prealignment/commit/348bb6ee3f76fa90e1b8ea9f58eb763dd971f63f))
+* update readme with link to readthe docs ([2b95d95](https://www.github.com/hydra-genetics/prealignment/commit/2b95d959ca4c17796eae3cfdb1afcb1cb56f9bbd))
+* updated schemas ([43bd5f8](https://www.github.com/hydra-genetics/prealignment/commit/43bd5f8d2d8279ae329077893d73316dc71df225))
+
 ## [1.1.0](https://www.github.com/hydra-genetics/prealignment/compare/v1.0.0...v1.1.0) (2023-04-14)
 
 
