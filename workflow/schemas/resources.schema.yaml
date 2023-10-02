@@ -27,6 +27,7 @@ properties:
       - partition
       - threads
       - time
+
   fastp_pe:
     type: object
     description: resource definitions for fastp_pe
@@ -42,10 +43,15 @@ properties:
         description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available
+        description: |
+          number of threads to be available
+          RECOMMENDATION: Use multiple threads for decreased run time.
+          NOTE: If multiple threads is used it is also best to increase memory (mem_mb)
+          NOTE: If multiple threads is used the read order of the fastq files will differ between runs
       time:
         type: string
         description: max execution time
+
   merged:
     type: object
     description: resource definitions for merged
@@ -65,6 +71,7 @@ properties:
       time:
         type: string
         description: max execution time
+
   sortmerna:
     type: object
     description: resource definitions for sortmerna
@@ -80,9 +87,13 @@ properties:
         description: partition to use on cluster
       threads:
         type: integer
-        description: number of threads to be available
+        description: |
+          number of threads to be available
+          RECOMMENDATION: Use multiple threads for decreased run time.
+          NOTE: If multiple threads is used it is also best to increase memory (mem_mb)
       time:
         type: string
         description: max execution time
+        
 required:
   - default_resources
