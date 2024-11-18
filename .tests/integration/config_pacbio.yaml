@@ -1,0 +1,12 @@
+
+samples: "samples_pacbio.tsv"
+units: "units_pacbio.tsv"
+resources: "resources.yaml"
+
+default_container: "docker://hydragenetics/common:1.14.0"
+
+trimmer_software: None
+
+pbmarkdup:
+  container: "docker://hydragenetics/pbmarkdup:1.1.0"
+
