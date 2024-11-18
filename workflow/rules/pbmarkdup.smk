@@ -15,7 +15,7 @@ rule pbmarkdup:
     benchmark:
         repeat(
             "prealignment/pbmarkdup/{sample}_{type}_{processing_unit}_{barcode}.bam.benchmark.tsv",
-            config.get("pbmarkdup", {}).get("benchmark_repeats", 1)
+            config.get("pbmarkdup", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("pbmarkdup", {}).get("threads", config["default_resources"]["threads"])
     resources:

@@ -80,6 +80,7 @@ def get_pbmarkdup_input(wildcards):
 
     return bam_file
 
+
 def compile_output_list(wildcards: snakemake.io.Wildcards):
     platform = units.platform.iloc[0]
     output_files = []
