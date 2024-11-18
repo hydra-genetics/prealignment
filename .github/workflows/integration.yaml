@@ -45,3 +45,7 @@ jobs:
         working-directory: .tests/integration
         run: |
           snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --configfiles config.yaml configs/fastp_merge_config.yaml --use-singularity --singularity-args  " --cleanenv --bind /home/runner " && rm -r prealignment
+      - name: Integration test pacbio config, singularity
+        working-directory: .tests/integration
+        run: |
+          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --configfiles config_pacbio.yaml  --use-singularity --singularity-args  " --cleanenv --bind /home/runner " && rm -r prealignment
