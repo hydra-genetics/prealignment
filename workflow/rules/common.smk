@@ -107,12 +107,12 @@ def compile_output_list(wildcards: snakemake.io.Wildcards):
         for read in ["fastq1", "fastq2"]
     ]
     output_files += [
-            "prealignment/sortmerna/{}_R.rrna.fq.gz".format(sample)
-            for sample in get_samples(samples)
-            for platform in units.loc[(sample,)].platform
-            if platform not in ["PACBIO"]
-            for t in get_unit_types(units, sample)
-            if t == "R"
+        "prealignment/sortmerna/{}_R.rrna.fq.gz".format(sample)
+        for sample in get_samples(samples)
+        for platform in units.loc[(sample,)].platform
+        if platform not in ["PACBIO"]
+        for t in get_unit_types(units, sample)
+        if t == "R"
     ]
-    
+
     return output_files
