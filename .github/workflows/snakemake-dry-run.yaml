@@ -35,7 +35,7 @@ jobs:
         working-directory: .tests/integration
         run: |
           snakemake --cores 2 -n -s ../../workflow/Snakefile --configfile config.yaml configs/fastp_merge_config.yaml
-      - name: snakemake dry run pnbmarkdup
+      - name: snakemake dry run pbmarkdup
         working-directory: .tests/integration
         run: |
           snakemake -n -s ../../workflow/Snakefile --configfile config_pacbio.yaml
