@@ -60,10 +60,7 @@ properties:
           bam:
             type: string
             description: bam file of unaligned pacbio reads
-          log:
-            type: string
-            description: log file containing a summary of results from pbmarkdups 
-
+          
       output:
         type: object
         description: list of outputs
@@ -71,6 +68,9 @@ properties:
           bam:
             type: string
             description: duplicate marked bam file
+          log:
+            type: string
+            description: log file containing a summary of results from pbmarkdups 
 
   sortmerna:
     type: object
