@@ -68,9 +68,6 @@ properties:
           bam:
             type: string
             description: duplicate marked bam file
-          log:
-            type: string
-            description: log file containing a summary of results from pbmarkdups 
 
   sortmerna:
     type: object

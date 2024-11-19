@@ -9,9 +9,10 @@ rule pbmarkdup:
         bam=get_pbmarkdup_input,
     output:
         bam="prealignment/pbmarkdup/{sample}_{type}_{processing_unit}_{barcode}.bam",
-        log="prealignment/pbmarkdup/{sample}_{type}_{processing_unit}_{barcode}.bam.log",
     params:
         extra=config.get("pbmarkdup", {}).get("extra", ""),
+    log:
+        "prealignment/pbmarkdup/{sample}_{type}_{processing_unit}_{barcode}.bam.log",
     benchmark:
         repeat(
             "prealignment/pbmarkdup/{sample}_{type}_{processing_unit}_{barcode}.bam.benchmark.tsv",
@@ -31,4 +32,4 @@ rule pbmarkdup:
     shell:
         "pbmarkdup --num-threads {threads} "
         "{input.bam} "
-        "{output.bam} --log-level INFO &> {output.log}"
+        "{output.bam} --log-level INFO 2> {log}"
