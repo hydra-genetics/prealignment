@@ -82,7 +82,6 @@ def get_pbmarkdup_input(wildcards):
 
 
 def compile_output_list(wildcards: snakemake.io.Wildcards):
-    platform = units.platform.iloc[0]
     output_files = []
     files = {
         "prealignment/pbmarkdup": [".bam"],
@@ -107,16 +106,13 @@ def compile_output_list(wildcards: snakemake.io.Wildcards):
         for t in get_unit_types(units, sample)
         for read in ["fastq1", "fastq2"]
     ]
-    output_files.append(
-        [
+    output_files += [
             "prealignment/sortmerna/{}_R.rrna.fq.gz".format(sample)
             for sample in get_samples(samples)
             for platform in units.loc[(sample,)].platform
             if platform not in ["PACBIO"]
             for t in get_unit_types(units, sample)
             if t == "R"
-        ]
-    )
-
-    print(output_files)
+    ]
+    
     return output_files
