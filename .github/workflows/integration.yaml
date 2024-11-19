@@ -27,16 +27,16 @@ jobs:
       - name: Set strict channel and install apptainer
         run: |
           conda config --set channel_priority strict
-          mamba install -c conda-forge -c bioconda apptainer=1.3.2
-      - name: Add conda to system path
-        run: |
-          echo $CONDA/bin >> $GITHUB_PATH
+          mamba install python=3.8 -c conda-forge -c bioconda apptainer=1.3.2
       - name: Install requirements.txt
         run: |
           pip install -r requirements.txt
       - name: Install requirements.test.txt
         run: |
           pip install -r requirements.test.txt
+      - name: Add conda to system path
+        run: |
+          echo $CONDA/bin >> $GITHUB_PATH
       - name: Integration test merge config, singularity
         working-directory: .tests/integration
         run: |
