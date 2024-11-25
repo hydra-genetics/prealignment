@@ -49,6 +49,29 @@ Merge `.fastq` files generated for example on different lanes by simply concaten
 
 ---
 
+## [pbmarkdup](url_to_tool)
+Mark or remove duplicates in unmapped CCS PACBIO reads from amplified an library. 
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__pbmarkdup__pbmarkdup#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__pbmarkdup__pbmarkdup#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__pbmarkdup#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__pbmarkdup#
+
+---
+
 ## [Sortmerna](https://github.com/biocore/sortmerna)
 Filter out ribosomal RNA (rRNA) from RNA data  
 

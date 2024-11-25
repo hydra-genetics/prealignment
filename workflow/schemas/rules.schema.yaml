@@ -48,6 +48,26 @@ properties:
           fastq:
             type: string
             description: Merged `.fastq files` (read1 or read2) from the same sample
+  
+  pbmarkdup:
+    type: object
+    description: input and output parameters for pbmarkdup
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          bam:
+            type: string
+            description: bam file of unaligned pacbio reads
+          
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          bam:
+            type: string
+            description: duplicate marked bam file
 
   sortmerna:
     type: object
@@ -88,3 +108,4 @@ properties:
           readb:
             type: string
             description: Sortmeras ribosomal log file
+
