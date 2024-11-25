@@ -56,9 +56,6 @@ wildcard_constraints:
 
 ### Functions
 
-# platform = units.platform.iloc[0]
-# print(platform)
-# if platform !=  "PACBIO":
 if config.get("trimmer_software", None) == "fastp_pe":
     merged_input = lambda wildcards: expand(
         "prealignment/fastp_pe/{{sample}}_{{type}}_{flowcell_lane_barcode}_{{read}}.fastq.gz",
