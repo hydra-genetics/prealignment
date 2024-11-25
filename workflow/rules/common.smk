@@ -102,7 +102,7 @@ def compile_output_list(wildcards: snakemake.io.Wildcards):
         "prealignment/merged/{}_{}_{}.fastq.gz".format(sample, t, read)
         for sample in get_samples(samples)
         for platform in units.loc[(sample,)].platform
-        if platform not in ["PACBIO"]
+        if platform not in ["PACBIO", "ONT"]
         for t in get_unit_types(units, sample)
         for read in ["fastq1", "fastq2"]
     ]
