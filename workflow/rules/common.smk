@@ -110,7 +110,7 @@ def compile_output_list(wildcards: snakemake.io.Wildcards):
         "prealignment/sortmerna/{}_R.rrna.fq.gz".format(sample)
         for sample in get_samples(samples)
         for platform in units.loc[(sample,)].platform
-        if platform not in ["PACBIO"]
+        if platform not in ["PACBIO", "ONT"]
         for t in get_unit_types(units, sample)
         if t == "R"
     ]
