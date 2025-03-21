@@ -10,6 +10,7 @@ rule pbmarkdup:
     output:
         bam="prealignment/pbmarkdup/{sample}_{type}_{processing_unit}_{barcode}.bam",
     params:
+        log_level=config.get("pbmarkdup", {}).get("log_level", "WARN"),
         extra=config.get("pbmarkdup", {}).get("extra", ""),
     log:
         "prealignment/pbmarkdup/{sample}_{type}_{processing_unit}_{barcode}.bam.log",
@@ -32,4 +33,4 @@ rule pbmarkdup:
     shell:
         "pbmarkdup --num-threads {threads} "
         "{input.bam} "
-        "{output.bam} --log-level INFO &> {log}"
+        "{output.bam} --log-level {params.log_level} &> {log}"
