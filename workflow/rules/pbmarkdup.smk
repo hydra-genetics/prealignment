@@ -32,5 +32,6 @@ rule pbmarkdup:
         "{rule}: mark duplicates in {input.bam}"
     shell:
         "pbmarkdup --num-threads {threads} "
+        "{params.extrs} "
         "{input.bam} "
         "{output.bam} --log-level {params.log_level} &> {log}"
