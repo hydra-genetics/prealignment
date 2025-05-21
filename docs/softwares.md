@@ -100,18 +100,18 @@ Downsamples fastq files to the specified number of reads
 
 ### :snake: Rule
 
-#SNAKEMAKE_RULE_SOURCE__seqtk__seqtk#
+#SNAKEMAKE_RULE_SOURCE__seqtk__seqtk_subsample#
 
 #### :left_right_arrow: input / output files
 
-#SNAKEMAKE_RULE_TABLE__seqtk__seqtk#
+#SNAKEMAKE_RULE_TABLE__seqtk__seqtk_subsample#
 
 ### :wrench: Configuration
 
 #### Software settings (`config.yaml`)
 
-#CONFIGSCHEMA__seqtk#
+#CONFIGSCHEMA__seqtk_subsample#
 
 #### Resources settings (`resources.yaml`)
 
-#RESOURCESSCHEMA__seqtk#
+#RESOURCESSCHEMA__seqtk_subsample#
