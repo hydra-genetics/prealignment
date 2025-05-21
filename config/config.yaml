@@ -2,10 +2,14 @@ resources: "resources.tsv"
 samples: "samples.tsv"
 units: "units.tsv"
 
-default_container: "docker://hydragenetics/common:0.2.0"
+default_container: "docker://hydragenetics/common:3.0.0"
 
 fastp_pe:
   container: "docker://hydragenetics/fastp:0.20.1"
+
+seqtk:
+  container: "docker://hydragenetics/seqtk:1.4"
+  nr_reads: 100000
 
 sortmerna:
   container: "docker://hydragenetics/sortmerna:4.3.4"

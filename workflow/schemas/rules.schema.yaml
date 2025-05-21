@@ -69,6 +69,25 @@ properties:
             type: string
             description: duplicate marked bam file
 
+  seqtk_subsample:
+    type: object
+    description: input and output parameters for seqtk_subsample
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          fastq:
+            type: string
+            description: fastq file to be downsampled
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: downsampled fastq file
+
   sortmerna:
     type: object
     description: input and output parameters for sortmerna
@@ -108,4 +127,3 @@ properties:
           readb:
             type: string
             description: Sortmeras ribosomal log file
-

@@ -94,3 +94,24 @@ Filter out ribosomal RNA (rRNA) from RNA data
 #RESOURCESSCHEMA__sortmerna#
 
 ---
+
+## [seqtk_downsample](https://github.com/lh3/seqtk)
+Downsamples fastq files to the specified number of reads
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__seqtk__seqtk#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__seqtk__seqtk#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__seqtk#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__seqtk#

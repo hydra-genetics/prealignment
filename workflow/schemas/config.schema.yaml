@@ -63,7 +63,26 @@ properties:
       log_level:
         type: string
         description: set the logging level for pbmarkdup
-        
+
+  seqtk_subsample:
+    type: object
+    description: parameters for seqtk_subsample
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded
+      nr_reads:
+        type: integer
+        description: Number of maximum reads in the downsampled fastq file (in each file)
+      seed:
+        type: string
+        description: seed for the random generator (must be the same for R1 and R2)
 
   sortmerna:
     type: object
@@ -91,6 +110,7 @@ properties:
     type: string
     description: choice of trimmer software or none at all
     pattern: "^(fastp_pe|None)$"
+
 
 required:
   - default_container
