@@ -11,6 +11,8 @@ seqtk_subsample:
   container: "docker://hydragenetics/seqtk:1.4"
   nr_reads: 100000
 
+subsample: "seqtk"
+
 sortmerna:
   container: "docker://hydragenetics/sortmerna:4.3.4"
   extra: "-e 0.000001"

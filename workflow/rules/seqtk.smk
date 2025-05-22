@@ -6,18 +6,18 @@ __license__ = "GPL-3"
 
 rule seqtk_subsample:
     input:
-        fastq="prealignment/merged/{sample}_{type}_{read}.fastq.gz",
+        fastq="prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.fastq.gz",
     output:
-        fastq=temp("prealignment/seqtk_subsample/{sample}_{type}_{read}.ds.fastq.gz"),
+        fastq=temp("prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.gz"),
     params:
         extra=config.get("seqtk_subsample", {}).get("extra", ""),
-        nr_reads=config.get("seqtk_subsample", {}).get("nr_reads", "10000"),
+        nr_reads_per_fastq=lambda wildcards: get_nr_reads_per_fastq(config.get("seqtk_subsample", {}).get("nr_reads", 1000000000), units, wildcards),
         seed=config.get("seqtk_subsample", {}).get("seed", "-s100"),
     log:
-        "prealignment/seqtk_subsample/{sample}_{type}_{read}.ds.fastq.log",
+        "prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.log",
     benchmark:
         repeat(
-            "prealignment/seqtk_subsample/{sample}_{type}_{read}.ds.fastq.benchmark.tsv",
+            "prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.benchmark.tsv",
             config.get("seqtk_subsample", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("seqtk_subsample", {}).get("threads", config["default_resources"]["threads"])
@@ -37,6 +37,6 @@ rule seqtk_subsample:
         "{params.seed} "
         "{params.extra} "
         "{input.fastq} "
-        "{params.nr_reads} "
+        "{params.nr_reads_per_fastq} "
         "| gzip "
         '> {output.fastq}" >& {log}'

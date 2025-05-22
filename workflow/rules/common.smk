@@ -57,14 +57,26 @@ wildcard_constraints:
 ### Functions
 
 if config.get("trimmer_software", None) == "fastp_pe":
-    merged_input = lambda wildcards: expand(
-        "prealignment/fastp_pe/{{sample}}_{{type}}_{flowcell_lane_barcode}_{{read}}.fastq.gz",
-        flowcell_lane_barcode=[
-            "{}_{}_{}".format(unit.flowcell, unit.lane, unit.barcode) for unit in get_units(units, wildcards, wildcards.type)
-        ],
-    )
+    if config.get("subsample", None) == "seqtk":
+        merged_input = lambda wildcards: expand(
+            "prealignment/seqtk_subsample/{{sample}}_{{type}}_{flowcell_lane_barcode}_{{read}}.ds.fastq.gz",
+            flowcell_lane_barcode=[
+                "{}_{}_{}".format(unit.flowcell, unit.lane, unit.barcode) for unit in get_units(units, wildcards, wildcards.type)
+            ],
+        )
+    else:
+        merged_input = lambda wildcards: expand(
+            "prealignment/fastp_pe/{{sample}}_{{type}}_{flowcell_lane_barcode}_{{read}}.fastq.gz",
+            flowcell_lane_barcode=[
+                "{}_{}_{}".format(unit.flowcell, unit.lane, unit.barcode) for unit in get_units(units, wildcards, wildcards.type)
+            ],
+        )
 else:
     merged_input = lambda wildcards: get_fastq_files(units, wildcards)
+
+
+def get_nr_reads_per_fastq(nr_reads, units: pandas.DataFrame, wildcards: snakemake.io.Wildcards) -> int:
+    return int(len(set([u.lane for u in units.loc[(wildcards.sample, wildcards.type)].itertuples()])) / nr_reads)
 
 
 def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
@@ -97,14 +109,6 @@ def compile_output_list(wildcards: snakemake.io.Wildcards):
     ]
     output_files += [
         "prealignment/merged/{}_{}_{}.fastq.gz".format(sample, t, read)
-        for sample in get_samples(samples)
-        for platform in units.loc[(sample,)].platform
-        if platform not in ["PACBIO", "ONT"]
-        for t in get_unit_types(units, sample)
-        for read in ["fastq1", "fastq2"]
-    ]
-    output_files += [
-        "prealignment/seqtk_subsample/{}_{}_{}.ds.fastq.gz".format(sample, t, read)
         for sample in get_samples(samples)
         for platform in units.loc[(sample,)].platform
         if platform not in ["PACBIO", "ONT"]
