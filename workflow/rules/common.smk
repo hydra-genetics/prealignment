@@ -76,7 +76,7 @@ else:
 
 
 def get_nr_reads_per_fastq(nr_reads, units: pandas.DataFrame, wildcards: snakemake.io.Wildcards) -> int:
-    return int(len(set([u.lane for u in units.loc[(wildcards.sample, wildcards.type)].itertuples()])) / nr_reads)
+    return int(nr_reads / len(set([u.lane for u in units.loc[(wildcards.sample, wildcards.type)].itertuples()])))
 
 
 def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
