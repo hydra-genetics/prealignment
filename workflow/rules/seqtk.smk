@@ -10,7 +10,7 @@ rule seqtk_subsample:
     output:
         fastq=temp("prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.gz"),
     params:
-        extra=config.get("seqtk_subsample", {}).get("extra", ""),
+        extra=config.get("seqtk_subsample", {}).get("extra", "-2"),
         nr_reads_per_fastq=lambda wildcards: get_nr_reads_per_fastq(
             config.get("seqtk_subsample", {}).get("nr_reads", 1000000000), units, wildcards
         ),
