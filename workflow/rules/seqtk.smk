@@ -11,7 +11,9 @@ rule seqtk_subsample:
         fastq=temp("prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.gz"),
     params:
         extra=config.get("seqtk_subsample", {}).get("extra", ""),
-        nr_reads_per_fastq=lambda wildcards: get_nr_reads_per_fastq(config.get("seqtk_subsample", {}).get("nr_reads", 1000000000), units, wildcards),
+        nr_reads_per_fastq=lambda wildcards: get_nr_reads_per_fastq(
+            config.get("seqtk_subsample", {}).get("nr_reads", 1000000000), units, wildcards
+        ),
         seed=config.get("seqtk_subsample", {}).get("seed", "-s100"),
     log:
         "prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.log",
