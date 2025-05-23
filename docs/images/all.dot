@@ -10,10 +10,13 @@ digraph snakemake_dag {
 	1[label = "merged", color = "0.50 0.6 0.85", style="rounded"];
 	21[label = "merged", color = "0.50 0.6 0.85", style="rounded"];
 	2[label = "fastp_pe", color = "0.00 0.6 0.85", style="rounded"];
+	4[label = "seqtk", color = "0.50 0.3 0.45", style="rounded"];
 	3[label = "sortmerna", color = "0.17 0.6 0.85", style="rounded"];
 	0 -> 2
 	0 -> 1
 	2 -> 1
+	2 -> 4
+	4 -> 1
 	1 -> 10
 	20 -> 21
 	21 -> 3
