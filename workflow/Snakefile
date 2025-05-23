@@ -5,9 +5,10 @@ __license__ = "GPL-3"
 
 
 include: "rules/common.smk"
-include: "rules/pbmarkdup.smk"
 include: "rules/fastp.smk"
 include: "rules/merged.smk"
+include: "rules/pbmarkdup.smk"
+include: "rules/seqtk.smk"
 include: "rules/sortmerna.smk"
 
 
