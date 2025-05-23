@@ -16,6 +16,15 @@ trimmer_software: "fastp_pe"
 ```
 Can be set to `None` for no trimming and only merging.
 
+## Enable subsampling
+
+Subsampling of trimmed fastq files can be enabled by specifying subsampling software in your `config.yaml` file. Example:  
+```yaml
+subsampling: "seqtk"
+```
+Can be set to `None` or skipped for no subsampling of trimmed reads.
+
+
 ## [Module input files](https://hydra-genetics.readthedocs.io/en/read_the_docs/create_sample_files/)
 Fastq files are the main input data of the prealignment module. These should be specified in `units.tsv` as well as sequencing meta data. See [input data](https://hydra-genetics.readthedocs.io/en/read_the_docs/create_sample_files/) for further information on how to generate these automatically from `.fastq` files.
 
