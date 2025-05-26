@@ -17,29 +17,15 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.8
-      - name: Setup Mambaforge
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-            miniforge-variant: Mambaforge
-            miniforge-version: latest
-            activate-environment: my-env
-            use-mamba: true
-      - name: Set strict channel and install singularity
+      - name: Install apptainer/singularity
         run: |
-          conda config --set channel_priority strict
-          mamba install -c conda-forge -c bioconda singularity=3.8.6
-      - name: Add conda to system path
-        run: |
-          echo $CONDA/bin >> $GITHUB_PATH
+          sudo add-apt-repository -y ppa:apptainer/ppa && sudo apt install -y software-properties-common && sudo apt install -y apptainer-suid
       - name: Install requirements.txt
         run: |
           pip install -r requirements.txt
       - name: Install requirements.test.txt
         run: |
           pip install -r requirements.test.txt
-      - name: Install singularity
-        run: |
-          mamba install -c conda-forge -c bioconda singularity=3.8.6
       - name: Integration test merge config, singularity
         working-directory: .tests/integration
         run: |
@@ -48,3 +34,7 @@ jobs:
         working-directory: .tests/integration
         run: |
           snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --configfiles config.yaml configs/fastp_merge_config.yaml --use-singularity --singularity-args  " --cleanenv --bind /home/runner " && rm -r prealignment
+      - name: Integration test pacbio config, singularity
+        working-directory: .tests/integration
+        run: |
+          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs --configfiles config_pacbio.yaml  --use-singularity --singularity-args  " --cleanenv --bind /home/runner " && rm -r prealignment

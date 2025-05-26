@@ -48,6 +48,45 @@ properties:
           fastq:
             type: string
             description: Merged `.fastq files` (read1 or read2) from the same sample
+  
+  pbmarkdup:
+    type: object
+    description: input and output parameters for pbmarkdup
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          bam:
+            type: string
+            description: bam file of unaligned pacbio reads
+          
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          bam:
+            type: string
+            description: duplicate marked bam file
+
+  seqtk_subsample:
+    type: object
+    description: input and output parameters for seqtk_subsample
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          fastq:
+            type: string
+            description: fastq file to be downsampled
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: downsampled fastq file
 
   sortmerna:
     type: object
