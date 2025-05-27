@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.0](https://github.com/hydra-genetics/prealignment/compare/v1.3.0...v1.4.0) (2025-05-27)
+
+
+### Features
+
+* new release-please ([1d9eb19](https://github.com/hydra-genetics/prealignment/commit/1d9eb1928ff80f7e72973cf0c32807d2c08f4c7b))
+* new release-please ([bb1fea4](https://github.com/hydra-genetics/prealignment/commit/bb1fea4dd259b2271cf3a766b6050fd751b17bee))
+
+
+### Bug Fixes
+
+* release-please to master instead of develop ([484e7f9](https://github.com/hydra-genetics/prealignment/commit/484e7f9c5332cb989f725d1b9e1e768f3f5c8a43))
+* release-please to master instead of develop ([9f8e033](https://github.com/hydra-genetics/prealignment/commit/9f8e033f2cc65af7d29dde7ac8643481379ad714))
+
 ## [1.2.0](https://www.github.com/hydra-genetics/prealignment/compare/v1.1.0...v1.2.0) (2023-10-02)
 
 
