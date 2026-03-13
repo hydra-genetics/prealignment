@@ -82,6 +82,7 @@ jobs:
   integration:
     name: Integration test
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     needs: [dry-run]
     steps:
       - name: Free disk space
