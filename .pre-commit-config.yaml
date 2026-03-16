@@ -1,11 +1,12 @@
+default_install_hook_types: [pre-commit, pre-push]
 repos:
   - repo: local
     hooks:
       - id: snakefmt
         name: snakefmt
         language: system
-        entry: snakefmt --check  --config .github/linters/.snakefmt.toml
-        files: '(workflow/.*\\.smk$|workflow/Snakefile$)'
+        entry: snakefmt --check
+        files: "(workflow/.*\\.smk$|workflow/Snakefile$)"
         stages: [pre-commit]
 
       - id: snakemake-lint
