@@ -4,8 +4,8 @@ repos:
       - id: snakefmt
         name: snakefmt
         language: system
-        entry: snakefmt --check
-        files: "(workflow/.*\\.smk$|workflow/Snakefile$)"
+        entry: snakefmt --check  --config .github/linters/.snakefmt.toml
+        files: '(workflow/.*\\.smk$|workflow/Snakefile$)'
         stages: [pre-commit]
 
       - id: snakemake-lint
