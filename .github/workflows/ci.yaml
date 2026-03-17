@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - "workflow/**"
+      - "config/**"
       - ".tests/**"
       - "requirements*.txt"
       - ".github/workflows/**"
@@ -17,6 +18,7 @@ on:
       - master
     paths:
       - "workflow/**"
+      - "config/**"
       - ".tests/**"
       - "requirements*.txt"
       - ".github/workflows/**"
@@ -78,15 +80,15 @@ jobs:
         run: pip install -r requirements.txt -r requirements.test.txt
       - name: Dry run — merge
         working-directory: .tests/integration
-        run: snakemake --cores 2 -n -s ../../workflow/Snakefile --configfile config.yaml
+        run: snakemake -n -s ../../workflow/Snakefile --configfile config.yaml
       - name: Dry run — fastp + merge
         working-directory: .tests/integration
-        run: snakemake --cores 2 -n -s ../../workflow/Snakefile --configfile config.yaml configs/fastp_merge_config.yaml
+        run: snakemake -n -s ../../workflow/Snakefile --configfile config.yaml configs/fastp_merge_config.yaml
 
   integration:
     name: Integration test
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: [dry-run]
     steps:
       - name: Free disk space
@@ -125,14 +127,14 @@ jobs:
       - name: Integration test — merge
         working-directory: .tests/integration
         run: |
-          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs \
+          snakemake -s ../../workflow/Snakefile -j 4 --show-failed-logs \
             --configfiles config.yaml --use-singularity \
             --singularity-args " --cleanenv --bind /home/runner " \
             --singularity-prefix ~/singularity_containers/ && rm -r prealignment
       - name: Integration test — fastp + merge
         working-directory: .tests/integration
         run: |
-          snakemake --cores 2 -s ../../workflow/Snakefile -j 2 --show-failed-logs \
+          snakemake -s ../../workflow/Snakefile -j 4 --show-failed-logs \
             --configfiles config.yaml configs/fastp_merge_config.yaml --use-singularity \
             --singularity-args " --cleanenv --bind /home/runner " \
             --singularity-prefix ~/singularity_containers/
