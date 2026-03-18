@@ -1,0 +1,31 @@
+default_install_hook_types: [pre-commit, pre-push]
+repos:
+  - repo: local
+    hooks:
+      - id: snakefmt
+        name: snakefmt
+        language: system
+        entry: snakefmt --check
+        files: "(workflow/.*\\.smk$|workflow/Snakefile$)"
+        stages: [pre-commit]
+
+      - id: snakemake-lint
+        name: snakemake lint
+        language: system
+        entry: bash -c 'cd .tests/integration && snakemake --lint -n -s ../../workflow/Snakefile --configfile config.yaml'
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: snakemake-dry-run-merge
+        name: snakemake dry run (merge)
+        language: system
+        entry: bash -c 'cd .tests/integration && snakemake --cores 2 -n -s ../../workflow/Snakefile --configfile config.yaml'
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: snakemake-dry-run-fastp
+        name: snakemake dry run (fastp + merge)
+        language: system
+        entry: bash -c 'cd .tests/integration && snakemake --cores 2 -n -s ../../workflow/Snakefile --configfile config.yaml configs/fastp_merge_config.yaml'
+        pass_filenames: false
+        stages: [pre-push]
