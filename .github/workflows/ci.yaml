@@ -75,9 +75,8 @@ jobs:
           cache: pip
           cache-dependency-path: |
             requirements.txt
-            requirements.test.txt
       - name: Install dependencies
-        run: pip install -r requirements.txt -r requirements.test.txt
+        run: pip install -r requirements.txt
       - name: Dry run — merge
         working-directory: .tests/integration
         run: snakemake -n -s ../../workflow/Snakefile --configfile config.yaml
@@ -107,9 +106,8 @@ jobs:
           cache: pip
           cache-dependency-path: |
             requirements.txt
-            requirements.test.txt
       - name: Install dependencies
-        run: pip install -r requirements.txt -r requirements.test.txt
+        run: pip install -r requirements.txt
       - name: Install Apptainer
         uses: eWaterCycle/setup-apptainer@v2
         with:
