@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "package-name": "prealignment",
+      "changelog-path": "CHANGELOG.md",
+      "include-v-in-tag": true,
+      "include-component-in-tag": false,
+      "draft": false,
+      "prerelease": false
+    }
+  },
+  "bootstrap-sha": "58eff9949dca2c3bf16d0a61a1777324a6c45bca"
+}
