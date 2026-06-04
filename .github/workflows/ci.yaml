@@ -37,7 +37,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.8"
+          python-version: "3.12"
           cache: pip
           cache-dependency-path: |
             requirements.txt
@@ -56,7 +56,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Lint Code Base
-        uses: github/super-linter@v4.9.0
+        uses: github/super-linter@v7
         env:
           VALIDATE_ALL_CODEBASE: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -71,7 +71,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.8"
+          python-version: "3.12"
           cache: pip
           cache-dependency-path: |
             requirements.txt
@@ -82,7 +82,10 @@ jobs:
         run: snakemake -n -s ../../workflow/Snakefile --configfile config.yaml
       - name: Dry run — fastp + merge
         working-directory: .tests/integration
-        run: snakemake -n -s ../../workflow/Snakefile --configfile config.yaml configs/fastp_merge_config.yaml
+        run: snakemake -n -s ../../workflow/Snakefile --configfiles config.yaml configs/fastp_merge_config.yaml
+      - name: Dry run — PACBIO
+        working-directory: .tests/integration
+        run: snakemake -n -s ../../workflow/Snakefile --configfiles config.yaml config_pacbio.yaml
 
   integration:
     name: Integration test
@@ -102,7 +105,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.8"
+          python-version: "3.12"
           cache: pip
           cache-dependency-path: |
             requirements.txt
@@ -113,26 +116,44 @@ jobs:
         with:
           apptainer-version: 1.4.5
       - name: Cache container images
-        id: cache-simg
+        id: cache-apptainer
         uses: actions/cache@v4
         with:
           path: ~/singularity_containers
-          key: ${{ runner.os }}-simg-${{ hashFiles('config/**/*.yaml', '.tests/integration/*.yaml', 'workflow/Snakefile') }}
+          key: ${{ runner.os }}-apptainer-${{ hashFiles('config/**/*.yaml', '.tests/integration/*.yaml', 'workflow/Snakefile') }}
           restore-keys: |
-            ${{ runner.os }}-simg
+            ${{ runner.os }}-apptainer
       - name: Create singularity containers dir
         run: mkdir -p ~/singularity_containers
       - name: Integration test — merge
         working-directory: .tests/integration
         run: |
           snakemake -s ../../workflow/Snakefile -j 4 --show-failed-logs \
-            --configfiles config.yaml --use-singularity \
-            --singularity-args " --cleanenv --bind /home/runner " \
-            --singularity-prefix ~/singularity_containers/ && rm -r prealignment
+            --configfile config.yaml \
+            --software-deployment-method apptainer \
+            --apptainer-args "--cleanenv --bind /home/runner" \
+            --apptainer-prefix ~/singularity_containers/ && rm -r prealignment
       - name: Integration test — fastp + merge
         working-directory: .tests/integration
         run: |
           snakemake -s ../../workflow/Snakefile -j 4 --show-failed-logs \
-            --configfiles config.yaml configs/fastp_merge_config.yaml --use-singularity \
-            --singularity-args " --cleanenv --bind /home/runner " \
-            --singularity-prefix ~/singularity_containers/
+            --configfiles config.yaml configs/fastp_merge_config.yaml \
+            --software-deployment-method apptainer \
+            --apptainer-args "--cleanenv --bind /home/runner" \
+            --apptainer-prefix ~/singularity_containers/ && rm -r prealignment
+      - name: Integration test — PACBIO
+        working-directory: .tests/integration
+        run: |
+          snakemake -s ../../workflow/Snakefile -j 4 --show-failed-logs \
+            --configfiles config.yaml config_pacbio.yaml \
+            --software-deployment-method apptainer \
+            --apptainer-args "--cleanenv --bind /home/runner" \
+            --apptainer-prefix ~/singularity_containers/ && rm -r prealignment
+      - name: Integration test — subsample
+        working-directory: .tests/integration
+        run: |
+          snakemake -s ../../workflow/Snakefile -j 4 --show-failed-logs \
+            --configfiles config.yaml config_pacbio.yaml \
+            --software-deployment-method apptainer \
+            --apptainer-args "--cleanenv --bind /home/runner" \
+            --apptainer-prefix ~/singularity_containers/ && rm -r prealignment

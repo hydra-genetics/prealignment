@@ -30,8 +30,6 @@ rule pbmarkdup:
         config.get("pbmarkdup", {}).get("container", config["default_container"])
     message:
         "{rule}: mark duplicates in {input.bam}"
-    shell:
-        "pbmarkdup --num-threads {threads} "
-        "{params.extra} "
-        "{input.bam} "
-        "{output.bam} --log-level {params.log_level} &> {log}"
+    wrapper:
+        "v9.8.0/bio/pbmarkdup"
+
