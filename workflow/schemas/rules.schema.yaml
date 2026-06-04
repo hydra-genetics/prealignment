@@ -1,4 +1,4 @@
-$schema: "http://json-schema.org/draft-04/schema#"
+$schema: "https://json-schema.org/draft/2020-12/schema"
 description: snakemake rule input and output files description file
 type: object
 properties:
@@ -62,7 +62,7 @@ properties:
             description: bam file of unaligned pacbio reads
           
       output:
-        type: object
+        type: string
         description: list of outputs
         properties:
           bam:
@@ -96,34 +96,22 @@ properties:
         type: object
         description: list of inputs
         properties:
-          fq1:
-            type: string
-            description: Unfiltered merged `.fastq` files from read 1 of the same sample
-          fq2:
-            type: string
-            description: Unfiltered merged `.fastq` files from read 2 of the same sample
+          reads:
+            type: array
+            description: list of unfiltered merged .fastq files, containing either only merged read 1 files or both merged read 1 and merged read 2 files.
           ref:
             type: string
             description: Fasta reference genome
-          idx:
+          idx_dir:
             type: string
-            description: Sortmera index directory
+            description: Sortmerna index directory
       output:
         type: object
         description: list of outputs
         properties:
-          align:
+          aligned:
             type: string
             description: Fastq with reads that align to ribosomal rna
-          kvdb:
-            type: string
-            description: Workdir kvd with key-value datastore for alignment results
           other:
             type: string
             description: rRNA filtered merged .fastq file
-          out:
-            type: string
-            description: Workdir readb with temporary read info
-          readb:
-            type: string
-            description: Sortmeras ribosomal log file
