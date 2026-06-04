@@ -5,6 +5,8 @@ __license__ = "GPL-3"
 
 
 import pandas
+import re
+from snakemake.iocontainers import Wildcards
 import yaml
 
 from hydra_genetics.utils.resources import load_resources
@@ -13,7 +15,7 @@ from hydra_genetics.utils.units import *
 from snakemake.utils import min_version
 from snakemake.utils import validate
 
-min_version("7.8.0")
+min_version("9.0.0")
 
 ### Set and validate config file
 
@@ -49,14 +51,17 @@ wildcard_constraints:
     barcode="[A-Z+-]+",
     flowcell="[A-Z0-9-]+",
     lane="L[0-9]+",
-    sample="|".join(get_samples(samples)),
+    sample="|".join(re.escape(s) for s in get_samples(samples)),
     type="N|T|R",
-    read="fastq[1|2]",
+    read="fastq[12]",
 
 
 ### Functions
 
+seqtk_input = lambda wildcards: get_fastq_file(units, wildcards, wildcards.read)
+
 if config.get("trimmer_software", None) == "fastp_pe":
+    seqtk_input = lambda wildcards: "prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.fastq.gz"
     if config.get("subsample", None) == "seqtk":
         merged_input = lambda wildcards: expand(
             "prealignment/seqtk_subsample/{{sample}}_{{type}}_{flowcell_lane_barcode}_{{read}}.ds.fastq.gz",
@@ -72,25 +77,29 @@ if config.get("trimmer_software", None) == "fastp_pe":
             ],
         )
 else:
-    merged_input = lambda wildcards: get_fastq_files(units, wildcards)
+    if config.get("subsample", None) == "seqtk":
+        merged_input = lambda wildcards: expand(
+            "prealignment/seqtk_subsample/{{sample}}_{{type}}_{flowcell_lane_barcode}_{{read}}.ds.fastq.gz",
+            flowcell_lane_barcode=[
+                "{}_{}_{}".format(unit.flowcell, unit.lane, unit.barcode) for unit in get_units(units, wildcards, wildcards.type)
+            ],
+        )
+    else:
+        merged_input = lambda wildcards: get_fastq_files(units, wildcards)
 
 
-def get_nr_reads_per_fastq(nr_reads, units: pandas.DataFrame, wildcards: snakemake.io.Wildcards) -> int:
+def get_nr_reads_per_fastq(nr_reads: int, units: pandas.DataFrame, wildcards: Wildcards) -> int:
     return int(nr_reads / len(set([u.lane for u in units.loc[(wildcards.sample, wildcards.type)].itertuples()])))
 
 
-def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
-    return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
-
-
-def get_pbmarkdup_input(wildcards):
+def get_pbmarkdup_input(wildcards: Wildcards) -> str:
     unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
     bam_file = unit["bam"]
 
     return bam_file
 
 
-def compile_output_list(wildcards: snakemake.io.Wildcards):
+def compile_output_list(wildcards: Wildcards) -> list[str]:
     output_files = []
     files = {
         "prealignment/pbmarkdup": [".bam"],
