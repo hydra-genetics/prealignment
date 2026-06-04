@@ -1,4 +1,4 @@
 fastp_pe:
-  container: "docker://hydragenetics/fastp:0.20.1"
+  container: "docker://hydragenetics/fastp:0.24.3"
 
 trimmer_software: "fastp_pe"

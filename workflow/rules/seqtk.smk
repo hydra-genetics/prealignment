@@ -24,6 +24,8 @@ rule seqtk_subsample:
             "prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.benchmark.tsv",
             config.get("seqtk_subsample", {}).get("benchmark_repeats", 1),
         )
+    container:
+        config.get("seqtk_subsample", {}).get("container", config["default_container"])
     threads: config.get("seqtk_subsample", {}).get("threads", config["default_resources"]["threads"])
     resources:
         mem_mb=config.get("seqtk_subsample", {}).get("mem_mb", config["default_resources"]["mem_mb"]),
@@ -31,8 +33,15 @@ rule seqtk_subsample:
         partition=config.get("seqtk_subsample", {}).get("partition", config["default_resources"]["partition"]),
         threads=config.get("seqtk_subsample", {}).get("threads", config["default_resources"]["threads"]),
         time=config.get("seqtk_subsample", {}).get("time", config["default_resources"]["time"]),
-    container:
-        config.get("seqtk_subsample", {}).get("container", config["default_container"])
+    params:
+        command="sample",
+        extra=lambda wildcards: "{} {}".format(
+            config.get("seqtk_subsample", {}).get("extra", "-2"),
+            config.get("seqtk_subsample", {}).get("seed", "-s100"),
+        ),
+        n=lambda wildcards: get_nr_reads_per_fastq(
+            config.get("seqtk_subsample", {}).get("nr_reads", 1000000000), units, wildcards
+        ),
     message:
         "{rule}: downsample {input.fastq} if it has more reads than the target, otherwise copy it unchanged"
     shell:

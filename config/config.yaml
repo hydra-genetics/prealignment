@@ -28,7 +28,7 @@ samtools_fastq:
   container: "docker://hydragenetics/samtools:1.21"
 
 seqtk_subsample:
-  container: "docker://hydragenetics/seqtk:1.4"
+  container: "docker://hydragenetics/seqtk:1.5"
   nr_reads: 100000
 
 subsample: "seqtk"
