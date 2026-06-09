@@ -58,7 +58,7 @@ wildcard_constraints:
 
 ### Functions
 
-seqtk_input =lambda wildcards: get_fastq_file(units, wildcards, wildcards.read)
+seqtk_input = lambda wildcards: get_fastq_file(units, wildcards, wildcards.read)
 
 if config.get("trimmer_software", None) == "fastp_pe":
     seqtk_input = lambda wildcards: "prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.fastq.gz"
@@ -86,7 +86,6 @@ else:
         )
     else:
         merged_input = lambda wildcards: get_fastq_files(units, wildcards)
-
 
 
 def get_nr_reads_per_fastq(nr_reads, units: pandas.DataFrame, wildcards: Wildcards) -> int:

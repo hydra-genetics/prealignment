@@ -32,4 +32,3 @@ rule pbmarkdup:
         "{rule}: mark duplicates in {input.bam}"
     wrapper:
         "v9.8.0/bio/pbmarkdup"
-

@@ -96,12 +96,9 @@ properties:
         type: object
         description: list of inputs
         properties:
-          fq1:
-            type: string
-            description: Unfiltered merged `.fastq` files from read 1 of the same sample
-          fq2:
-            type: string
-            description: Unfiltered merged `.fastq` files from read 2 of the same sample
+          reads:
+            type: object
+            description: list of unfiltered merged .fastq files, containing either only merged read 1 files or both merged read 1 and merged read 2 files.
           ref:
             type: string
             description: Fasta reference genome
@@ -112,18 +109,9 @@ properties:
         type: object
         description: list of outputs
         properties:
-          align:
+          aligned:
             type: string
             description: Fastq with reads that align to ribosomal rna
-          kvdb:
-            type: string
-            description: Workdir kvd with key-value datastore for alignment results
           other:
             type: string
             description: rRNA filtered merged .fastq file
-          out:
-            type: string
-            description: Workdir readb with temporary read info
-          readb:
-            type: string
-            description: Sortmeras ribosomal log file
