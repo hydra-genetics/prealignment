@@ -37,4 +37,4 @@ rule seqtk_subsample:
     message:
         "{rule}: downsample {input.fastq}"
     wrapper:
-        "v7.0.0/bio/seqtk"
+        "v9.8.0/bio/seqtk"

@@ -43,4 +43,4 @@ rule fastp_pe:
     message:
         "{rule}: trim fastq files {input.sample} using fastp,\n\t\t with adapters: {params.adapters}"
     wrapper:
-        "v7.0.0/bio/fastp"
+        "v9.8.0/bio/fastp"

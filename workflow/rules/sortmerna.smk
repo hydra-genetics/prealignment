@@ -33,4 +33,4 @@ rule sortmerna:
     message:
         "{rule}: identify ribosomal rna in {input.reads[0]} and {input.reads[1]}"
     wrapper:
-        "update-sortmerna-wrapper/bio/sortmerna"
+        "master/bio/sortmerna"
