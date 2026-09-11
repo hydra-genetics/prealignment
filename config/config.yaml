@@ -8,7 +8,7 @@ fastp_pe:
   container: "docker://hydragenetics/fastp:0.20.1"
 
 seqtk_subsample:
-  container: "docker://hydragenetics/seqtk:1.4"
+  container: "docker://hydragenetics/seqtk:1.5"
   nr_reads: 100000
 
 subsample: "seqtk"

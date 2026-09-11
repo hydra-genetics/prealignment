@@ -61,7 +61,6 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_SNAKEMAKE_SNAKEFMT: true
-          OUTPUT_FOLDER: .github/linters/report
 
   dry-run:
     name: Snakemake dry run
@@ -83,6 +82,9 @@ jobs:
       - name: Dry run — fastp + merge
         working-directory: .tests/integration
         run: snakemake -n -s ../../workflow/Snakefile --configfiles config.yaml configs/fastp_merge_config.yaml
+      - name: Dry run — fastp + subsample
+        working-directory: .tests/integration
+        run: snakemake -n -s ../../workflow/Snakefile --configfiles config.yaml configs/fastp_merge_config.yaml configs/config_subsample.yaml
       - name: Dry run — PACBIO
         working-directory: .tests/integration
         run: snakemake -n -s ../../workflow/Snakefile --configfiles config.yaml config_pacbio.yaml

@@ -62,7 +62,7 @@ properties:
             description: bam file of unaligned pacbio reads
           
       output:
-        type: object
+        type: string
         description: list of outputs
         properties:
           bam:
@@ -97,14 +97,14 @@ properties:
         description: list of inputs
         properties:
           reads:
-            type: object
+            type: array
             description: list of unfiltered merged .fastq files, containing either only merged read 1 files or both merged read 1 and merged read 2 files.
           ref:
             type: string
             description: Fasta reference genome
-          idx:
+          idx_dir:
             type: string
-            description: Sortmera index directory
+            description: Sortmerna index directory
       output:
         type: object
         description: list of outputs

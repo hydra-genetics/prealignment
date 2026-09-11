@@ -53,7 +53,7 @@ wildcard_constraints:
     lane="L[0-9]+",
     sample="|".join(re.escape(s) for s in get_samples(samples)),
     type="N|T|R",
-    read="fastq[1|2]",
+    read="fastq[12]",
 
 
 ### Functions
@@ -88,22 +88,18 @@ else:
         merged_input = lambda wildcards: get_fastq_files(units, wildcards)
 
 
-def get_nr_reads_per_fastq(nr_reads, units: pandas.DataFrame, wildcards: Wildcards) -> int:
+def get_nr_reads_per_fastq(nr_reads: int, units: pandas.DataFrame, wildcards: Wildcards) -> int:
     return int(nr_reads / len(set([u.lane for u in units.loc[(wildcards.sample, wildcards.type)].itertuples()])))
 
 
-def get_sortmerna_refs(wildcards: Wildcards):
-    return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
-
-
-def get_pbmarkdup_input(wildcards):
+def get_pbmarkdup_input(wildcards: Wildcards) -> str:
     unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
     bam_file = unit["bam"]
 
     return bam_file
 
 
-def compile_output_list(wildcards: Wildcards):
+def compile_output_list(wildcards: Wildcards) -> list[str]:
     output_files = []
     files = {
         "prealignment/pbmarkdup": [".bam"],

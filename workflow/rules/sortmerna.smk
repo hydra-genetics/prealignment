@@ -7,8 +7,8 @@ __license__ = "GPL3"
 rule sortmerna:
     input:
         reads=["prealignment/merged/{sample}_{type}_fastq1.fastq.gz", "prealignment/merged/{sample}_{type}_fastq2.fastq.gz"],
-        ref=[config.get("sortmerna", {}).get("fasta", "")],
-        idx=config.get("sortmerna", {}).get("index", ""),
+        ref=config.get("sortmerna", {}).get("fasta", []),
+        idx_dir=config.get("sortmerna", {}).get("index", []),
     output:
         aligned=temp("prealignment/sortmerna/{sample}_{type}.rrna.fq.gz"),
         other=temp("prealignment/sortmerna/{sample}_{type}.fq.gz"),
