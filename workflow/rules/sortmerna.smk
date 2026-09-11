@@ -6,19 +6,14 @@ __license__ = "GPL3"
 
 rule sortmerna:
     input:
-        fq1="prealignment/merged/{sample}_{type}_fastq1.fastq.gz",
-        fq2="prealignment/merged/{sample}_{type}_fastq2.fastq.gz",
-        ref=config.get("sortmerna", {}).get("fasta", ""),
-        idx=config.get("sortmerna", {}).get("index", ""),
+        reads=["prealignment/merged/{sample}_{type}_fastq1.fastq.gz", "prealignment/merged/{sample}_{type}_fastq2.fastq.gz"],
+        ref=config.get("sortmerna", {}).get("fasta", []),
+        idx_dir=config.get("sortmerna", {}).get("index", []),
     output:
-        align=temp("prealignment/sortmerna/{sample}_{type}.rrna.fq.gz"),
-        kvdb=temp(directory("prealignment/sortmerna/{sample}_{type}/kvdb")),
+        aligned=temp("prealignment/sortmerna/{sample}_{type}.rrna.fq.gz"),
         other=temp("prealignment/sortmerna/{sample}_{type}.fq.gz"),
-        out=temp("prealignment/sortmerna/{sample}_{type}.rrna.log"),
-        readb=temp(directory("prealignment/sortmerna/{sample}_{type}/readb")),
     params:
         extra=config.get("sortmerna", {}).get("extra", ""),
-        ref=get_sortmerna_refs,
     log:
         "prealignment/sortmerna/{sample}_{type}.rrna.fq.gz.log",
     benchmark:
@@ -36,15 +31,6 @@ rule sortmerna:
     container:
         config.get("sortmerna", {}).get("container", config["default_container"])
     message:
-        "{rule}: identify ribosomal rna in {input.fq1} and {input.fq2}"
-    shell:
-        "sortmerna "
-        "--fastx "
-        "--threads {threads} "
-        "--ref {params.ref} "
-        "--idx-dir {input.idx} "
-        "--reads {input.fq1} "
-        "--reads {input.fq2} "
-        "--workdir prealignment/sortmerna/{wildcards.sample}_{wildcards.type} "
-        "--aligned prealignment/sortmerna/{wildcards.sample}_{wildcards.type}.rrna "
-        "--other prealignment/sortmerna/{wildcards.sample}_{wildcards.type} &> {log}"
+        "{rule}: identify ribosomal rna in {input.reads[0]} and {input.reads[1]}"
+    wrapper:
+        "master/bio/sortmerna"
