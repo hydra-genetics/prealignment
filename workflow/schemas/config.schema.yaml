@@ -1,18 +1,22 @@
-$schema: "http://json-schema.org/draft-04/schema#"
+$schema: "https://json-schema.org/draft/2020-12/schema"
 description: snakemake configuration file
 type: object
 properties:
   resources:
     type: string
+    minLength: 1
     description: path to resources.yaml file
   samples:
     type: string
+    minLength: 1
     description: path to samples.tsv file
   units:
     type: string
+    minLength: 1
     description: path to units.tsv file
   default_container:
     type: string
+    minLength: 1
     description: name or path to a default docker/singularity container
 
   fastp_pe:
@@ -24,6 +28,7 @@ properties:
         description: set number of times benchmark should be repeated
       container:
         type: string
+        minLength: 1
         description: name or path to docker/singularity container
       extra:
         type: string
@@ -45,6 +50,7 @@ properties:
         description: set number of times benchmark should be repeated
       container:
         type: string
+        minLength: 1
         description: name or path to docker/singularity container
   
   pbmarkdup:
@@ -56,12 +62,14 @@ properties:
         description: set number of times benchmark should be repeated
       container:
         type: string
+        minLength: 1
         description: name or path to docker/singularity container
       extra:
         type: string
         description: parameters that should be forwarded
       log_level:
         type: string
+        minLength: 1
         description: set the logging level for pbmarkdup
 
   seqtk_subsample:
@@ -73,6 +81,7 @@ properties:
         description: set number of times benchmark should be repeated
       container:
         type: string
+        minLength: 1
         description: name or path to docker/singularity container
       extra:
         type: string
@@ -82,6 +91,7 @@ properties:
         description: Number of maximum reads in the subsampled fastq file defined by nr_reads in the config and then divided by number of lanes
       seed:
         type: string
+        minLength: 1
         description: seed for the random generator (must be the same for R1 and R2)
 
   sortmerna:
@@ -93,6 +103,7 @@ properties:
         description: set number of times benchmark should be repeated
       container:
         type: string
+        minLength: 1
         description: name or path to docker/singularity container
       extra:
         type: string
@@ -102,8 +113,10 @@ properties:
         description: list of fasta files containing ribosomal rna sequences
         items:
           type: string
+          minLength: 1
       index:
         type: string
+        minLength: 1
         description: path to index directory
 
   trimmer_software:

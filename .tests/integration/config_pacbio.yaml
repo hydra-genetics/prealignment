@@ -8,5 +8,5 @@ default_container: "docker://hydragenetics/common:1.14.0"
 trimmer_software: None
 
 pbmarkdup:
-  container: "docker://hydragenetics/pbmarkdup:1.1.0"
+  container: "docker://hydragenetics/pbmarkdup:1.2.0"
 
