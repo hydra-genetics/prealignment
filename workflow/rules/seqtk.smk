@@ -7,6 +7,7 @@ __license__ = "GPL-3"
 rule seqtk_subsample:
     input:
         fastq="prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.fastq.gz",
+        fastp_json="prealignment/fastp_pe/{sample}_{type}_{flowcell}_{lane}_{barcode}_fastp.json",
     output:
         fastq=temp("prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.gz"),
     params:
@@ -15,6 +16,7 @@ rule seqtk_subsample:
             config.get("seqtk_subsample", {}).get("nr_reads", 1000000000), units, wildcards
         ),
         seed=config.get("seqtk_subsample", {}).get("seed", "-s100"),
+        fastp_read_field=lambda wildcards: "read1_after_filtering" if wildcards.read == "fastq1" else "read2_after_filtering",
     log:
         "prealignment/seqtk_subsample/{sample}_{type}_{flowcell}_{lane}_{barcode}_{read}.ds.fastq.log",
     benchmark:
@@ -32,13 +34,11 @@ rule seqtk_subsample:
     container:
         config.get("seqtk_subsample", {}).get("container", config["default_container"])
     message:
-        "{rule}: downsample {input.fastq}"
+        "{rule}: downsample {input.fastq} if it has more reads than the target, otherwise copy it unchanged"
     shell:
-        'sh -c "'
-        "seqtk sample "
-        "{params.seed} "
-        "{params.extra} "
-        "{input.fastq} "
-        "{params.nr_reads_per_fastq} "
-        "| gzip "
-        '> {output.fastq}" >& {log}'
+        "actual_reads=$(grep -A1 \"{params.fastp_read_field}\" {input.fastp_json} | grep total_reads | grep -oE '[0-9]+'); "
+        'if [ "$actual_reads" -le {params.nr_reads_per_fastq} ]; then '
+        "cp {input.fastq} {output.fastq}; "
+        "else "
+        "seqtk sample {params.seed} {params.extra} {input.fastq} {params.nr_reads_per_fastq} | gzip > {output.fastq}; "
+        "fi &> {log}"
