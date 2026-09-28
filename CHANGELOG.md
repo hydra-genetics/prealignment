@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/hydra-genetics/prealignment/compare/v1.4.0...v2.0.0) (2026-09-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* seqtk_subsample now requires a new fastp_json input and a fastp_read_field param, both derived from fastp_pe's existing JSON output. Downstream pipelines that override this rule's input: or params: block in full (via `use rule seqtk_subsample from prealignment as X with: ...`) must add these two fields or the rule will fail to resolve.
+
+### Bug Fixes
+
+* skip seqtk downsampling when fastq is already below the target read count ([20f333c](https://github.com/hydra-genetics/prealignment/commit/20f333ca98df85cd38464948e83f16e4d38a2b03))
+
 ## [1.4.0](https://github.com/hydra-genetics/prealignment/compare/v1.3.0...v1.4.0) (2025-05-27)
 
 
