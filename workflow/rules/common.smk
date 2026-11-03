@@ -120,7 +120,8 @@ def compile_output_list(wildcards: snakemake.io.Wildcards):
         for suffix in files[prefix]
     ]
     output_files += [
-        "prealignment/filtlong/{}_{}_{}_{}.filtered.fastq.gz".format(unit.sample, unit.type, unit.processing_unit, unit.barcode)
+        "prealignment/{}/{}_{}_{}_{}{}".format(prefix, unit.sample, unit.type, unit.processing_unit, unit.barcode, suffix)
+        for prefix, suffix in [("filtlong", ".filtered.fastq.gz"), ("chopper", ".filtered.bam")]
         for unit in units.itertuples()
         if unit.platform == "ONT"
     ]
