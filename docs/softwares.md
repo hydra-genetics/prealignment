@@ -28,7 +28,7 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 
 ## [Dorado trim](https://github.com/nanoporetech/dorado)
 Adapter and primer trimming of unaligned ONT reads with `dorado trim`. The unaligned BAM from the `bam` column of
-`units.tsv` is trimmed and written as FASTQ, which is then passed on to Filtlong.
+`units.tsv` is trimmed and written as BAM, which is then converted to FASTQ with samtools.
 
 ### :snake: Rule
 
@@ -47,6 +47,48 @@ Adapter and primer trimming of unaligned ONT reads with `dorado trim`. The unali
 #### Resources settings (`resources.yaml`)
 
 #RESOURCESSCHEMA__dorado_trim#
+
+---
+
+## [Samtools](https://www.htslib.org/doc/samtools-fasta.html)
+Conversion of the adapter/primer trimmed ONT bam files from dorado_trim to fastq with `samtools fastq`,
+followed by gzip compression of the fastq file. The compressed fastq file is the input to Filtlong.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__samtools__samtools_fastq#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__samtools__samtools_fastq#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__samtools_fastq#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__samtools_fastq#
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__samtools__samtools_compress_fastq#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__samtools__samtools_compress_fastq#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__samtools_compress_fastq#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__samtools_compress_fastq#
 
 ---
 

@@ -131,6 +131,46 @@ properties:
         type: string
         description: max execution time
 
+  samtools_compress_fastq:
+    type: object
+    description: resource definitions for samtools_compress_fastq
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
+  samtools_fastq:
+    type: object
+    description: resource definitions for samtools_fastq
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
   seqtk_subsample:
     type: object
     description: resource definitions for seqtk_subsample

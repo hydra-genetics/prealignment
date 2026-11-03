@@ -10,6 +10,7 @@ include: "rules/fastp.smk"
 include: "rules/filtlong.smk"
 include: "rules/merged.smk"
 include: "rules/pbmarkdup.smk"
+include: "rules/samtools.smk"
 include: "rules/seqtk.smk"
 include: "rules/sortmerna.smk"
 

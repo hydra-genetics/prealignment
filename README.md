@@ -115,6 +115,6 @@ The following output files should be targeted via another rule:
 
 ![rule_graph](images/prealignment_merge.svg)
 
-### Trim and filter ONT reads
+### Trim, convert and filter ONT reads
 
 ![rule_graph](images/prealignment_filtlong.svg)

@@ -8,15 +8,15 @@ rule dorado_trim:
     input:
         bam=get_dorado_trim_input,
     output:
-        fastq=temp("prealignment/dorado_trim/{sample}_{type}_{processing_unit}_{barcode}.trimmed.fastq"),
+        bam=temp("prealignment/dorado_trim/{sample}_{type}_{processing_unit}_{barcode}.trimmed.bam"),
     params:
         extra=config.get("dorado_trim", {}).get("extra", ""),
         sequencing_kit=get_dorado_trim_sequencing_kit,
     log:
-        "prealignment/dorado_trim/{sample}_{type}_{processing_unit}_{barcode}.trimmed.fastq.log",
+        "prealignment/dorado_trim/{sample}_{type}_{processing_unit}_{barcode}.trimmed.bam.log",
     benchmark:
         repeat(
-            "prealignment/dorado_trim/{sample}_{type}_{processing_unit}_{barcode}.trimmed.fastq.benchmark.tsv",
+            "prealignment/dorado_trim/{sample}_{type}_{processing_unit}_{barcode}.trimmed.bam.benchmark.tsv",
             config.get("dorado_trim", {}).get("benchmark_repeats", 1),
         )
     threads: config.get("dorado_trim", {}).get("threads", config["default_resources"]["threads"])
@@ -35,5 +35,4 @@ rule dorado_trim:
         "--threads {threads} "
         "{params.sequencing_kit} "
         "{params.extra} "
-        "--emit-fastq "
-        "{input.bam} > {output.fastq} 2> {log}"
+        "{input.bam} > {output.bam} 2> {log}"

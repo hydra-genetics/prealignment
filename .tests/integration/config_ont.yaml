@@ -13,3 +13,9 @@ dorado_trim:
 filtlong:
   container: "docker://hydragenetics/filtlong:0.2.1"
   extra: "--min_mean_q 30 --keep_percent 75"
+
+samtools_compress_fastq:
+  container: "docker://hydragenetics/samtools:1.21"
+
+samtools_fastq:
+  container: "docker://hydragenetics/samtools:1.21"
