@@ -68,6 +68,7 @@ properties:
         type: string
         description: max execution time
 
+  fastp_pe:
     type: object
     description: resource definitions for fastp_pe
     properties:

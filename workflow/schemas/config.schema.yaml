@@ -46,6 +46,7 @@ properties:
         type: string
         description: sequencing kit used to select adapters and primers to trim, e.g. 'SQK-NBD114-24' (required by dorado trim)
 
+  fastp_pe:
     type: object
     description: parameters for fastp_pe
     properties:
