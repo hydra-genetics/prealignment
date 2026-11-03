@@ -140,7 +140,7 @@ properties:
         description: name or path to docker/singularity container
       extra:
         type: string
-        description: parameters that should be forwarded to samtools fastq, e.g. '-T MM,ML' to keep methylation tags
+        description: parameters that should be forwarded to samtools fastq (all bam tags are always kept with -T '*')
 
   seqtk_subsample:
     type: object

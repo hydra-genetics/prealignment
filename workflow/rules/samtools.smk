@@ -28,10 +28,11 @@ rule samtools_fastq:
     container:
         config.get("samtools_fastq", {}).get("container", config["default_container"])
     message:
-        "{rule}: convert unaligned bam {input.bam} to fastq"
+        "{rule}: convert unaligned bam {input.bam} to fastq, keeping all bam tags"
     shell:
         "samtools fastq "
         "--threads {threads} "
+        "-T '*' "
         "{params.extra} "
         "{input.bam} > {output.fastq} 2> {log}"
 

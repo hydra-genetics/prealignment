@@ -161,7 +161,7 @@ properties:
         properties:
           fastq:
             type: string
-            description: uncompressed fastq file
+            description: uncompressed fastq file, with all bam tags as tab-separated fields after the read name
 
   seqtk_subsample:
     type: object
