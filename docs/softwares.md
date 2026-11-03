@@ -26,6 +26,48 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 
 ---
 
+## [Samtools](https://www.htslib.org/doc/samtools-fasta.html)
+Conversion of unaligned ONT bam files (the `bam` column of `units.tsv`) to fastq with `samtools fastq`,
+followed by gzip compression of the fastq file. The compressed fastq file is the input to Filtlong.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__samtools__samtools_fastq#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__samtools__samtools_fastq#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__samtools_fastq#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__samtools_fastq#
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__samtools__samtools_compress_fastq#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__samtools__samtools_compress_fastq#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__samtools_compress_fastq#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__samtools_compress_fastq#
+
+---
+
 ## [Filtlong](https://github.com/rrwick/Filtlong)
 Quality filtering of long reads (e.g. ONT). Reads outside the `min_length`/`max_length` range are discarded,
 and the remaining reads are filtered on mean quality and the percentage of best bases to keep (set via `extra`).

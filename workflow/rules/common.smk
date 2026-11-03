@@ -83,10 +83,10 @@ def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
     return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
 
 
-def get_filtlong_input(wildcards):
+def get_samtools_fastq_input(wildcards):
     unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
 
-    return unit["fastq1"]
+    return unit["bam"]
 
 
 def get_pbmarkdup_input(wildcards):

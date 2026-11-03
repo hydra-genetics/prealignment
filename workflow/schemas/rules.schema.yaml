@@ -38,7 +38,7 @@ properties:
         properties:
           fastq:
             type: string
-            description: long-read (ONT) fastq file, taken from the fastq1 column of units.tsv
+            description: gzipped ONT fastq file from samtools_compress_fastq
       output:
         type: object
         description: list of outputs
@@ -87,6 +87,44 @@ properties:
           bam:
             type: string
             description: duplicate marked bam file
+
+  samtools_compress_fastq:
+    type: object
+    description: input and output parameters for samtools_compress_fastq
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          fastq:
+            type: string
+            description: uncompressed fastq file from samtools_fastq
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: gzipped fastq file
+
+  samtools_fastq:
+    type: object
+    description: input and output parameters for samtools_fastq
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          bam:
+            type: string
+            description: unaligned ONT bam file, taken from the bam column of units.tsv
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: uncompressed fastq file
 
   seqtk_subsample:
     type: object

@@ -84,6 +84,34 @@ properties:
         type: string
         description: set the logging level for pbmarkdup
 
+  samtools_compress_fastq:
+    type: object
+    description: parameters for samtools_compress_fastq
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to gzip, e.g. '-6'
+
+  samtools_fastq:
+    type: object
+    description: parameters for samtools_fastq
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to samtools fastq, e.g. '-T MM,ML' to keep methylation tags
+
   seqtk_subsample:
     type: object
     description: parameters for seqtk_subsample
