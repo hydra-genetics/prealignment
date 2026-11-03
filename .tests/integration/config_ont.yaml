@@ -1,0 +1,11 @@
+samples: "samples_ont.tsv"
+units: "units_ont.tsv"
+resources: "resources.yaml"
+
+default_container: "docker://hydragenetics/common:3.0.0"
+
+trimmer_software: None
+
+filtlong:
+  container: "docker://hydragenetics/filtlong:0.2.1"
+  extra: "--min_mean_q 30 --keep_percent 75"

@@ -26,6 +26,30 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 
 ---
 
+## [Filtlong](https://github.com/rrwick/Filtlong)
+Quality filtering of long reads (e.g. ONT). Reads outside the `min_length`/`max_length` range are discarded,
+and the remaining reads are filtered on mean quality and the percentage of best bases to keep (set via `extra`).
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__filtlong__filtlong#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__filtlong__filtlong#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__filtlong#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__filtlong#
+
+---
+
 ## Fastq merging
 Merge `.fastq` files generated for example on different lanes by simply concatenating them using cat  
 

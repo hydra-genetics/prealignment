@@ -83,6 +83,9 @@ jobs:
       - name: Dry run — fastp + merge
         working-directory: .tests/integration
         run: snakemake -n -s ../../workflow/Snakefile --configfile config.yaml configs/fastp_merge_config.yaml
+      - name: Dry run — ONT filtlong
+        working-directory: .tests/integration
+        run: snakemake -n -s ../../workflow/Snakefile --configfile config_ont.yaml
 
   integration:
     name: Integration test
@@ -134,5 +137,12 @@ jobs:
         run: |
           snakemake -s ../../workflow/Snakefile -j 4 --show-failed-logs \
             --configfiles config.yaml configs/fastp_merge_config.yaml --use-singularity \
+            --singularity-args " --cleanenv --bind /home/runner " \
+            --singularity-prefix ~/singularity_containers/
+      - name: Integration test — ONT filtlong
+        working-directory: .tests/integration
+        run: |
+          snakemake -s ../../workflow/Snakefile -j 4 --show-failed-logs \
+            --configfiles config_ont.yaml --use-singularity \
             --singularity-args " --cleanenv --bind /home/runner " \
             --singularity-prefix ~/singularity_containers/

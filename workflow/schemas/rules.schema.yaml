@@ -28,6 +28,25 @@ properties:
             type: string
             description: json QC report
 
+  filtlong:
+    type: object
+    description: input and output parameters for filtlong
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          fastq:
+            type: string
+            description: long-read (ONT) fastq file, taken from the fastq1 column of units.tsv
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: gzipped fastq file with reads that passed quality and length filtering
+
   merged:
     type: object
     description: input and output parameters for merged

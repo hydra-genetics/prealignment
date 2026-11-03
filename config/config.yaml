@@ -7,6 +7,10 @@ default_container: "docker://hydragenetics/common:3.0.0"
 fastp_pe:
   container: "docker://hydragenetics/fastp:0.20.1"
 
+filtlong:
+  container: "docker://hydragenetics/filtlong:0.2.1"
+  extra: "--min_mean_q 30 --keep_percent 75"
+
 seqtk_subsample:
   container: "docker://hydragenetics/seqtk:1.4"
   nr_reads: 100000

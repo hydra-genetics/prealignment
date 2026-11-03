@@ -83,6 +83,12 @@ def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
     return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
 
 
+def get_filtlong_input(wildcards):
+    unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
+
+    return unit["fastq1"]
+
+
 def get_pbmarkdup_input(wildcards):
     unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
     bam_file = unit["bam"]
@@ -106,6 +112,11 @@ def compile_output_list(wildcards: snakemake.io.Wildcards):
         for processing_unit in units.loc[(sample,)].processing_unit
         for barcode in units.loc[(sample,)].barcode
         for suffix in files[prefix]
+    ]
+    output_files += [
+        f"prealignment/filtlong/{unit.sample}_{unit.type}_{unit.processing_unit}_{unit.barcode}.filtered.fastq.gz"
+        for unit in units.itertuples()
+        if unit.platform == "ONT"
     ]
     output_files += [
         "prealignment/merged/{}_{}_{}.fastq.gz".format(sample, t, read)

@@ -36,6 +36,26 @@ properties:
           --n_base_limit 5
           --length_required 15
 
+  filtlong:
+    type: object
+    description: parameters for filtlong
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to filtlong, e.g. '--min_mean_q 30 --keep_percent 75'
+      max_length:
+        type: integer
+        description: maximum read length threshold, longer reads are discarded (default 30000)
+      min_length:
+        type: integer
+        description: minimum read length threshold, shorter reads are discarded (default 50)
+
   merged:
     type: object
     description: parameters for merged
