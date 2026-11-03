@@ -15,7 +15,23 @@ properties:
     type: string
     description: name or path to a default docker/singularity container
 
-  fastp_pe:
+  dorado_trim:
+    type: object
+    description: parameters for dorado_trim
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to dorado trim, e.g. '--no-trim-primers'
+      sequencing_kit:
+        type: string
+        description: sequencing kit used to select adapters and primers to trim, e.g. 'SQK-NBD114-24' (required by dorado trim)
+
     type: object
     description: parameters for fastp_pe
     properties:

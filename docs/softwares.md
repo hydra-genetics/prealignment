@@ -26,6 +26,30 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 
 ---
 
+## [Dorado trim](https://github.com/nanoporetech/dorado)
+Adapter and primer trimming of unaligned ONT reads with `dorado trim`. The unaligned BAM from the `bam` column of
+`units.tsv` is trimmed and written as FASTQ, which is then passed on to Filtlong.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__dorado__dorado_trim#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__dorado__dorado_trim#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__dorado_trim#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__dorado_trim#
+
+---
+
 ## [Filtlong](https://github.com/rrwick/Filtlong)
 Quality filtering of long reads (e.g. ONT). Reads outside the `min_length`/`max_length` range are discarded,
 and the remaining reads are filtered on mean quality and the percentage of best bases to keep (set via `extra`).

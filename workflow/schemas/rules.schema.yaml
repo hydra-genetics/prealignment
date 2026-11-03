@@ -2,7 +2,25 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake rule input and output files description file
 type: object
 properties:
-  fastp_pe:
+  dorado_trim:
+    type: object
+    description: input and output parameters for dorado_trim
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          bam:
+            type: string
+            description: unaligned ONT bam file, taken from the bam column of units.tsv
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: uncompressed fastq file with adapters and primers trimmed
+
     type: object
     description: input and output parameters for fastp_pe
     properties:
@@ -38,7 +56,7 @@ properties:
         properties:
           fastq:
             type: string
-            description: long-read (ONT) fastq file, taken from the fastq1 column of units.tsv
+            description: adapter/primer trimmed ONT fastq file from dorado_trim
       output:
         type: object
         description: list of outputs

@@ -83,10 +83,16 @@ def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
     return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
 
 
-def get_filtlong_input(wildcards):
+def get_dorado_trim_input(wildcards):
     unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
 
-    return unit["fastq1"]
+    return unit["bam"]
+
+
+def get_dorado_trim_sequencing_kit(wildcards):
+    sequencing_kit = config.get("dorado_trim", {}).get("sequencing_kit", "")
+
+    return "--sequencing-kit {}".format(sequencing_kit) if sequencing_kit else ""
 
 
 def get_pbmarkdup_input(wildcards):

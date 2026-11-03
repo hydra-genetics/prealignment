@@ -6,7 +6,7 @@ __license__ = "GPL-3"
 
 rule filtlong:
     input:
-        fastq=get_filtlong_input,
+        fastq="prealignment/dorado_trim/{sample}_{type}_{processing_unit}_{barcode}.trimmed.fastq",
     output:
         fastq=temp("prealignment/filtlong/{sample}_{type}_{processing_unit}_{barcode}.filtered.fastq.gz"),
     params:
