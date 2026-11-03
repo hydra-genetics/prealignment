@@ -2,6 +2,25 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake rule input and output files description file
 type: object
 properties:
+  chopper:
+    type: object
+    description: input and output parameters for chopper
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          bam:
+            type: string
+            description: adapter/primer trimmed unaligned ONT bam file from dorado_trim
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          bam:
+            type: string
+            description: unaligned bam file with reads that passed chopper filtering
+
   dorado_trim:
     type: object
     description: input and output parameters for dorado_trim

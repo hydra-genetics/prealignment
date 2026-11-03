@@ -116,6 +116,30 @@ and the remaining reads are filtered on mean quality and the percentage of best 
 
 ---
 
+## [Chopper](https://github.com/wdecoster/chopper)
+Quality and length filtering of ONT reads with chopper. The adapter/primer trimmed unaligned BAM from dorado_trim
+is filtered directly and written as unaligned BAM, keeping the BAM header and tags.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__chopper__chopper#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__chopper__chopper#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__chopper#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__chopper#
+
+---
+
 ## Fastq merging
 Merge `.fastq` files generated for example on different lanes by simply concatenating them using cat  
 

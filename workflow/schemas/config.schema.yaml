@@ -15,6 +15,20 @@ properties:
     type: string
     description: name or path to a default docker/singularity container
 
+  chopper:
+    type: object
+    description: parameters for chopper
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to chopper, e.g. '--quality 10 --minlength 50 --maxlength 30000'
+
   dorado_trim:
     type: object
     description: parameters for dorado_trim

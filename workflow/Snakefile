@@ -5,6 +5,7 @@ __license__ = "GPL-3"
 
 
 include: "rules/common.smk"
+include: "rules/chopper.smk"
 include: "rules/dorado.smk"
 include: "rules/fastp.smk"
 include: "rules/filtlong.smk"
