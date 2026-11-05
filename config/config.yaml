@@ -9,7 +9,9 @@ fastp_pe:
 
 chopper:
   container: "docker://hydragenetics/chopper:0.15.0"
-  extra: "--quality 10 --minlength 50 --maxlength 30000"
+  quality: 10
+  minlength: 50
+  maxlength: 30000
 
 dorado_trim:
   container: "docker://hydragenetics/dorado:2.0.0"

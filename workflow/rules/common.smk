@@ -83,6 +83,12 @@ def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
     return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
 
 
+def get_chopper_option(option: str) -> str:
+    value = config.get("chopper", {}).get(option)
+
+    return "--{} {}".format(option, value) if value is not None else ""
+
+
 def get_dorado_trim_input(wildcards):
     unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
 

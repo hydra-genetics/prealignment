@@ -11,6 +11,9 @@ rule chopper:
         bam=temp("prealignment/chopper/{sample}_{type}_{processing_unit}_{barcode}.filtered.bam"),
     params:
         extra=config.get("chopper", {}).get("extra", ""),
+        maxlength=get_chopper_option("maxlength"),
+        minlength=get_chopper_option("minlength"),
+        quality=get_chopper_option("quality"),
     log:
         "prealignment/chopper/{sample}_{type}_{processing_unit}_{barcode}.filtered.bam.log",
     benchmark:
@@ -32,6 +35,9 @@ rule chopper:
     shell:
         "chopper "
         "--threads {threads} "
+        "{params.quality} "
+        "{params.minlength} "
+        "{params.maxlength} "
         "{params.extra} "
         "--input {input.bam} "
         "--output-format bam "
