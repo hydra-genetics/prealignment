@@ -28,7 +28,7 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 
 ## [Dorado trim](https://github.com/nanoporetech/dorado)
 Adapter and primer trimming of unaligned ONT reads with `dorado trim`. The unaligned BAM from the `bam` column of
-`units.tsv` is trimmed and written as BAM, which is then converted to FASTQ with samtools.
+`units.tsv` is trimmed and written as BAM, which can then be converted to FASTQ with samtools if needed.
 
 ### :snake: Rule
 
