@@ -52,8 +52,7 @@ Adapter and primer trimming of unaligned ONT reads with `dorado trim`. The unali
 
 ## [Samtools](https://www.htslib.org/doc/samtools-fasta.html)
 Conversion of the adapter/primer trimmed ONT bam files from dorado_trim to fastq with `samtools fastq -T '*'`, which
-keeps all bam tags as tab-separated fields after the read name,
-followed by gzip compression of the fastq file. The compressed fastq file is the input to Filtlong.
+keeps all bam tags as tab-separated fields after the read name.
 
 ### :snake: Rule
 
@@ -72,6 +71,12 @@ followed by gzip compression of the fastq file. The compressed fastq file is the
 #### Resources settings (`resources.yaml`)
 
 #RESOURCESSCHEMA__samtools_fastq#
+
+---
+
+## [Gzip](https://www.gnu.org/software/gzip/)
+Compression of the fastq file from samtools_fastq with `gzip`, run in the samtools container. The bam tags in the
+read headers are kept. The compressed fastq file is the input to Filtlong.
 
 ### :snake: Rule
 
