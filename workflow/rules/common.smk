@@ -83,6 +83,24 @@ def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
     return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
 
 
+def get_chopper_option(option: str) -> str:
+    value = config.get("chopper", {}).get(option)
+
+    return "--{} {}".format(option, value) if value is not None else ""
+
+
+def get_dorado_trim_input(wildcards):
+    unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
+
+    return unit["bam"]
+
+
+def get_dorado_trim_sequencing_kit(wildcards):
+    sequencing_kit = config.get("dorado_trim", {}).get("sequencing_kit", "")
+
+    return "--sequencing-kit {}".format(sequencing_kit) if sequencing_kit else ""
+
+
 def get_pbmarkdup_input(wildcards):
     unit = units.loc[(wildcards.sample, wildcards.type, wildcards.processing_unit, wildcards.barcode)]
     bam_file = unit["bam"]
@@ -106,6 +124,12 @@ def compile_output_list(wildcards: snakemake.io.Wildcards):
         for processing_unit in units.loc[(sample,)].processing_unit
         for barcode in units.loc[(sample,)].barcode
         for suffix in files[prefix]
+    ]
+    output_files += [
+        "prealignment/{}/{}_{}_{}_{}{}".format(prefix, unit.sample, unit.type, unit.processing_unit, unit.barcode, suffix)
+        for prefix, suffix in [("filtlong", ".filtered.fastq.gz"), ("chopper", ".filtered.bam")]
+        for unit in units.itertuples()
+        if unit.platform == "ONT"
     ]
     output_files += [
         "prealignment/merged/{}_{}_{}.fastq.gz".format(sample, t, read)

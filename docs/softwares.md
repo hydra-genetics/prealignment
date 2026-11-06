@@ -26,6 +26,126 @@ Trim `.fastq` files by removing adapter sequences and other unwanted sequences. 
 
 ---
 
+## [Dorado trim](https://github.com/nanoporetech/dorado)
+Adapter and primer trimming of unaligned ONT reads with `dorado trim`. The unaligned BAM from the `bam` column of
+`units.tsv` is trimmed and written as BAM, which can then be converted to FASTQ with samtools if needed.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__dorado__dorado_trim#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__dorado__dorado_trim#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__dorado_trim#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__dorado_trim#
+
+---
+
+## [Samtools](https://www.htslib.org/doc/samtools-fasta.html)
+Conversion of the adapter/primer trimmed ONT bam files from dorado_trim to fastq with `samtools fastq -T '*'`, which
+keeps all bam tags as tab-separated fields after the read name.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__samtools__samtools_fastq#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__samtools__samtools_fastq#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__samtools_fastq#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__samtools_fastq#
+
+---
+
+## [Gzip](https://www.gnu.org/software/gzip/)
+Compression of the fastq file from samtools_fastq with `gzip`, run in the samtools container. The bam tags in the
+read headers are kept. The compressed fastq file is the input to Filtlong.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__samtools__samtools_compress_fastq#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__samtools__samtools_compress_fastq#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__samtools_compress_fastq#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__samtools_compress_fastq#
+
+---
+
+## [Filtlong](https://github.com/rrwick/Filtlong)
+Quality filtering of long reads (e.g. ONT). Reads outside the `min_length`/`max_length` range are discarded,
+and the remaining reads are filtered on mean quality and the percentage of best bases to keep (set via `extra`).
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__filtlong__filtlong#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__filtlong__filtlong#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__filtlong#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__filtlong#
+
+---
+
+## [Chopper](https://github.com/wdecoster/chopper)
+Quality and length filtering of ONT reads with chopper. The adapter/primer trimmed unaligned BAM from dorado_trim
+is filtered directly and written as unaligned BAM, keeping the BAM header and tags.
+
+### :snake: Rule
+
+#SNAKEMAKE_RULE_SOURCE__chopper__chopper#
+
+#### :left_right_arrow: input / output files
+
+#SNAKEMAKE_RULE_TABLE__chopper__chopper#
+
+### :wrench: Configuration
+
+#### Software settings (`config.yaml`)
+
+#CONFIGSCHEMA__chopper#
+
+#### Resources settings (`resources.yaml`)
+
+#RESOURCESSCHEMA__chopper#
+
+---
+
 ## Fastq merging
 Merge `.fastq` files generated for example on different lanes by simply concatenating them using cat  
 
