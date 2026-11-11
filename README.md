@@ -114,3 +114,7 @@ The following output files should be targeted via another rule:
 ### Only merge fastq
 
 ![rule_graph](images/prealignment_merge.svg)
+
+### Trim, convert and filter ONT reads
+
+![rule_graph](images/prealignment_filtlong.svg)

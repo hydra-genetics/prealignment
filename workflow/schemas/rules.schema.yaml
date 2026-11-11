@@ -2,6 +2,44 @@ $schema: "http://json-schema.org/draft-04/schema#"
 description: snakemake rule input and output files description file
 type: object
 properties:
+  chopper:
+    type: object
+    description: input and output parameters for chopper
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          bam:
+            type: string
+            description: adapter/primer trimmed unaligned ONT bam file from dorado_trim
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          bam:
+            type: string
+            description: unaligned bam file with reads that passed chopper filtering
+
+  dorado_trim:
+    type: object
+    description: input and output parameters for dorado_trim
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          bam:
+            type: string
+            description: unaligned ONT bam file, taken from the bam column of units.tsv
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          bam:
+            type: string
+            description: unaligned bam file with adapters and primers trimmed
+
   fastp_pe:
     type: object
     description: input and output parameters for fastp_pe
@@ -27,6 +65,25 @@ properties:
           json:
             type: string
             description: json QC report
+
+  filtlong:
+    type: object
+    description: input and output parameters for filtlong
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          fastq:
+            type: string
+            description: gzipped ONT fastq file from samtools_compress_fastq
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: gzipped fastq file with reads that passed quality and length filtering
 
   merged:
     type: object
@@ -68,6 +125,44 @@ properties:
           bam:
             type: string
             description: duplicate marked bam file
+
+  samtools_compress_fastq:
+    type: object
+    description: input and output parameters for samtools_compress_fastq
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          fastq:
+            type: string
+            description: uncompressed fastq file from samtools_fastq
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: gzipped fastq file
+
+  samtools_fastq:
+    type: object
+    description: input and output parameters for samtools_fastq
+    properties:
+      input:
+        type: object
+        description: list of inputs
+        properties:
+          bam:
+            type: string
+            description: adapter/primer trimmed ONT bam file from dorado_trim
+      output:
+        type: object
+        description: list of outputs
+        properties:
+          fastq:
+            type: string
+            description: uncompressed fastq file, with all bam tags as tab-separated fields after the read name
 
   seqtk_subsample:
     type: object
