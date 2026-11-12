@@ -4,6 +4,20 @@ units: "units.tsv"
 
 default_container: "docker://hydragenetics/common:3.0.0"
 
+dorado_trim:
+  container: "docker://hydragenetics/dorado:2.0.0"
+  sequencing_kit: "SQK-NBD114-24"
+
+filtlong:
+  container: "docker://hydragenetics/filtlong:0.2.1"
+  extra: "--min_mean_q 30 --keep_percent 75"
+
+samtools_compress_fastq:
+  container: "docker://hydragenetics/samtools:1.21"
+
+samtools_fastq:
+  container: "docker://hydragenetics/samtools:1.21"
+
 seqtk_subsample:
   container: "docker://hydragenetics/seqtk:1.4"
   nr_reads: 100000

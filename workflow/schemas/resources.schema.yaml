@@ -28,6 +28,46 @@ properties:
       - threads
       - time
 
+  chopper:
+    type: object
+    description: resource definitions for chopper
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
+  dorado_trim:
+    type: object
+    description: resource definitions for dorado_trim
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
   fastp_pe:
     type: object
     description: resource definitions for fastp_pe
@@ -48,6 +88,26 @@ properties:
           RECOMMENDATION: Use multiple threads for decreased run time.
           NOTE: If multiple threads is used it is also best to increase memory (mem_mb)
           NOTE: If multiple threads is used the read order of the fastq files will differ between runs
+      time:
+        type: string
+        description: max execution time
+
+  filtlong:
+    type: object
+    description: resource definitions for filtlong
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
       time:
         type: string
         description: max execution time
@@ -75,6 +135,46 @@ properties:
   pbmarkdup:
     type: object
     description: resource definitions for pbmarkdup
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
+  samtools_compress_fastq:
+    type: object
+    description: resource definitions for samtools_compress_fastq
+    properties:
+      mem_mb:
+        type: integer
+        description: max memory in MB to be available
+      mem_per_cpu:
+        type: integer
+        description: memory in MB used per cpu
+      partition:
+        type: string
+        description: partition to use on cluster
+      threads:
+        type: integer
+        description: number of threads to be available
+      time:
+        type: string
+        description: max execution time
+
+  samtools_fastq:
+    type: object
+    description: resource definitions for samtools_fastq
     properties:
       mem_mb:
         type: integer

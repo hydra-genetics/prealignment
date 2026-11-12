@@ -15,6 +15,46 @@ properties:
     type: string
     description: name or path to a default docker/singularity container
 
+  chopper:
+    type: object
+    description: parameters for chopper
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: other parameters that should be forwarded to chopper, e.g. '--trim-approach trim-by-quality --cutoff 10'
+      maxlength:
+        type: integer
+        description: maximum read length, longer reads are discarded (passed as --maxlength, omitted if not set)
+      minlength:
+        type: integer
+        description: minimum read length, shorter reads are discarded (passed as --minlength, omitted if not set)
+      quality:
+        type: number
+        description: minimum average Phred quality score of a read (passed as --quality, omitted if not set)
+
+  dorado_trim:
+    type: object
+    description: parameters for dorado_trim
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to dorado trim, e.g. '--no-trim-primers'
+      sequencing_kit:
+        type: string
+        description: sequencing kit used to select adapters and primers to trim, e.g. 'SQK-NBD114-24' (required by dorado trim)
+
   fastp_pe:
     type: object
     description: parameters for fastp_pe
@@ -35,6 +75,26 @@ properties:
           --unqualified_percent_limit 40
           --n_base_limit 5
           --length_required 15
+
+  filtlong:
+    type: object
+    description: parameters for filtlong
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to filtlong, e.g. '--min_mean_q 30 --keep_percent 75'
+      max_length:
+        type: integer
+        description: maximum read length threshold, longer reads are discarded (default 30000)
+      min_length:
+        type: integer
+        description: minimum read length threshold, shorter reads are discarded (default 50)
 
   merged:
     type: object
@@ -63,6 +123,34 @@ properties:
       log_level:
         type: string
         description: set the logging level for pbmarkdup
+
+  samtools_compress_fastq:
+    type: object
+    description: parameters for samtools_compress_fastq
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to gzip, e.g. '-6'
+
+  samtools_fastq:
+    type: object
+    description: parameters for samtools_fastq
+    properties:
+      benchmark_repeats:
+        type: integer
+        description: set number of times benchmark should be repeated
+      container:
+        type: string
+        description: name or path to docker/singularity container
+      extra:
+        type: string
+        description: parameters that should be forwarded to samtools fastq (all bam tags are always kept with -T '*')
 
   seqtk_subsample:
     type: object
