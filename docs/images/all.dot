@@ -12,6 +12,14 @@ digraph snakemake_dag {
 	2[label = "fastp_pe", color = "0.00 0.6 0.85", style="rounded"];
 	4[label = "seqtk", color = "0.50 0.3 0.45", style="rounded"];
 	3[label = "sortmerna", color = "0.17 0.6 0.85", style="rounded"];
+	30[label = "bam (ONT)", color = "0.0 0.0 0.0", style="dotted"];
+	31[label = "fastq", color = "0.0 0.0 0.0", style="dotted"];
+	9[label = "chopper", color = "0.58 0.6 0.85", style="rounded"];
+	32[label = "bam", color = "0.0 0.0 0.0", style="dotted"];
+	6[label = "dorado_trim", color = "0.83 0.6 0.85", style="rounded"];
+	7[label = "samtools_fastq", color = "0.08 0.6 0.85", style="rounded"];
+	8[label = "samtools_compress_fastq", color = "0.08 0.6 0.85", style="rounded"];
+	5[label = "filtlong", color = "0.67 0.6 0.85", style="rounded"];
 	0 -> 2
 	0 -> 1
 	2 -> 1
@@ -21,5 +29,12 @@ digraph snakemake_dag {
 	20 -> 21
 	21 -> 3
 	3 -> 11
+	30 -> 6
+	6 -> 7
+	6 -> 9
+	9 -> 32
+	7 -> 8
+	8 -> 5
+	5 -> 31
 }   
 
