@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.1.0](https://github.com/hydra-genetics/prealignment/compare/v2.0.0...v2.1.0) (2026-11-12)
+
+
+### Features
+
+* add chopper output to ONT targets in rule all ([270240c](https://github.com/hydra-genetics/prealignment/commit/270240cdff45137f11e481317420b346d4643c80))
+* add chopper rule to filter dorado-trimmed ONT ubam files ([66ef441](https://github.com/hydra-genetics/prealignment/commit/66ef4415508bb571f87f412f9d96950d43d6f953))
+* add dorado_trim rule for adapter/primer trimming of ONT reads ([3a1acd5](https://github.com/hydra-genetics/prealignment/commit/3a1acd594a151c314feb73571b3d3186bd81e07f))
+* add filtlong rule for quality filtering of ONT reads ([2fbf221](https://github.com/hydra-genetics/prealignment/commit/2fbf221d78b15784d3ccda0314094f1a17dd2c69))
+* add ONT read processing rules (dorado_trim, samtools, filtlong, chopper) ([74d2f0c](https://github.com/hydra-genetics/prealignment/commit/74d2f0c4cb12fc9bf106fbebb2c9cbacf3e43ab2))
+* add quality, minlength and maxlength options to chopper ([62b2b2c](https://github.com/hydra-genetics/prealignment/commit/62b2b2cb85f17c57c8c2f5556d4fba1a448f4c7c))
+* add samtools rules to convert ONT ubam to fastq.gz before filtlong ([2971f5d](https://github.com/hydra-genetics/prealignment/commit/2971f5d0ac9ebd6576cf5d0b4cd9b8987d45cc18))
+* keep all bam tags in samtools_fastq output ([2752d65](https://github.com/hydra-genetics/prealignment/commit/2752d65708996cbc1bf13f24e0ac1f15444bfe0a))
+
+
+### Bug Fixes
+
+* restore fastp_pe entries in config, resources and rules schemas ([7f14ef7](https://github.com/hydra-genetics/prealignment/commit/7f14ef720abdf342d9f77fdd92153e8352b8abd1))
+
 ## [2.0.0](https://github.com/hydra-genetics/prealignment/compare/v1.4.0...v2.0.0) (2026-09-28)
 
 
