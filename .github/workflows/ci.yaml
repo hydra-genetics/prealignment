@@ -32,7 +32,7 @@ concurrency:
 jobs:
   lint:
     name: Lint workflow
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -50,7 +50,7 @@ jobs:
 
   snakefmt:
     name: Snakefmt
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -65,7 +65,7 @@ jobs:
 
   dry-run:
     name: Snakemake dry run
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [lint, snakefmt]
     steps:
       - uses: actions/checkout@v4
@@ -89,7 +89,7 @@ jobs:
 
   integration:
     name: Integration test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: [dry-run]
     steps:
