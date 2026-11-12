@@ -4,6 +4,12 @@ units: "units.tsv"
 
 default_container: "docker://hydragenetics/common:3.0.0"
 
+chopper:
+  container: "docker://hydragenetics/chopper:0.15.0"
+  quality: 10
+  minlength: 50
+  maxlength: 30000
+
 dorado_trim:
   container: "docker://hydragenetics/dorado:2.0.0"
   sequencing_kit: "SQK-NBD114-24"
