@@ -92,7 +92,7 @@ def get_nr_reads_per_fastq(nr_reads: int, units: pandas.DataFrame, wildcards: Wi
     return int(nr_reads / len(set([u.lane for u in units.loc[(wildcards.sample, wildcards.type)].itertuples()])))
 
 
-def get_sortmerna_refs(wildcards: snakemake.io.Wildcards):
+def get_sortmerna_refs(wildcards: Wildcards):
     return " --ref ".join(config.get("sortmerna", {}).get("fasta", ""))
 
 
